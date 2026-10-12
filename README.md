@@ -1,75 +1,142 @@
 # Ascanio Publishing Platform
 
-Plataforma SaaS B2B multi-tenant para la gestión integral de artistas, obras musicales, derechos, contratos, registros, regalías y operaciones asociadas a la industria musical.
+Plataforma SaaS B2B/B2C multi-tenant para la gestión integral del negocio musical.
 
 > **Estado actual:** inicio de desarrollo / greenfield  
-> **Primer tenant de validación:** Dilo Records  
+> **Producto:** independiente y agnóstico a cualquier sello, editorial, manager o artista específico  
 > **Arquitectura objetivo:** monolito modular, API-first y multi-tenant desde el día 1
 
 ---
 
 ## Visión
 
-Ascanio Publishing no es una nueva versión de Dilo Records.
+Ascanio Publishing es una plataforma nueva e independiente diseñada para convertirse en un sistema operativo de gestión musical.
 
-Es una plataforma nueva e independiente, diseñada para funcionar como producto SaaS para sellos, editoriales, managers y artistas. Dilo Records será el primer tenant real y servirá para validar los flujos del producto antes de incorporar nuevos clientes.
+No se desarrolla para adaptarse a Dilo Records ni a una organización específica. La intención es que distintos actores de la industria puedan adoptar Ascanio como su plataforma central de operación, incluyendo:
 
-La idea central es registrar la información musical una sola vez y reutilizarla a lo largo de todo el ciclo operativo:
+- sellos discográficos;
+- editoriales / music publishers;
+- empresas de management;
+- managers independientes;
+- artistas independientes;
+- artistas con equipo propio;
+- productores;
+- compositores;
+- equipos de publishing;
+- otras organizaciones y profesionales de la industria musical.
+
+Cada organización o profesional podrá operar dentro de su propio espacio, configuración, permisos, branding y datos, utilizando el mismo núcleo de producto.
+
+La plataforma debe modelar conceptos universales de la industria musical y permitir configuraciones por tenant cuando existan diferencias operativas.
+
+---
+
+## Principio de producto
+
+Ascanio debe organizar el ciclo de vida de la información musical de forma que un mismo dato pueda reutilizarse en todos los procesos posteriores.
 
 ```text
-Artista
-  ↓
-Obra / Composición
-  ↓
-Grabación / Master
-  ↓
-Colaboradores
-  ↓
-Splits
-  ↓
-Contratos
-  ↓
-Firmas
-  ↓
+Identidad / Organización
+        ↓
+Artistas
+        ↓
+Obras / Composiciones
+        ↓
+Grabaciones / Masters
+        ↓
+Releases
+        ↓
+Colaboradores / Interested Parties
+        ↓
+Derechos y Splits
+        ↓
+Contratos y Firmas
+        ↓
 Metadata Readiness
-  ↓
-CWR / Registros
-  ↓
-Royalties
-  ↓
-Operación, Analytics e IA
+        ↓
+Registros / CWR
+        ↓
+Royalties / Finanzas
+        ↓
+Booking / CRM / Marketing / Sync
+        ↓
+Analytics / Automatización / IA
 ```
+
+El objetivo es evitar duplicación de información y transformar procesos complejos de la industria en flujos guiados.
+
+---
+
+## Tipos de tenant previstos
+
+El modelo no debe asumir que todos los tenants son sellos.
+
+Como mínimo debe poder representar escenarios como:
+
+```text
+Record Label
+Music Publisher
+Management Company
+Independent Manager
+Independent Artist
+Artist Team / Company
+Hybrid Music Company
+```
+
+El tipo de tenant podrá influir en onboarding, módulos visibles, configuración y permisos, pero no debe crear aplicaciones separadas ni bifurcaciones de código por cliente.
+
+---
+
+## Usuarios y colaboración
+
+Un usuario puede participar en más de una organización y tener roles diferentes en cada una.
+
+Ejemplos:
+
+```text
+Usuario A
+├── Editorial X → Publisher Admin
+├── Sello Y → Composer / Collaborator
+└── Proyecto propio → Independent Artist
+```
+
+La arquitectura debe soportar relaciones entre organizaciones, artistas, autores, publishers, managers y colaboradores sin asumir que una persona pertenece exclusivamente a un tenant.
 
 ---
 
 ## Objetivo del MVP
 
-El MVP debe permitir que Dilo Records complete de extremo a extremo el flujo principal de una obra musical dentro de Ascanio.
+El MVP debe demostrar que una organización o profesional de la industria puede gestionar de extremo a extremo el núcleo legal, editorial y de metadata de una obra musical.
 
 ### Alcance funcional inicial
 
 1. Multi-tenancy.
-2. Usuarios, membresías, roles y permisos.
-3. Marca blanca básica por tenant.
-4. Artistas.
-5. Obras y composiciones.
-6. Grabaciones / masters.
-7. Releases.
-8. Colaboradores / interested parties.
-9. Splits de composición.
-10. Splits de master.
-11. Invitaciones para completar información faltante.
-12. Generación de contratos y split sheets.
-13. Firma e historial documental.
-14. Document Vault.
-15. Metadata Readiness.
-16. Registration Center.
-17. Generación y validación de CWR.
+2. Onboarding y configuración de organización.
+3. Usuarios, memberships, roles y permisos.
+4. Branding configurable.
+5. Artistas.
+6. Obras y composiciones.
+7. Grabaciones / masters.
+8. Releases.
+9. Colaboradores / interested parties.
+10. Splits de composición.
+11. Splits de master.
+12. Invitaciones para completar información faltante.
+13. Generación de contratos y split sheets.
+14. Firma e historial documental.
+15. Document Vault.
+16. Metadata Readiness.
+17. Registration Center.
+18. Generación y validación de CWR.
 
 ### Flujo esperado al cerrar el MVP
 
 ```text
-Crear artista
+Crear organización
+    ↓
+Configurar equipo y permisos
+    ↓
+Crear / vincular artista
     ↓
 Crear obra
     ↓
@@ -81,7 +148,7 @@ Definir composition split
     ↓
 Definir master split
     ↓
-Solicitar datos faltantes
+Solicitar información faltante
     ↓
 Generar contrato
     ↓
@@ -96,23 +163,65 @@ Generar CWR
 Dar seguimiento al registro
 ```
 
+Este flujo debe funcionar independientemente de si quien lo utiliza es un sello, una editorial, un manager o un artista independiente.
+
+---
+
+## Referencias funcionales y producto previo
+
+### Dilo Records
+
+El proyecto previo de Dilo Records existe como referencia técnica y funcional:
+
+- repositorio: `san7imo/dilo-deploy`;
+- ruta local de referencia: `/home/san7imo/Escritorio/Proyectos/dilo-deploy`.
+
+Puede consultarse para:
+
+- identificar componentes reutilizables;
+- revisar soluciones ya implementadas;
+- rescatar lógica genérica útil;
+- reutilizar patrones, componentes o código cuando sea apropiado;
+- entender aprendizajes obtenidos durante el desarrollo anterior.
+
+**No debe utilizarse como arquitectura objetivo ni como modelo de negocio de Ascanio.**
+
+Todo código reutilizado debe revisarse, desacoplarse de Dilo, adaptarse a los dominios de Ascanio y cumplir las reglas de multi-tenancy, seguridad, testing y calidad del nuevo proyecto.
+
+### Referencias de UX
+
+Los reels analizados previamente sirven como referencia para flujos guiados de:
+
+- splits;
+- contratos musicales;
+- incorporación de colaboradores;
+- solicitud de datos faltantes;
+- generación de documentos;
+- experiencia simple para usuarios no técnicos.
+
+La intención es adoptar los principios de UX útiles, no copiar una aplicación externa ni limitar Ascanio a esos flujos.
+
 ---
 
 ## Roadmap general
 
 ### Fase 0 — Discovery y arquitectura
-- modelo de dominio;
+- modelo de dominio universal;
 - arquitectura;
+- tipos de tenant;
+- modelo de memberships;
 - revisión de infraestructura;
 - permisos;
 - flujos principales;
 - backlog;
-- wireframes del MVP.
+- wireframes del MVP;
+- evaluación de código reutilizable de proyectos previos.
 
 ### Fase 1 — SaaS Foundation
 - tenancy;
+- onboarding;
 - autenticación;
-- membresías;
+- memberships;
 - RBAC;
 - branding;
 - auditoría;
@@ -125,7 +234,8 @@ Dar seguimiento al registro
 - recordings/masters;
 - releases;
 - contributors;
-- identifiers musicales.
+- organizations;
+- industry identifiers.
 
 ### Fase 3 — Rights & Splits
 - composition rights;
@@ -189,6 +299,7 @@ app/
 └── Domains/
     ├── Tenancy/
     ├── Identity/
+    ├── Organizations/
     ├── Artists/
     ├── Catalog/
     ├── Publishing/
@@ -242,21 +353,50 @@ La selección final de algunas dependencias se hará durante la fase de foundati
 
 ## Principios de dominio
 
+### Independencia del producto
+
+Ningún cliente, tenant o proyecto previo define el modelo central de Ascanio.
+
+Las reglas base deben representar conceptos reales de la industria musical.
+
+Las diferencias entre clientes deben resolverse preferentemente mediante:
+
+- configuración;
+- permisos;
+- módulos habilitados;
+- plantillas;
+- branding;
+- feature flags cuando estén justificadas.
+
+No mediante forks ni condiciones hardcodeadas por cliente.
+
 ### Multi-tenancy
 
-Dilo Records es un tenant, no una condición especial del código.
+Toda entidad perteneciente a una organización deberá estar aislada por tenant cuando corresponda.
 
-Toda entidad perteneciente a un cliente deberá estar aislada por tenant cuando corresponda.
+Un usuario de un tenant nunca debe poder acceder a información privada de otro tenant sin autorización explícita y un caso de negocio válido.
 
-Un usuario de un tenant nunca debe poder acceder a información de otro tenant sin autorización explícita de plataforma.
+### Relaciones entre actores
+
+No toda entidad musical pertenece conceptualmente a una única organización.
+
+El diseño debe distinguir entre:
+
+- identidad global / reusable party;
+- acceso y ownership dentro de un tenant;
+- relaciones contractuales;
+- participación en obras;
+- representación / management;
+- publishing;
+- ownership de master.
+
+Esto evita duplicar personas y organizaciones innecesariamente y permite colaboración entre actores de distintos tenants.
 
 ### Composition vs Master
 
 Los derechos de composición y los derechos del master son conceptos diferentes.
 
 Nunca deben mezclarse en un único porcentaje o modelo.
-
-Ejemplo:
 
 ```text
 Composition
@@ -272,7 +412,7 @@ Master
 
 La plataforma debe evitar pedir la misma información varias veces.
 
-Los datos de autores, compositores, publishers y colaboradores deben poder reutilizarse entre obras.
+Los datos de autores, compositores, publishers, artistas y colaboradores deben poder reutilizarse según permisos y contexto.
 
 ### Versionado
 
@@ -294,8 +434,6 @@ Los cambios sensibles deben ser trazables.
 
 Ascanio incluirá un motor para generar Common Works Registration a partir de los datos estructurados de la plataforma.
 
-El flujo esperado será:
-
 ```text
 Music Domain
     ↓
@@ -316,16 +454,16 @@ No debe implementarse como una concatenación informal de strings dentro de cont
 
 ## Experiencia de usuario
 
-Los procesos complejos deben presentarse mediante flujos guiados.
+Ascanio debe ser utilizable tanto por equipos profesionales como por artistas independientes.
 
-Ejemplo:
+Los procesos complejos deben presentarse mediante flujos guiados.
 
 ```text
 Paso 1
-¿Qué quieres documentar?
+¿Qué quieres hacer?
 
 Paso 2
-Información de la obra
+Información de la obra / grabación
 
 Paso 3
 Participantes
@@ -340,7 +478,7 @@ Paso 6
 Contrato / registro
 ```
 
-Se priorizará una interfaz clara para artistas y usuarios no técnicos sin perder la profundidad requerida por publishers y administradores.
+Cuando un usuario requiera mayor profundidad, la plataforma podrá ofrecer vistas o campos avanzados sin convertir la experiencia inicial en un formulario técnico masivo.
 
 ---
 
@@ -373,6 +511,8 @@ La plataforma contará con:
 - production.
 
 Los despliegues deben ser reproducibles y automatizables.
+
+La infraestructura inicial podrá utilizar el servidor administrado por Kroma, sujeto a validación técnica.
 
 El acceso directo a producción no forma parte del flujo normal de desarrollo de Codex ni de otros agentes de IA.
 
@@ -470,12 +610,13 @@ El repositorio se encuentra en etapa inicial.
 Próximos pasos:
 
 1. completar documentación base;
-2. definir modelo de dominio;
-3. definir tenancy;
-4. definir RBAC;
-5. inicializar Laravel + Vue + TypeScript;
-6. preparar testing y CI;
-7. comenzar SaaS Foundation.
+2. definir modelo de dominio universal;
+3. definir tipos de tenant y memberships;
+4. definir tenancy;
+5. definir RBAC;
+6. inicializar Laravel + Vue + TypeScript;
+7. preparar testing y CI;
+8. comenzar SaaS Foundation.
 
 ---
 
