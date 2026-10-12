@@ -227,7 +227,7 @@ Un repositorio, una aplicación Laravel y una BD transaccional. Web y workers ej
 | Web | Vue 3, TypeScript, Vite e Inertia |
 | Autenticación | Sesiones/cookies seguras y Fortify; Sanctum cuando exista consumidor API interno |
 | Asíncrono | Laravel queues, Redis y scheduler |
-| Archivos | S3-compatible privado; local privado permitido en development |
+| Archivos | Disco local de Laravel en el servidor Kroma, privado fuera del web root en producción |
 | Calidad | PHPUnit, Pint, ESLint, Prettier, typecheck y build |
 | Entrega | GitHub Actions; development, staging y production separados |
 
@@ -412,7 +412,7 @@ Flujo contractual: `draft → review → frozen → signature_pending → signed
 
 Guardar original, firmado y evidencia como archivos privados independientes, con hash, proveedor, external ID, fechas y versión exacta. Firmar no activa por sí solo una cesión o sustituye otra versión: la acción de activación valida las condiciones del acuerdo.
 
-Vault autoriza antes de descargar; rutas `tenants/{tenant_uuid}/...` y ACL privada. Descarga sensible/revocable pasa por endpoint autenticado. URLs temporales de storage solo para casos admitidos y TTL corto: una URL ya emitida puede funcionar hasta caducar aunque se revoque el grant. Archivos no van a `public` ni a un CDN público.
+Vault usa el disco local privado de Laravel, con rutas relativas `tenants/{tenant_uuid}/...`. Cada descarga pasa por un endpoint autenticado que comprueba tenant, recurso y permiso en ese momento; un enlace firmado no sustituye esa autorización. Documentos contractuales, identificaciones, masters y exports no se enlazan desde `public` ni desde `public_html`. Solo archivos expresamente publicados, como imágenes de marca o portadas, pueden usar el disco local público. Ambos discos residen en Kroma; no se integra S3 ni otro almacenamiento externo de pago.
 
 Validar MIME real, tamaño, nombre y análisis de malware antes de habilitar acceso. Los documentos quedan asociados a recursos/partes con permiso propio; ver metadata no autoriza automáticamente todos los adjuntos.
 
@@ -460,7 +460,23 @@ Las estimaciones anteriores de 12–18 semanas son referencias históricas, no c
 
 ## 13. Infraestructura y seguridad operativa
 
-Kroma es la opción inicial sujeta a comprobación: PHP/Composer, PostgreSQL, Redis, procesos persistentes, scheduler, storage privado, TLS, correo, backups y observabilidad. Tener SSH/cPanel no prueba disponibilidad de servicios ni región de datos. Registrar carencias y adaptar hosting/servicios mediante decisión explícita; no cambiar a MySQL o ejecutar jobs inseguros silenciosamente.
+Kroma, administrado mediante cPanel/SSH, es el destino de producción y de los archivos de la aplicación. El presupuesto exige usar el servidor adquirido: no añadir almacenamiento S3, servicios externos de pago ni un segundo servidor como requisito del MVP. Desarrollo y CI pueden conservar servicios locales/efímeros.
+
+Antes de cerrar la compatibilidad de producción, inspeccionar PHP/Composer y extensiones, motor/versión de BD disponible, Redis, cron, procesos persistentes y sus restricciones, document root, límites de subida, correo, backups y región de datos. Tener cPanel/SSH no acredita disponibilidad de PostgreSQL, Redis, Docker o permisos de administrador. El entorno Docker de desarrollo/CI no se supone instalable en la cuenta de hosting. Si un servicio requerido no existe, documentar alternativas dentro de Kroma y el impacto en tests/datos, antes de cambiar el stack. No cambiar silenciosamente a MySQL ni introducir un servicio de pago.
+
+### Almacenamiento local en producción
+
+La base técnica ya utiliza `FILESYSTEM_DISK=local`, con raíz `storage/app/private`. El despliegue debe mantener la aplicación y su almacenamiento privado fuera de todos los document roots públicos de la cuenta; el sitio sirve únicamente los archivos de `public/`. La ubicación exacta se valida con Kroma, sin mover ni sobrescribir los sitios existentes. Un ejemplo genérico es `/home/<usuario_cpanel>/apps/ascanio/`, con directorio público `apps/ascanio/public` y datos privados en `storage/app/private` o en un directorio persistente vinculado a `storage/`.
+
+Los datos de `storage/` sobreviven a nuevos releases y rollbacks. `storage:link`, si se utiliza para contenido publicado, enlaza solo `storage/app/public`; nunca el disco privado. Usar la API `Storage` de Laravel, rutas relativas y permisos filesystem mínimos, sin hardcodear el nombre de la cuenta o una marca en el dominio de negocio. La existencia de ejemplos de configuración cloud en el scaffold no significa integración ni requisito de producción.
+
+### Capacidad y operación
+
+La captura aportada el 12 de octubre indica 23,57 GB usados de 29,3 GB: aproximadamente 5,73 GB de margen aritmético para toda la cuenta, no una cuota exclusiva de Ascanio. Incluye la convivencia con sitios, correos y otros datos existentes. El uso real y su método de contabilización se comprueban en cPanel antes del piloto; no se descuentan límites de BD como si fueran disco adicional disponible.
+
+Definir antes de habilitar uploads límites configurables por archivo/tenant y reservas para aplicación, temporales, logs y backups. Monitorizar cuota de cuenta y consumo de Ascanio; el espacio libre del filesystem del host por sí solo puede no representar la cuota cPanel. Limitar previews/derivados y procesar archivos grandes mediante streams. Evitar duplicados innecesarios, retener logs y copias temporales con plazos definidos y bloquear nuevas subidas cuando falte margen. No purgar contratos firmados, masters u otros datos existentes para liberar espacio automáticamente.
+
+Los backups locales se mantienen privados, con retención que respete el disco disponible y restauración ensayada. Una copia en el mismo servidor comparte su riesgo de pérdida; una descarga manual de una copia autorizada puede añadirse sin contratar almacenamiento externo. No borrar archivos, correos o backups de otros proyectos como parte de esta tarea.
 
 Development y staging usan datos sintéticos; producción tendrá servicios, credenciales y storage separados. CI compila artefactos reproducibles y despliega staging según configuración; producción tiene aprobación humana. No se ha desplegado ni auditado el servidor en esta fase.
 
@@ -496,7 +512,7 @@ El documento CWR consultado es referencia, no selección confirmada del perfil d
 |---|---|---|
 | Sociedad destinataria, versión CWR, remitente y fixtures de validación | Antes de hito 5 | Un perfil concreto; sin promesa universal |
 | Jurisdicciones, plantillas y proveedor/método de firma | Antes de hito 4 | Dos split sheets, integración externa |
-| Hosting Kroma, región, workers, PostgreSQL, Redis y recuperación | Antes de cerrar foundation | Stack objetivo sin fallback silencioso |
+| Compatibilidad de Kroma, región, workers, BD, Redis, cuota y recuperación | Antes de cerrar foundation | Servidor adquirido y storage local; alternativas internas documentadas sin fallback silencioso |
 | Necesidad de coedición de un mismo recurso entre workspaces | Antes de ampliar colaboración | Tenant custodio + grants individuales |
 | Política detallada de divulgación para tipos de contrato | Antes de hito 3/4 | Participación propia; documento completo para sus firmantes |
 | Formas contractuales de administración, collection y bases de ingresos | Antes de implementar cada operación en Rights | Dimensiones explícitas; no default económico inventado |
@@ -575,7 +591,7 @@ Registro, login/logout, recuperación de contraseña, verificación de email, pe
 
 En desarrollo `MAIL_MAILER=log`: los enlaces de verificación y reset llegan a `storage/logs/laravel.log`, no a un buzón real. Abrir el enlace de verificación de la propia cuenta para acceder al dashboard. El log puede contener tokens: no compartirlo ni versionarlo. SMTP y TLS de producción quedan pendientes. En HTTPS configurar `APP_URL`, `SESSION_SECURE_COOKIE=true` y desactivar `APP_DEBUG`.
 
-Idioma de aplicación `es`, fallback `en` y timestamps UTC. Inicio, registro y login están en español; las pantallas restantes del starter kit conservan textos ingleses y requieren completar traducciones. Los documentos privados futuros usarán almacenamiento privado; esta entrega solo utiliza el disco local privado del scaffold, sin uploads ni integración S3.
+Idioma de aplicación `es`, fallback `en` y timestamps UTC. Inicio, registro y login están en español; las pantallas restantes del starter kit conservan textos ingleses y requieren completar traducciones. Los documentos privados futuros usarán el disco local privado también en producción Kroma. Esta entrega ya utiliza ese disco, sin uploads ni almacenamiento cloud. Los bloques S3/AWS de ejemplo del scaffold no se usan; no instalar adapters ni completar esas credenciales para el MVP.
 
 ### Verificación
 
