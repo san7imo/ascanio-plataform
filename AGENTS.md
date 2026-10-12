@@ -8,7 +8,7 @@ Ascanio is an independent, greenfield music SaaS for organizations and professio
 
 Build industry concepts and configurable workflows. Never hardcode customer names, make all tenants labels or fork the core for a customer.
 
-The repository currently contains documentation only. Models, tables, modules, CI and commands described in README are targets, not existing implementation. Do not claim the application is initialized or tested.
+The repository now contains the Laravel 12 / Vue technical scaffold, Fortify authentication and local PostgreSQL/Redis configuration. The domain models, tenancy and business modules described in README remain targets, not existing implementation. Report only checks actually executed.
 
 The current task boundary is architecture/documentation unless the user explicitly requests implementation. For an implementation task, work on the requested milestone only. The first implementation milestone is the Laravel/Vue scaffold and IdentityAccess foundation; not contracts, royalties or a full 360º product.
 
@@ -204,9 +204,9 @@ Cover relevant cases:
 - Documents remain private; stale readiness does not authorize a changed export.
 - CWR fixtures match the selected official profile; export is not acceptance.
 
-Once scaffold exists, run actual repository commands for tests, Pint, lint, typecheck and build. Expected tools include `php artisan test` and `./vendor/bin/pint --test`; npm script names must come from `package.json`. Do not invent runnable scripts now.
+Once scaffold exists, run actual repository commands for tests, Pint, lint, typecheck and build. Expected tools include `php artisan test` and `./vendor/bin/pint --test`; npm script names must come from `package.json`. Use the actual repository scripts.
 
-Documentation-only changes need consistency, local-link/Markdown review and `git diff --check`; no application tests for a missing application.
+Documentation-only changes need consistency, local-link/Markdown review and `git diff --check`; application checks are required for scaffold or code changes.
 
 A task is done when requested scope and acceptance criteria are met, isolation and authorization are verified, invariants/migrations are correct, relevant checks are executed, docs reflect behavior and material limits are reported. Do not claim tests passed without running them.
 

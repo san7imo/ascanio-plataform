@@ -2,7 +2,7 @@
 
 Plataforma SaaS independiente para organizar la operación musical de sellos, editoriales, empresas de management y profesionales independientes.
 
-**Estado al 12 de octubre de 2026:** diseño de arquitectura. El repositorio contiene documentación; no existe todavía un scaffold Laravel, aplicación, migraciones ni pipeline ejecutable. Los modelos y módulos de este documento son el diseño objetivo, no funcionalidades implementadas.
+**Estado al 12 de octubre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite implementada, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente.
 
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
 
@@ -512,9 +512,95 @@ Leer [AGENTS.md](AGENTS.md) y este documento antes de una tarea. Partir del alca
 
 Commits convencionales, cambios acotados y sin secretos/datos reales. Toda modificación crítica incluye pruebas de dominio y acceso, migración aditiva si corresponde y evidencia de ejecución. No editar migraciones ejecutadas ni reescribir historia compartida.
 
-No hay todavía instrucciones de instalación ejecutables: faltan `composer.json`, `package.json` y `artisan`. El primer ticket de implementación será inicializar el scaffold respetando esta documentación, añadir PostgreSQL de pruebas y CI, y entregar un flujo mínimo de autenticación/tenancy con aislamiento. No iniciar royalties ni contratos en ese ticket.
+### Requisitos e instalación local
 
-Tras scaffold, registrar scripts reales para tests, Pint, lint, typecheck y build. Las pruebas de aislamiento usan PostgreSQL, no solo SQLite. Una PR documental verifica consistencia, enlaces, Markdown y diff; no afirma haber probado una aplicación que aún no existe.
+PHP 8.3+ (verificado aquí con PHP 8.4.18), Composer 2 y extensiones PDO/PDO PostgreSQL, mbstring, XML/DOM, fileinfo, OpenSSL, tokenizer y ctype. cURL y zip/unzip facilitan la instalación. Node 22.12+ de la rama 22 y npm 10. Docker Engine y Compose para los servicios locales. Los lockfiles fijan dependencias; Composer resuelve para PHP 8.3 mediante `config.platform.php`. Laravel permanece en la rama 12.
+
+PHP y las extensiones deben estar instalados para la misma versión. CI comprueba PHP 8.3 y 8.4 con PDO PostgreSQL, mbstring, DOM/XML/XMLWriter, cURL y zip; Redis usa Predis y no requiere la extensión phpredis. Node está fijado a 22.17.0 en CI.
+
+En este equipo `php` apunta a 8.2; los ejemplos usan **php8.4**. En un entorno con PHP 8.3+ predeterminado puede sustituirse por `php`. Composer se localiza desde `PATH`.
+
+Si PHP 8.4 carece de cURL, mbstring o zip, hay un fallback opcional sin sudo para **Ubuntu 22.04 amd64 con el PPA de Ondrej ya configurado**:
+
+```bash
+bash scripts/prepare-local-php.sh
+source scripts/php-env.sh
+php8.4 -m
+```
+
+El preparador descarga paquetes exactos `8.4.26-1+ubuntu22.04.1+deb.sury.org+1` mediante APT (verificados contra los metadatos del repositorio configurado), comprueba el ABI `20240924` y carga cada módulo antes de generar su ini. Requiere `apt`, `dpkg-deb`, PHP 8.4 y las bibliotecas nativas de cURL, oniguruma y libzip del sistema. No instala paquetes ni cambia el PHP global. Falla explícitamente si la plataforma, ABI, paquete o bibliotecas no están disponibles; en ese caso instalar las extensiones con el administrador del entorno. Los módulos compilados y su configuración quedan en `.local/`, ignorados por Git.
+
+Se puede repetir el preparador en un checkout nuevo o tras mover el repositorio: regenera las rutas locales. `source scripts/php-env.sh` obtiene la raíz con Git y el directorio de ini del propio PHP, y debe ejecutarse en cada terminal antes de los comandos. Sin módulos locales, el helper deja la configuración del sistema intacta. `ASCANIO_PHP_BINARY` permite indicar otro nombre/ruta del binario PHP 8.4 para este fallback. PHP 8.3 y otras plataformas usan sus extensiones de sistema.
+
+```bash
+source scripts/php-env.sh
+php8.4 scripts/init-env.php
+php8.4 "$(command -v composer)" install
+npm ci
+docker compose up -d --wait
+php8.4 artisan key:generate
+php8.4 artisan migrate
+PHP_BINARY=php8.4 npm run build
+```
+
+`init-env.php` crea `.env` si falta y genera una contraseña aleatoria local para PostgreSQL solo si el campo está vacío. Conserva valores existentes; no imprime secretos. `.env`, dependencias y artefactos están ignorados. No volver a generar `APP_KEY` en una instalación con datos cifrados.
+
+Compose levanta PostgreSQL 17.6 en `127.0.0.1:55432` y Redis 7.4.5 en `127.0.0.1:56379`, con volúmenes persistentes exclusivos. Crea `ascanio` y `ascanio_test` al inicializar el volumen. El usuario local es dueño de estas bases de desarrollo; no es una configuración de privilegios para producción. Redis queda accesible únicamente por loopback. Si un puerto está ocupado, cambiar `.env`; no modificar servicios existentes del equipo.
+
+Para servicios propios, configurar `DB_*` y `REDIS_*` en `.env` y crear ambas bases PostgreSQL antes de migrar. El usuario de pruebas necesita permisos DDL únicamente en su base dedicada. No conectar estos comandos a producción. El init SQL de Compose solo se ejecuta con un volumen nuevo; para un volumen existente que carezca de la base de pruebas:
+
+```bash
+docker compose exec -T postgres createdb -U ascanio ascanio_test
+```
+
+### Arranque y autenticación
+
+```bash
+source scripts/php-env.sh
+docker compose up -d --wait
+php8.4 "$(command -v composer)" run dev
+```
+
+Abrir <http://localhost:8000>. El script ejecuta servidor, worker Redis y Vite con el mismo PHP que Composer. `Ctrl+C` detiene los procesos de desarrollo; `docker compose stop` detiene los servicios conservando datos.
+
+Alternativa en terminales separadas:
+
+```bash
+php8.4 artisan serve
+PHP_BINARY=php8.4 npm run dev
+php8.4 artisan queue:work redis --tries=1 --timeout=60
+```
+
+Registro, login/logout, recuperación de contraseña, verificación de email, perfil y seguridad/MFA usan Fortify y el guard `web`. Las sesiones se guardan cifradas en PostgreSQL. El dashboard exige email verificado; crear cuenta no equivale a verificar identidad legal. No hay usuario ni contraseña presembrados.
+
+En desarrollo `MAIL_MAILER=log`: los enlaces de verificación y reset llegan a `storage/logs/laravel.log`, no a un buzón real. Abrir el enlace de verificación de la propia cuenta para acceder al dashboard. El log puede contener tokens: no compartirlo ni versionarlo. SMTP y TLS de producción quedan pendientes. En HTTPS configurar `APP_URL`, `SESSION_SECURE_COOKIE=true` y desactivar `APP_DEBUG`.
+
+Idioma de aplicación `es`, fallback `en` y timestamps UTC. Inicio, registro y login están en español; las pantallas restantes del starter kit conservan textos ingleses y requieren completar traducciones. Los documentos privados futuros usarán almacenamiento privado; esta entrega solo utiliza el disco local privado del scaffold, sin uploads ni integración S3.
+
+### Verificación
+
+```bash
+source scripts/php-env.sh
+php8.4 artisan config:clear
+php8.4 artisan wayfinder:generate --with-form
+php8.4 artisan test
+php8.4 vendor/bin/pint --test
+npm run lint:check
+npm run format:check
+npm run typecheck
+PHP_BINARY=php8.4 npm run build
+php8.4 "$(command -v composer)" validate --strict
+php8.4 "$(command -v composer)" check-platform-reqs
+npm audit
+php8.4 "$(command -v composer)" audit
+git diff --check
+```
+
+Wayfinder genera los tipos de rutas (ignorados en Git); build/dev también los generan. Ejecutar la generación antes de typecheck en un checkout limpio. Para corregir formato: `php8.4 vendor/bin/pint`, `npm run lint` y `npm run format`. `npm run types:check` es alias del mismo chequeo TypeScript.
+
+`phpunit.xml` fuerza el entorno testing, PostgreSQL, `ascanio_test` y `DB_URL` vacío; el guard del harness rechaza cualquier URL externa efectiva antes de migrar, incluso si una variable de proceso sobrevive al launcher. La clase base rechaza otra conexión/base antes de las migraciones de tests. La suite usa datos sintéticos y revierte los cambios; nunca debe apuntar a una base real. Caché/sesión de tests usan arrays y la cola es síncrona salvo el smoke test de infraestructura, que comprueba Redis con claves/cola únicas y limpieza. Los tests de aislamiento multi-tenant se añadirán cuando exista ese dominio.
+
+[CI](.github/workflows/ci.yml) ejecuta instalación desde lockfiles, build, tests, Pint, lint, formato y tipos con PostgreSQL y Redis para PRs hacia `main`. No despliega; consultar el resultado de cada ejecución en el PR. Procedencia del scaffold y licencia de sus partes: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Licencia comercial: términos por definir por el titular del proyecto. La visibilidad pública del repositorio no establece una licencia de reutilización.
 
