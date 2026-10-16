@@ -1,0 +1,33 @@
+name: ascanio-dev
+services:
+  postgres:
+    image: postgres:17.6-bookworm
+    environment:
+      POSTGRES_DB: ascanio
+      POSTGRES_USER: ascanio
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${DB_PORT:-55432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/01-test-database.sql:/docker-entrypoint-initdb.d/01-test-database.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ascanio -d ascanio"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redis:
+    image: redis:7.4.5-bookworm
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-56379}:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  postgres-data:
+  redis-data:

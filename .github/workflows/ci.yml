@@ -1,0 +1,65 @@
+name: Verify foundation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.3', '8.4']
+    services:
+      postgres:
+        image: postgres:17.6-bookworm
+        env:
+          POSTGRES_USER: ascanio
+          # Ephemeral CI database, isolated to this runner; no stored credentials.
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: ascanio_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ascanio -d ascanio_test"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+      redis:
+        image: redis:7.4.5-bookworm
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_DATABASE: ascanio_test
+      DB_USERNAME: ascanio
+      DB_PASSWORD: ""
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pdo_pgsql, mbstring, dom, xml, xmlwriter, curl, zip
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.17.0'
+          cache: npm
+      - run: cp .env.example .env
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer validate --strict
+      - run: composer check-platform-reqs
+      - run: php artisan key:generate
+      - run: npm ci
+      - run: npm run build
+      - run: php artisan test
+      - run: ./vendor/bin/pint --test
+      - run: npm run lint:check
+      - run: npm run format:check
+      - run: npm run typecheck
+      - run: git diff --check

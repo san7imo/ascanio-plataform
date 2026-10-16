@@ -8,7 +8,7 @@ Ascanio is an independent, greenfield music SaaS for organizations and professio
 
 Build industry concepts and configurable workflows. Never hardcode customer names, make all tenants labels or fork the core for a customer.
 
-The repository currently contains documentation only. Models, tables, modules, CI and commands described in README are targets, not existing implementation. Do not claim the application is initialized or tested.
+The repository now contains the Laravel 12 / Vue technical scaffold, Fortify authentication and local PostgreSQL/Redis configuration. The domain models, tenancy and business modules described in README remain targets, not existing implementation. Report only checks actually executed.
 
 The current task boundary is architecture/documentation unless the user explicitly requests implementation. For an implementation task, work on the requested milestone only. The first implementation milestone is the Laravel/Vue scaffold and IdentityAccess foundation; not contracts, royalties or a full 360º product.
 
@@ -16,7 +16,7 @@ README is the architecture/domain baseline, this file is the engineering contrac
 
 ## 2. Stack and structure
 
-Target stack: PHP 8.3+, Laravel 12, PostgreSQL, Redis, Laravel queues, private S3-compatible storage, Vue 3, TypeScript, Vite and Inertia.
+Target stack: PHP 8.3+, Laravel 12, PostgreSQL, Redis, Laravel queues, private local storage on the acquired Kroma server, Vue 3, TypeScript, Vite and Inertia. Production files remain on Kroma; S3 or another paid storage provider is not part of the MVP.
 
 Use secure session/cookie authentication and Fortify for the first web application. Add Sanctum for an actual internal API consumer; do not add JWT or require the Inertia web to call itself through HTTP.
 
@@ -141,7 +141,9 @@ Signing completes evidence; activation separately checks contractual prerequisit
 
 Validate webhook authenticity, event ID deduplication, tenant mapping from known provider IDs and legal state transitions. No trust in incoming `tenant_id`. Retries and reordered callbacks must not duplicate or corrupt effects.
 
-Storage is private. Authorize every download independently of metadata visibility. Sensitive/revocable downloads use an authenticated endpoint; temporary storage URLs require short TTL and explicit suitability because issued URLs may remain valid until expiry.
+Use Laravel's local filesystem in production and development. Private files live outside every public document root on the Kroma account, under the configured private storage root. Keep paths relative through the Storage API and tenant-namespaced. Persist storage across releases; never symlink private storage into public/public_html. Public local storage is only for deliberately published assets.
+
+Authorize every private download independently of metadata visibility through an authenticated endpoint that rechecks tenant/resource access. A signed URL alone is not sufficient authorization. Never introduce S3, cloud adapters/credentials or paid external storage as a requirement. Unused scaffold cloud examples are not product dependencies.
 
 Verify file type, size and malware status. Do not expose private uploads through `public`, symlinks or a public CDN. Keep retention/evidence rules explicit; soft-delete is not authority to purge signed records.
 
@@ -185,7 +187,9 @@ Maintain CSRF, escaping, safe redirects, server-side input allowlists, session p
 
 Do not weaken controls to get a test passing. Do not put sensitive data into Inertia shared props, errors, analytics or Git. Prepare localization (Spanish first, English/Portuguese extensible), UTC timestamps and tenant/user timezone display.
 
-Kroma capabilities and data location are unverified. Do not infer Redis, PostgreSQL, worker support or compliance from cPanel/SSH. Record evidence before choosing fallback infrastructure.
+Kroma/cPanel is the fixed production hosting and storage target under the current budget. Its software capabilities, data location and persistent-worker permissions are unverified; do not infer Redis, PostgreSQL, Docker or root access from cPanel/SSH. Inspect compatibility before deployment-dependent implementation. If a requirement cannot run there, document internal alternatives and impact before changing the stack; do not purchase/add external hosting or services implicitly.
+
+Respect the account disk quota shared with existing sites/mail. Check current cPanel quota and app usage rather than relying only on filesystem free space. Define upload limits, reserves, log/temp retention and capacity checks before enabling uploads. Preserve signed evidence and existing projects; do not purge them to make space. Local backups must stay private, fit defined retention and be restorable. The user may download authorized backup copies without a paid storage service.
 
 ## 12. Verification and Definition of Done
 
@@ -204,9 +208,9 @@ Cover relevant cases:
 - Documents remain private; stale readiness does not authorize a changed export.
 - CWR fixtures match the selected official profile; export is not acceptance.
 
-Once scaffold exists, run actual repository commands for tests, Pint, lint, typecheck and build. Expected tools include `php artisan test` and `./vendor/bin/pint --test`; npm script names must come from `package.json`. Do not invent runnable scripts now.
+Once scaffold exists, run actual repository commands for tests, Pint, lint, typecheck and build. Expected tools include `php artisan test` and `./vendor/bin/pint --test`; npm script names must come from `package.json`. Use the actual repository scripts.
 
-Documentation-only changes need consistency, local-link/Markdown review and `git diff --check`; no application tests for a missing application.
+Documentation-only changes need consistency, local-link/Markdown review and `git diff --check`; application checks are required for scaffold or code changes.
 
 A task is done when requested scope and acceptance criteria are met, isolation and authorization are verified, invariants/migrations are correct, relevant checks are executed, docs reflect behavior and material limits are reported. Do not claim tests passed without running them.
 

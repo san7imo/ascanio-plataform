@@ -1,0 +1,98 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "ascanio/publishing-platform",
+    "type": "project",
+    "description": "Ascanio Publishing Platform technical foundation",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "proprietary",
+    "require": {
+        "php": "^8.3",
+        "inertiajs/inertia-laravel": "^2.0",
+        "laravel/fortify": "^1.30",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1",
+        "laravel/wayfinder": "^0.1.9",
+        "predis/predis": "^3.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.24",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.50"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php scripts/dev.php"
+        ],
+        "lint": [
+            "@php vendor/bin/pint --parallel"
+        ],
+        "lint:check": [
+            "@php vendor/bin/pint --parallel --test"
+        ],
+        "ci:check": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php artisan config:clear --ansi",
+            "@php artisan wayfinder:generate --with-form",
+            "npm run lint:check",
+            "npm run format:check",
+            "npm run types:check",
+            "@test"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@lint:check",
+            "@php artisan test"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.3.0"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
