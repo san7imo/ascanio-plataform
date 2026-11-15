@@ -2,7 +2,7 @@
 
 Plataforma SaaS independiente para organizar la operación musical de sellos, editoriales, empresas de management y profesionales independientes.
 
-**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite integrada en `main`, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente. La revisión detectó avisos de seguridad en dependencias que deben atenderse antes del siguiente desarrollo funcional.
+**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite integrada en `main`, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. P0 actualiza las dependencias afectadas y añade auditorías de ambos lockfiles a CI; los checks locales reportan cero avisos conocidos. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente; la siguiente entrega es F1. Evidencia y límites: [mantenimiento P0](docs/security/dependency-maintenance.md).
 
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
 
@@ -608,19 +608,21 @@ php8.4 vendor/bin/pint --test
 npm run lint:check
 npm run format:check
 npm run typecheck
+npm run test:tooling
 PHP_BINARY=php8.4 npm run build
 php8.4 "$(command -v composer)" validate --strict
 php8.4 "$(command -v composer)" check-platform-reqs
-npm audit
-php8.4 "$(command -v composer)" audit
+php8.4 "$(command -v composer)" run audit:check
 git diff --check
 ```
 
 Wayfinder genera los tipos de rutas (ignorados en Git); build/dev también los generan. Ejecutar la generación antes de typecheck en un checkout limpio. Para corregir formato: `php8.4 vendor/bin/pint`, `npm run lint` y `npm run format`. `npm run types:check` es alias del mismo chequeo TypeScript.
 
+`composer run audit:check` ejecuta `composer audit --locked --abandoned=fail` y `npm run audit:check` (auditoría npm del lockfile, sin omitir dependencias de desarrollo). Los avisos y errores de consulta fallan el check; no hay excepciones activas. `composer run ci:check` incluye estas auditorías y la prueba de compatibilidad del override de tooling. Consultar la [política de mantenimiento](docs/security/dependency-maintenance.md) para las versiones y el retiro del override.
+
 `phpunit.xml` fuerza el entorno testing, PostgreSQL, `ascanio_test` y `DB_URL` vacío; el guard del harness rechaza cualquier URL externa efectiva antes de migrar, incluso si una variable de proceso sobrevive al launcher. La clase base rechaza otra conexión/base antes de las migraciones de tests. La suite usa datos sintéticos y revierte los cambios; nunca debe apuntar a una base real. Caché/sesión de tests usan arrays y la cola es síncrona salvo el smoke test de infraestructura, que comprueba Redis con claves/cola únicas y limpieza. Los tests de aislamiento multi-tenant se añadirán cuando exista ese dominio.
 
-[CI](.github/workflows/ci.yml) ejecuta instalación desde lockfiles, build, tests, Pint, lint, formato y tipos con PostgreSQL y Redis para PRs hacia `main`. No despliega; consultar el resultado de cada ejecución en el PR. Procedencia del scaffold y licencia de sus partes: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[CI](.github/workflows/ci.yml) ejecuta instalación desde lockfiles, build, tests, Pint, lint, formato, tipos y compatibilidad del tooling con PostgreSQL y Redis para PRs hacia `main`. Un job independiente audita dependencias en PRs, pushes a main, ejecución manual y semanal. No despliega; consultar el resultado de cada ejecución en el PR. Procedencia del scaffold y licencia de sus partes: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Licencia comercial: términos por definir por el titular del proyecto. La visibilidad pública del repositorio no establece una licencia de reutilización.
 
