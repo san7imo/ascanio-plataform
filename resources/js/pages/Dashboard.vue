@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
+import { index as workspaces } from '@/routes/workspaces';
 import type { BreadcrumbItem } from '@/types';
 const breadcrumbs: BreadcrumbItem[] = [{ title: 'Inicio', href: dashboard() }];
 </script>
@@ -15,6 +16,9 @@ const breadcrumbs: BreadcrumbItem[] = [{ title: 'Inicio', href: dashboard() }];
                 Tu cuenta está lista. Puedes gestionar tu perfil y la seguridad
                 de acceso desde los ajustes.
             </p>
+            <Link :href="workspaces()" class="font-medium underline"
+                >Crear o seleccionar un espacio de trabajo</Link
+            >
         </section>
     </AppLayout>
 </template>

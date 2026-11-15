@@ -8,7 +8,7 @@ Ascanio is an independent, greenfield music SaaS for organizations and professio
 
 Build industry concepts and configurable workflows. Never hardcode customer names, make all tenants labels or fork the core for a customer.
 
-The repository now contains the Laravel 12 / Vue technical scaffold, Fortify authentication and local PostgreSQL/Redis configuration. The domain models, tenancy and business modules described in README remain targets, not existing implementation. Report only checks actually executed.
+The repository contains the Laravel 12 / Vue scaffold, Fortify, local PostgreSQL/Redis and F1 IdentityAccess: minimal global identities, workspaces, initial memberships, tenant capabilities, scoped queries/policies, revocation and audit events. Musical modules, resource grants, invitations, full role administration and operational Foundation readiness remain targets. See [F1 delivery](docs/implementation/f1-workspace-foundation.md) for implemented boundaries. Report only checks actually executed.
 
 The current task boundary is architecture/documentation unless the user explicitly requests implementation. For an implementation task, work on the requested milestone only. The first implementation milestone is the Laravel/Vue scaffold and IdentityAccess foundation; not contracts, royalties or a full 360º product.
 

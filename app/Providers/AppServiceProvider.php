@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Modules\IdentityAccess\Models\Tenant;
+use App\Modules\IdentityAccess\Policies\TenantPolicy;
+use App\Modules\IdentityAccess\TenantContext;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -15,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->scoped(TenantContext::class);
     }
 
     /**
@@ -24,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        Gate::policy(Tenant::class, TenantPolicy::class);
     }
 
     /**

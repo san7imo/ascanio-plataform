@@ -80,7 +80,7 @@ Para documentos, revisar consistencia, enlaces locales, Markdown y diff --check.
 
 ## 5. Trabajo inmediato y Foundation
 
-Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Actualización del 14 de noviembre: P0 implementado y validado localmente en `fix/dependency-security`; [registro de cambios, pruebas y límites](security/dependency-maintenance.md). El resultado remoto corresponde a los checks de su PR. F1–F4 y O0/O1 siguen pendientes; no se ejecutaron migraciones de negocio ni conexiones a Kroma.
+Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Actualización del 14 de noviembre: P0 integrado mediante [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); [registro de cambios, pruebas y límites](security/dependency-maintenance.md). F1 implementado y validado localmente en `feat/workspace-foundation`: [recorridos, migración y pruebas](implementation/f1-workspace-foundation.md); el estado remoto corresponde a los checks de su PR. F2–F4 y O0/O1 siguen pendientes; no hay conexiones ni operaciones en Kroma.
 
 ### P0 — Mantenimiento de dependencias y controles
 
@@ -236,7 +236,7 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Siguiente acción y mantenimiento del plan
 
-La siguiente entrega de código es **F1: primer recorrido multi-tenant**, tras la integración del mantenimiento P0. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
+La siguiente entrega de código es **F2: gobierno del workspace y administración de capacidades**, tras integrar F1. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 

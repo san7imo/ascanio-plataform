@@ -2,7 +2,7 @@
 
 Plataforma SaaS independiente para organizar la operación musical de sellos, editoriales, empresas de management y profesionales independientes.
 
-**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite integrada en `main`, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. P0 actualiza las dependencias afectadas y añade auditorías de ambos lockfiles a CI; los checks locales reportan cero avisos conocidos. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente; la siguiente entrega es F1. Evidencia y límites: [mantenimiento P0](docs/security/dependency-maintenance.md).
+**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite, Fortify, PostgreSQL y Redis, con P0 de dependencias integrado. F1 añade creación/selección de workspaces, identidad mínima declarada, memberships iniciales, permisos por tenant, consultas/policies, revocación y auditoría. Los módulos musicales, grants e invitaciones siguen siendo diseño objetivo. Foundation completo continúa pendiente de F2–F4 y de comprobar Kroma. Evidencia y límites: [entrega F1](docs/implementation/f1-workspace-foundation.md) y [mantenimiento P0](docs/security/dependency-maintenance.md).
 
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
 
@@ -113,6 +113,8 @@ No fusionar parties automáticamente por nombre, IPI o email coincidente. Una co
 El contexto se resuelve por ruta/workspace autorizado; si se añade dominio, debe verificarse y allowlistarse. Ni un header ni `tenant_id` del formulario acreditan acceso.
 
 Middleware establece `TenantContext` por petición después de comprobar membership activa o grant válido. Sin contexto válido se deniega. El invitado opera en contexto limitado del tenant custodio, sin heredar su catálogo.
+
+Implementación F1: el contexto se establece solo mediante membership/capability válidas, por ruta explícita, antes del binding y se limpia al finalizar. La sesión recuerda una selección para navegación; no concede acceso ni reemplaza la ruta. Los grants siguen el orden del ADR 0001. El selector de espacios es una consulta deliberadamente limitada a la propia cuenta y sus capacidades activas.
 
 Consultas, route binding, validaciones de FKs, búsquedas, paginación, conteos, exports y descargas aplican el contexto. No usar `withoutGlobalScopes` para resolver acceso. Los hijos usan FKs compuestas `(tenant_id, parent_id)` y padres `UNIQUE(tenant_id, id)`.
 
@@ -325,6 +327,8 @@ Todas las tablas siguientes tienen `tenant_id NOT NULL`, incluido cada pivot.
 Un registro `resource_grants` apunta exactamente a un objetivo entre work, recording, artist_profile, split_version, contract_version o document_version. Usar FKs tipadas nullable con CHECK “exactamente uno”, no un `resource_id` libre que pueda cruzar tenant. El propósito define capabilities concedibles y proyección permitida; no ejecutar JSON arbitrario como policy.
 
 Membership y grant son caminos independientes. `membership_roles` no asigna permisos a una Party sin cuenta. Invitar a una organización requiere elegir un usuario representante y acreditar su facultad; no da acceso a todos sus miembros.
+
+En F1, `tenant_memberships.is_owner` registra gobierno del workspace, separado de los bundles de roles y de cualquier ownership musical. Las restricciones y acciones conservan al menos un propietario activo. No hay editor de roles/ownership ni alta de terceros en la interfaz de esta entrega; F2/F3 completan esos recorridos. El detalle de tablas realmente creadas está en la entrega F1, sin presuponer que todo este modelo objetivo exista.
 
 ### Derechos, contratos y registros
 
@@ -593,6 +597,10 @@ php8.4 artisan queue:work redis --tries=1 --timeout=60
 
 Registro, login/logout, recuperación de contraseña, verificación de email, perfil y seguridad/MFA usan Fortify y el guard `web`. Las sesiones se guardan cifradas en PostgreSQL. El dashboard exige email verificado; crear cuenta no equivale a verificar identidad legal. No hay usuario ni contraseña presembrados.
 
+Tras verificar el correo, abrir **Mis espacios** para crear o seleccionar un workspace. El alta crea de forma atómica un operador personal declarado, una membership y capacidades iniciales; los reenvíos del mismo formulario no duplican el espacio. Solo su nombre, idioma preferido y zona horaria son editables. Las membresías visibles dependen de permisos; revocarlas requiere contraseña y no puede dejar el espacio sin propietario. Eliminar la cuenta se bloquea si tiene historial de memberships. Las cuentas suspendidas/revocadas no pueden iniciar sesión ni continuar con una sesión anterior. No existe todavía una interfaz de administración de esos estados.
+
+La migración F1 requiere PostgreSQL con permisos para crear funciones/triggers y constraints diferibles. Aplicarla en desarrollo mediante `php8.4 artisan migrate`; conservar las migraciones históricas. Kroma no se presume compatible por haber pasado las pruebas locales.
+
 En desarrollo `MAIL_MAILER=log`: los enlaces de verificación y reset llegan a `storage/logs/laravel.log`, no a un buzón real. Abrir el enlace de verificación de la propia cuenta para acceder al dashboard. El log puede contener tokens: no compartirlo ni versionarlo. SMTP y TLS de producción quedan pendientes. En HTTPS configurar `APP_URL`, `SESSION_SECURE_COOKIE=true` y desactivar `APP_DEBUG`.
 
 Idioma de aplicación `es`, fallback `en` y timestamps UTC. Inicio, registro y login están en español; las pantallas restantes del starter kit conservan textos ingleses y requieren completar traducciones. Los documentos privados futuros usarán el disco local privado también en producción Kroma. Esta entrega ya utiliza ese disco, sin uploads ni almacenamiento cloud. Los bloques S3/AWS de ejemplo del scaffold no se usan; no instalar adapters ni completar esas credenciales para el MVP.
@@ -620,7 +628,7 @@ Wayfinder genera los tipos de rutas (ignorados en Git); build/dev también los g
 
 `composer run audit:check` ejecuta `composer audit --locked --abandoned=fail` y `npm run audit:check` (auditoría npm del lockfile, sin omitir dependencias de desarrollo). Los avisos y errores de consulta fallan el check; no hay excepciones activas. `composer run ci:check` incluye estas auditorías y la prueba de compatibilidad del override de tooling. Consultar la [política de mantenimiento](docs/security/dependency-maintenance.md) para las versiones y el retiro del override.
 
-`phpunit.xml` fuerza el entorno testing, PostgreSQL, `ascanio_test` y `DB_URL` vacío; el guard del harness rechaza cualquier URL externa efectiva antes de migrar, incluso si una variable de proceso sobrevive al launcher. La clase base rechaza otra conexión/base antes de las migraciones de tests. La suite usa datos sintéticos y revierte los cambios; nunca debe apuntar a una base real. Caché/sesión de tests usan arrays y la cola es síncrona salvo el smoke test de infraestructura, que comprueba Redis con claves/cola únicas y limpieza. Los tests de aislamiento multi-tenant se añadirán cuando exista ese dominio.
+`phpunit.xml` fuerza el entorno testing, PostgreSQL, `ascanio_test` y `DB_URL` vacío; el guard del harness rechaza cualquier URL externa efectiva antes de migrar, incluso si una variable de proceso sobrevive al launcher. La clase base rechaza otra conexión/base antes de las migraciones de tests. La suite usa datos sintéticos y nunca debe apuntar a una base real. La mayoría de pruebas revierte sus transacciones; las carreras F1 usan commits/conexiones independientes y reconstruyen únicamente la base dedicada antes/después. Caché/sesión usan arrays y la cola es síncrona salvo el smoke test Redis con claves/cola únicas y limpieza. El aislamiento F1 cubre las entidades y rutas ya implementadas; no acredita el de módulos futuros.
 
 [CI](.github/workflows/ci.yml) ejecuta instalación desde lockfiles, build, tests, Pint, lint, formato, tipos y compatibilidad del tooling con PostgreSQL y Redis para PRs hacia `main`. Un job independiente audita dependencias en PRs, pushes a main, ejecución manual y semanal. No despliega; consultar el resultado de cada ejecución en el PR. Procedencia del scaffold y licencia de sus partes: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
