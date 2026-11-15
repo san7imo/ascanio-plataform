@@ -12,7 +12,7 @@
         "php": "^8.3",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/fortify": "^1.30",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^12.71",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
         "predis/predis": "^3.0"
@@ -55,7 +55,13 @@
             "npm run lint:check",
             "npm run format:check",
             "npm run types:check",
-            "@test"
+            "npm run test:tooling",
+            "@test",
+            "@audit:check"
+        ],
+        "audit:check": [
+            "@composer audit --locked --abandoned=fail",
+            "npm run audit:check"
         ],
         "test": [
             "@php artisan config:clear --ansi",

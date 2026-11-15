@@ -4,9 +4,27 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.17.0'
+          cache: npm
+      - run: composer audit --locked --abandoned=fail
+      - run: npm run audit:check
   verify:
     runs-on: ubuntu-latest
     strategy:
@@ -62,4 +80,5 @@ jobs:
       - run: npm run lint:check
       - run: npm run format:check
       - run: npm run typecheck
+      - run: npm run test:tooling
       - run: git diff --check
