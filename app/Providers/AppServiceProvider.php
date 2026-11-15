@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\Policies\TenantPolicy;
 use App\Modules\IdentityAccess\TenantContext;
+use App\Modules\Parties\Models\TenantParty;
+use App\Modules\Parties\Policies\TenantPartyPolicy;
 use Carbon\CarbonImmutable;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -41,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         Queue::failing($clearContext);
         Queue::looping($clearContext);
         Gate::policy(Tenant::class, TenantPolicy::class);
+        Gate::policy(TenantParty::class, TenantPartyPolicy::class);
         RateLimiter::for('workspace-governance', fn (Request $request) => Limit::perMinute(10)->by('governance:'.$request->user()->id));
     }
 
