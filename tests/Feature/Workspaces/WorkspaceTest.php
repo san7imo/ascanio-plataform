@@ -48,7 +48,7 @@ class WorkspaceTest extends TestCase
         $this->assertSame($user->fresh()->person_id, $first->operator_party_id);
         $this->assertSame($first->operator_party_id, $second->operator_party_id);
         $this->assertSame('self_declared_account', Party::sole()->provenance);
-        $this->assertDatabaseCount('permissions', 4);
+        $this->assertDatabaseCount('permissions', 7);
 
         foreach ([$first, $second, $first] as $tenant) {
             $this->post(route('workspaces.select', $tenant))->assertRedirect(route('workspaces.show', $tenant))->assertSessionHas('current_workspace_id', $tenant->id);
@@ -100,10 +100,11 @@ class WorkspaceTest extends TestCase
             $this->assertSame('Synthetic failure', $exception->getMessage());
         }
 
-        foreach (['parties', 'persons', 'tenants', 'tenant_memberships', 'roles', 'permissions', 'audit_events'] as $table) {
+        foreach (['parties', 'persons', 'tenants', 'tenant_memberships', 'roles', 'audit_events'] as $table) {
             $this->assertDatabaseCount($table, 0);
         }
         $this->assertNull($user->fresh()->person_id);
+        $this->assertDatabaseCount('permissions', 7);
     }
 
     public function test_workspace_discovery_search_counts_and_pagination_are_account_and_capability_bounded(): void
@@ -182,7 +183,7 @@ class WorkspaceTest extends TestCase
             ->where('members.total', 1)->has('members.data', 1)->where('members.data.0.name', $user->name)
             ->missing('members.data.0.email')->missing('members.data.0.user_id')->missing('members.data.0.person_id'));
         $this->get(route('workspaces.members', [$a, 'search' => 'Fuera', 'page' => 2]))->assertInertia(fn (Assert $page) => $page->where('members.total', 0)->has('members.data', 0));
-        $this->delete(route('workspaces.members.revoke', [$a, $outside]), ['password' => 'password'])->assertNotFound();
+        $this->delete(route('workspaces.members.revoke', [$a, $outside]), $this->sensitiveData($user))->assertNotFound();
         $this->assertSame('active', $outside->fresh()->status);
     }
 
@@ -195,8 +196,8 @@ class WorkspaceTest extends TestCase
         $member = $this->memberFor($a, $viewer);
         $this->actingAs($viewer)->get(route('workspaces.show', $a))->assertOk();
         $this->actingAs($owner)->delete(route('workspaces.members.revoke', [$a, $member]), ['password' => 'wrong'])->assertSessionHasErrors('password');
-        $this->delete(route('workspaces.members.revoke', [$a, $member]), ['password' => 'password'])->assertSessionHasNoErrors()->assertRedirect();
-        $this->delete(route('workspaces.members.revoke', [$a, $member]), ['password' => 'password'])->assertSessionHasNoErrors();
+        $this->delete(route('workspaces.members.revoke', [$a, $member]), $this->sensitiveData($owner))->assertSessionHasNoErrors()->assertRedirect();
+        $this->delete(route('workspaces.members.revoke', [$a, $member]), $this->sensitiveData($owner))->assertSessionHasNoErrors();
         $this->assertSame(1, AuditEvent::query()->where('tenant_id', $a->id)->where('action', 'membership.revoked')->count());
         $this->actingAs($viewer)->withSession(['current_workspace_id' => $a->id])->get(route('workspaces.show', $a))->assertNotFound();
         $this->get(route('workspaces.show', $b))->assertOk();
@@ -208,7 +209,7 @@ class WorkspaceTest extends TestCase
         $owner = User::factory()->create();
         $tenant = $this->workspaceFor($owner);
         $member = $tenant->memberships()->sole();
-        $this->actingAs($owner)->delete(route('workspaces.members.revoke', [$tenant, $member]), ['password' => 'password'])->assertSessionHasErrors('membership');
+        $this->actingAs($owner)->delete(route('workspaces.members.revoke', [$tenant, $member]), $this->sensitiveData($owner))->assertSessionHasErrors('membership');
         $this->delete(route('profile.destroy'), ['password' => 'password'])->assertSessionHasErrors('password');
         $this->assertAuthenticated();
         $this->assertSame('active', $member->fresh()->status);

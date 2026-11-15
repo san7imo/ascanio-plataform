@@ -9,6 +9,7 @@ use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\RevokeMembership;
 use App\Modules\IdentityAccess\Actions\UpdateWorkspace;
 use App\Modules\IdentityAccess\Models\Tenant;
+use App\Modules\IdentityAccess\Queries\GovernanceQueries;
 use App\Modules\IdentityAccess\Queries\WorkspaceQueries;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -64,21 +65,24 @@ class WorkspaceController extends Controller
         return to_route('workspaces.show', $workspace)->with('status', 'Espacio actualizado.');
     }
 
-    public function members(Request $request, Tenant $workspace, WorkspaceQueries $queries): Response
+    public function members(Request $request, Tenant $workspace, WorkspaceQueries $queries, GovernanceQueries $governance): Response
     {
         Gate::authorize('viewMembers', $workspace);
 
         return Inertia::render('workspaces/Members', [
             'workspace' => $queries->projection($workspace),
             'members' => $queries->members($request->user(), $workspace, $request->string('search')->toString()),
+            'availableRoles' => Gate::allows('assignRoles', $workspace) ? $governance->assignableRoles($request->user(), $workspace) : [],
+            'mfaReady' => (bool) ($request->user()->two_factor_secret && $request->user()->two_factor_confirmed_at),
         ]);
     }
 
     public function revoke(RevokeMembershipRequest $request, Tenant $workspace, string $membership, RevokeMembership $action): RedirectResponse
     {
         Gate::authorize('revokeMember', $workspace);
-        $action->execute($request->user(), $workspace, $membership);
+        $action->execute($request->user(), $workspace, $membership, $request->proof());
 
-        return to_route('workspaces.members', $workspace);
+        return Gate::allows('view', $workspace) && Gate::allows('viewMembers', $workspace)
+            ? to_route('workspaces.members', $workspace) : to_route('workspaces.index');
     }
 }

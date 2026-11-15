@@ -3,6 +3,7 @@
 namespace App\Modules\IdentityAccess\Actions;
 
 use App\Models\User;
+use App\Modules\IdentityAccess\CapabilityCatalog;
 use App\Modules\IdentityAccess\Models\Membership;
 use App\Modules\IdentityAccess\Models\Party;
 use App\Modules\IdentityAccess\Models\Permission;
@@ -17,7 +18,7 @@ use Illuminate\Validation\ValidationException;
 
 class CreateWorkspace
 {
-    public const CAPABILITIES = ['tenant.view', 'tenant.settings.update', 'tenant.members.view', 'tenant.members.revoke'];
+    public const CAPABILITIES = CapabilityCatalog::OWNER;
 
     public function __construct(private RecordAudit $audit, private WorkspaceAccess $access) {}
 
@@ -59,11 +60,11 @@ class CreateWorkspace
                 'tenant_id' => $tenant->id, 'user_id' => $actor->id,
                 'is_owner' => true, 'status' => 'active', 'accepted_at' => now(),
             ]);
-            $role = Role::create(['tenant_id' => $tenant->id, 'code' => 'owner', 'name' => 'Propietario del espacio']);
+            $role = Role::create(['tenant_id' => $tenant->id, 'code' => 'owner', 'name' => 'Propietario del espacio', 'system_kind' => 'owner']);
 
             foreach (self::CAPABILITIES as $code) {
                 $permission = Permission::firstOrCreate(['code' => $code]);
-                DB::table('role_permissions')->insert(['tenant_id' => $tenant->id, 'role_id' => $role->id, 'permission_id' => $permission->id]);
+                DB::table('role_permissions')->insert(['tenant_id' => $tenant->id, 'role_id' => $role->id, 'permission_id' => $permission->id, 'is_delegable' => in_array($code, CapabilityCatalog::DELEGABLE, true)]);
             }
 
             DB::table('membership_roles')->insert([

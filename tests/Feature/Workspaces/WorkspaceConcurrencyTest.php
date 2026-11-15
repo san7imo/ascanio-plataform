@@ -19,7 +19,7 @@ class WorkspaceConcurrencyTest extends TestCase
     {
         parent::setUp();
         // Real commits must be visible to subprocesses. A dedicated fresh test
-        // schema replaces transactional fixtures for these three race tests.
+        // schema replaces transactional fixtures for these race tests.
         $this->artisan('migrate:fresh')->assertSuccessful();
         RefreshDatabaseState::$migrated = false;
     }
@@ -117,6 +117,8 @@ class WorkspaceConcurrencyTest extends TestCase
         $tenant = $this->workspaceFor($first);
         $firstMembership = $tenant->memberships()->sole();
         $secondMembership = $this->memberFor($tenant, $second, CreateWorkspace::CAPABILITIES, owner: true);
+        $this->enableMfa($first);
+        $this->enableMfa($second);
         $results = $this->race([
             ['revoke', $first->id, $tenant->id, $secondMembership->id],
             ['revoke', $second->id, $tenant->id, $firstMembership->id],
@@ -144,13 +146,46 @@ class WorkspaceConcurrencyTest extends TestCase
         $this->assertDatabaseCount('tenants', 1);
     }
 
-    public function test_the_new_migration_rolls_back_and_reapplies_without_rewriting_scaffold_history(): void
+    public function test_foundation_migrations_roll_back_and_reapply_without_rewriting_scaffold_history(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenants'));
         $this->assertTrue(Schema::hasTable('users'));
         $this->assertFalse(Schema::hasColumn('users', 'status'));
         $this->artisan('migrate')->assertSuccessful();
         $this->assertTrue(Schema::hasTable('tenants'));
+    }
+
+    public function test_two_concurrent_transfers_from_one_owner_cannot_duplicate_governance(): void
+    {
+        $owner = $this->enableMfa(User::factory()->create());
+        $tenant = $this->workspaceFor($owner);
+        $first = $this->memberFor($tenant, $this->enableMfa(User::factory()->create()));
+        $second = $this->memberFor($tenant, $this->enableMfa(User::factory()->create()));
+        $results = $this->race([
+            ['transfer', $owner->id, $tenant->id, $first->id],
+            ['transfer', $owner->id, $tenant->id, $second->id],
+        ]);
+        $outcomes = array_column($results, 'result');
+        sort($outcomes);
+        $this->assertSame(['denied', 'ok'], $outcomes);
+        $this->assertSame(1, $tenant->memberships()->where('is_owner', true)->where('status', 'active')->count());
+        $this->assertDatabaseCount('audit_events', 3);
+    }
+
+    public function test_transfer_racing_recipient_self_revocation_preserves_an_active_owner(): void
+    {
+        $owner = $this->enableMfa(User::factory()->create());
+        $tenant = $this->workspaceFor($owner);
+        $recipient = $this->enableMfa(User::factory()->create());
+        $target = $this->memberFor($tenant, $recipient, ['tenant.view', 'tenant.members.revoke'], delegable: true);
+        $results = $this->race([
+            ['transfer', $owner->id, $tenant->id, $target->id],
+            ['revoke', $recipient->id, $tenant->id, $target->id],
+        ]);
+        $outcomes = array_column($results, 'result');
+        sort($outcomes);
+        $this->assertSame(['denied', 'ok'], $outcomes);
+        $this->assertSame(1, $tenant->memberships()->where('is_owner', true)->where('status', 'active')->count());
     }
 }

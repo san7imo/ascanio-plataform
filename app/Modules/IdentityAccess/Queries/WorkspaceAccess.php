@@ -3,6 +3,7 @@
 namespace App\Modules\IdentityAccess\Queries;
 
 use App\Models\User;
+use App\Modules\IdentityAccess\CapabilityCatalog;
 use App\Modules\IdentityAccess\Models\Membership;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
@@ -24,7 +25,7 @@ final class WorkspaceAccess
 
     public function capableMemberships(User $user, string $capability): Builder
     {
-        return Membership::query()
+        return Membership::query()->select('tenant_memberships.*')
             ->join('users', 'users.id', '=', 'tenant_memberships.user_id')
             ->join('tenants', 'tenants.id', '=', 'tenant_memberships.tenant_id')
             ->join('membership_roles', function (JoinClause $join) {
@@ -42,5 +43,33 @@ final class WorkspaceAccess
             ->where('tenants.status', 'active')
             ->where('membership_roles.access_scope', 'tenant')
             ->where('permissions.code', $capability);
+    }
+
+    public function delegable(User $user, Tenant $tenant): array
+    {
+        return array_values(array_filter(CapabilityCatalog::DELEGABLE, fn ($code) => $this->canDelegate($user, $tenant, $code)));
+    }
+
+    public function canDelegate(User $user, Tenant $tenant, string $code): bool
+    {
+        return $this->context->matches($user, $tenant) && $this->capableMemberships($user, $code)
+            ->where('tenant_memberships.tenant_id', $tenant->id)->where('role_permissions.is_delegable', true)->exists();
+    }
+
+    public function canDelegateCodes(User $user, Tenant $tenant, array $codes): bool
+    {
+        foreach ($codes as $code) {
+            if (! in_array($code, CapabilityCatalog::DELEGABLE, true) || ! $this->canDelegate($user, $tenant, $code)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function isOwner(User $user, Tenant $tenant): bool
+    {
+        return $this->context->matches($user, $tenant) && Membership::query()->where('tenant_id', $tenant->id)
+            ->where('user_id', $user->id)->where('status', 'active')->where('is_owner', true)->exists();
     }
 }
