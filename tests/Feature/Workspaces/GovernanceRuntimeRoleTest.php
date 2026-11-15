@@ -3,6 +3,7 @@
 namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
+use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Actions\SaveRole;
 use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Database\QueryException;
@@ -39,7 +40,7 @@ class GovernanceRuntimeRoleTest extends TestCase
             }
             $migration->unprepared("GRANT CONNECT ON DATABASE ascanio_test TO {$role}; GRANT USAGE ON SCHEMA public TO {$role}");
             // Current application tables, not a grant on all future business data.
-            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles';
+            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles';
             $migration->unprepared("GRANT SELECT,INSERT,UPDATE,DELETE ON {$tables} TO {$role}");
             $migration->unprepared("GRANT SELECT ON permissions,audit_events TO {$role}");
             $migration->unprepared("GRANT INSERT (id,tenant_id,actor_id,action,resource_type,resource_id,changes,occurred_at) ON audit_events TO {$role}");
@@ -62,10 +63,13 @@ class GovernanceRuntimeRoleTest extends TestCase
             $tenant = $this->workspaceFor($actor, 'Runtime synthetic');
             app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
             $proof = $this->proofFor($actor);
-            app(SaveRole::class)->execute($actor, $tenant, null, 'Restricted role', [
+            $roleModel = app(SaveRole::class)->execute($actor, $tenant, null, 'Restricted role', [
                 ['code' => 'tenant.view', 'delegable' => false],
             ], $proof);
-            $this->assertDatabaseCount('audit_events', 3);
+            $inviteProof = $this->proofFor($actor);
+            $invitation = app(CreateTeamInvitation::class)->execute($actor, $tenant, 'runtime-invite@example.invalid', [['role_id' => $roleModel->id, 'scope' => 'tenant']], 7, $inviteProof);
+            $this->assertSame('simulated', $invitation->delivery_status);
+            $this->assertDatabaseCount('audit_events', 5);
             $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
 
             $forbidden = [

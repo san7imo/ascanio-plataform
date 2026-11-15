@@ -24,7 +24,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON
     users, password_reset_tokens, sessions, cache, cache_locks,
     jobs, job_batches, failed_jobs,
     parties, persons, organizations, tenants, tenant_memberships,
-    roles, role_permissions, membership_roles
+    roles, role_permissions, membership_roles,
+    team_invitations, team_invitation_roles
 TO ascanio_runtime;
 GRANT USAGE, SELECT ON SEQUENCE jobs_id_seq, failed_jobs_id_seq
 TO ascanio_runtime;

@@ -4,7 +4,13 @@ namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
+use App\Modules\IdentityAccess\Actions\InvitationRoles;
+use App\Modules\IdentityAccess\Models\Permission;
+use App\Modules\IdentityAccess\Models\Role;
+use App\Modules\IdentityAccess\Models\TeamInvitation;
+use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
@@ -148,7 +154,7 @@ class WorkspaceConcurrencyTest extends TestCase
 
     public function test_foundation_migrations_roll_back_and_reapply_without_rewriting_scaffold_history(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenants'));
         $this->assertTrue(Schema::hasTable('users'));
         $this->assertFalse(Schema::hasColumn('users', 'status'));
@@ -187,5 +193,57 @@ class WorkspaceConcurrencyTest extends TestCase
         sort($outcomes);
         $this->assertSame(['denied', 'ok'], $outcomes);
         $this->assertSame(1, $tenant->memberships()->where('is_owner', true)->where('status', 'active')->count());
+    }
+
+    private function invitationFixture(User $owner, $tenant, User $recipient)
+    {
+        $invitation = TeamInvitation::create([
+            'tenant_id' => $tenant->id, 'inviter_id' => $owner->id, 'recipient_email' => $recipient->email,
+            'source_membership_id' => $source = $tenant->memberships()->where('user_id', $owner->id)->sole()->id,
+            'source_access_version' => $tenant->memberships()->whereKey($source)->sole()->access_version,
+            'token_hash' => hash('sha256', random_bytes(32)), 'expires_at' => now()->addDay(),
+        ]);
+        $role = Role::create(['tenant_id' => $tenant->id, 'code' => (string) Str::uuid(), 'name' => 'Race viewer']);
+        DB::table('role_permissions')->insert([
+            'tenant_id' => $tenant->id, 'role_id' => $role->id,
+            'permission_id' => Permission::query()->where('code', 'tenant.view')->sole()->id,
+        ]);
+        app(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $owner->id)->sole());
+        app(InvitationRoles::class)->attach($owner, $tenant, $invitation, [['role_id' => $role->id, 'scope' => 'tenant']]);
+        app(TenantContext::class)->clear();
+
+        return $invitation;
+    }
+
+    public function test_two_invitation_acceptances_consume_once_and_create_one_membership(): void
+    {
+        $owner = User::factory()->create();
+        $tenant = $this->workspaceFor($owner);
+        $recipient = User::factory()->create();
+        $invitation = $this->invitationFixture($owner, $tenant, $recipient);
+        $operation = ['accept-invite', $recipient->id, $tenant->id, $invitation->id];
+        $results = $this->race([$operation, $operation]);
+        $outcomes = array_column($results, 'result');
+        sort($outcomes);
+        $this->assertSame(['denied', 'ok'], $outcomes);
+        $this->assertSame('accepted', $invitation->fresh()->status);
+        $this->assertSame(1, $tenant->memberships()->where('user_id', $recipient->id)->count());
+        $this->assertDatabaseCount('membership_roles', 2);
+    }
+
+    public function test_invitation_acceptance_racing_revocation_has_one_consistent_outcome(): void
+    {
+        $owner = $this->enableMfa(User::factory()->create());
+        $tenant = $this->workspaceFor($owner);
+        $recipient = User::factory()->create();
+        $invitation = $this->invitationFixture($owner, $tenant, $recipient);
+        $results = $this->race([
+            ['accept-invite', $recipient->id, $tenant->id, $invitation->id],
+            ['revoke-invite', $owner->id, $tenant->id, $invitation->id],
+        ]);
+        $outcomes = array_column($results, 'result');
+        sort($outcomes);
+        $this->assertSame(['denied', 'ok'], $outcomes);
+        $this->assertSame($invitation->fresh()->status === 'accepted' ? 1 : 0, $tenant->memberships()->where('user_id', $recipient->id)->count());
     }
 }

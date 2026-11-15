@@ -30,6 +30,8 @@ class TransferOwnership
             }
             $role = Role::query()->where('tenant_id', $tenant->id)->where('system_kind', 'owner')->sole();
             $this->confirm->execute($actor, $proof);
+            $target->increment('access_version');
+            $source->increment('access_version');
             $target->update(['is_owner' => true]);
             DB::table('membership_roles')->updateOrInsert([
                 'tenant_id' => $tenant->id, 'membership_id' => $target->id, 'role_id' => $role->id,

@@ -45,6 +45,11 @@ class TenantPolicy
         return $this->access->allows($user, $tenant, 'tenant.members.assign_roles');
     }
 
+    public function inviteMembers(User $user, Tenant $tenant): bool
+    {
+        return $this->view($user, $tenant) && $this->access->allows($user, $tenant, 'tenant.members.invite') && $this->assignRoles($user, $tenant);
+    }
+
     public function transferOwnership(User $user, Tenant $tenant): bool
     {
         return $this->access->isOwner($user, $tenant) && $this->access->allows($user, $tenant, 'tenant.ownership.transfer');

@@ -2,11 +2,14 @@
 
 // Subprocess harness for synthetic PostgreSQL races. Never read a real database.
 use App\Models\User;
+use App\Modules\IdentityAccess\Actions\AcceptTeamInvitation;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
+use App\Modules\IdentityAccess\Actions\ManageTeamInvitation;
 use App\Modules\IdentityAccess\Actions\RecordAudit;
 use App\Modules\IdentityAccess\Actions\RevokeMembership;
 use App\Modules\IdentityAccess\Actions\TransferOwnership;
 use App\Modules\IdentityAccess\Data\SensitiveProof;
+use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -48,7 +51,17 @@ while (! is_file($barrier.'/go')) {
 try {
     $user = User::findOrFail($userId);
 
-    if ($operation === 'create') {
+    if ($operation === 'accept-invite') {
+        $invitation = TeamInvitation::query()->where('tenant_id', $targetId)->findOrFail($value);
+        $app->make(AcceptTeamInvitation::class)->execute($user, ['id' => $value, 'hash' => $invitation->token_hash, 'until' => time() + 3600]);
+        echo json_encode(['result' => 'ok']);
+    } elseif ($operation === 'revoke-invite') {
+        $tenant = Tenant::findOrFail($targetId);
+        $app->make(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $userId)->sole());
+        $proof = new SensitiveProof('password', (new Google2FA)->getCurrentOtp(decrypt($user->two_factor_secret)));
+        $app->make(ManageTeamInvitation::class)->execute($user, $tenant, $value, false, $proof);
+        echo json_encode(['result' => 'ok']);
+    } elseif ($operation === 'create') {
         $tenant = $app->make(CreateWorkspace::class)->execute($user, ['name' => 'Concurrent synthetic', 'locale' => 'es', 'timezone' => 'UTC'], $value);
         echo json_encode(['result' => 'ok', 'id' => $tenant->id]);
     } elseif (in_array($operation, ['revoke', 'transfer'], true)) {

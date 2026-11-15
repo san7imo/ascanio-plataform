@@ -33,6 +33,7 @@ class AssignMemberRoles
                 }
             }
             $this->confirm->execute($actor, $proof);
+            $member->increment('access_version');
             DB::table('membership_roles')->where('tenant_id', $tenant->id)->where('membership_id', $member->id)->delete();
             foreach ($assignments as $assignment) {
                 DB::table('membership_roles')->insert([

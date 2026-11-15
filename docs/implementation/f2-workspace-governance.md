@@ -1,7 +1,7 @@
 # Entrega F2 — Gobierno del workspace
 
 Fecha: 15 de noviembre de 2026. Base: 4f0187a. Rama: feat/workspace-governance-f2.
-Estado: implementación completa; consultar la validación de esta entrega y los checks de su PR. La separación de privilegios se comprueba localmente, sin acreditar compatibilidad operativa en Kroma.
+Estado: integrada mediante [PR #7](https://github.com/san7imo/ascanio-plataform/pull/7), con CI PHP 8.3/8.4 y dependency-audit aprobados. Las verificaciones siguientes corresponden al corte F2. La separación de privilegios se comprueba localmente, sin acreditar compatibilidad operativa en Kroma.
 
 ## Comportamiento
 

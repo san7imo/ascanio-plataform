@@ -54,6 +54,7 @@ class WorkspaceQueries
             'id' => $tenant->id, 'name' => $tenant->name, 'locale' => $tenant->locale, 'timezone' => $tenant->timezone,
             'can_update' => Gate::allows('update', $tenant), 'can_view_members' => Gate::allows('viewMembers', $tenant),
             'can_revoke_members' => Gate::allows('revokeMember', $tenant),
+            'can_invite_members' => Gate::allows('inviteMembers', $tenant),
             'can_manage_roles' => Gate::allows('manageRoles', $tenant),
             'can_assign_roles' => Gate::allows('assignRoles', $tenant),
             'can_transfer_ownership' => Gate::allows('transferOwnership', $tenant),

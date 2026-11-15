@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\TeamInvitationClaimController;
 use App\Http\Controllers\Workspaces\GovernanceController;
+use App\Http\Controllers\Workspaces\TeamInvitationController;
 use App\Http\Controllers\Workspaces\WorkspaceController;
 use App\Http\Middleware\ResolveWorkspace;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +11,11 @@ use Laravel\Fortify\Features;
 Route::inertia('/', 'Welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('home');
+
+Route::get('team-invitations/review', [TeamInvitationClaimController::class, 'review'])->middleware(['auth', 'verified'])->name('team-invitations.review');
+Route::post('team-invitations/accept', [TeamInvitationClaimController::class, 'accept'])->middleware(['auth', 'verified', 'throttle:10,1'])->name('team-invitations.accept');
+Route::get('team-invitations/{invitation}', [TeamInvitationClaimController::class, 'landing'])->whereUuid('invitation')->name('team-invitations.landing');
+Route::post('team-invitations/{invitation}/claim', [TeamInvitationClaimController::class, 'claim'])->whereUuid('invitation')->middleware('throttle:10,1')->name('team-invitations.claim');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
@@ -23,7 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/', [WorkspaceController::class, 'update'])->middleware('throttle:30,1')->name('workspaces.update');
         Route::get('members', [WorkspaceController::class, 'members'])->name('workspaces.members');
         Route::get('roles', [GovernanceController::class, 'roles'])->name('workspaces.roles');
+        Route::get('invitations', [TeamInvitationController::class, 'index'])->name('workspaces.invitations');
         Route::middleware('throttle:workspace-governance')->group(function () {
+            Route::post('invitations', [TeamInvitationController::class, 'store'])->name('workspaces.invitations.store');
+            Route::delete('invitations/{invitation}', [TeamInvitationController::class, 'revoke'])->whereUuid('invitation')->name('workspaces.invitations.revoke');
+            Route::post('invitations/{invitation}/resend', [TeamInvitationController::class, 'resend'])->whereUuid('invitation')->name('workspaces.invitations.resend');
             Route::post('roles', [GovernanceController::class, 'storeRole'])->name('workspaces.roles.store');
             Route::patch('roles/{role}', [GovernanceController::class, 'updateRole'])->whereUuid('role')->name('workspaces.roles.update');
             Route::delete('roles/{role}', [GovernanceController::class, 'deleteRole'])->whereUuid('role')->name('workspaces.roles.destroy');

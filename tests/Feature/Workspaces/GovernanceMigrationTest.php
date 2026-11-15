@@ -39,11 +39,11 @@ class GovernanceMigrationTest extends TestCase
         $b = $this->workspaceFor($second);
         $this->memberFor($a, $second, owner: true);
         // Reconstruct the exact F1 schema from the current fixture, then upgrade.
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $this->assertFalse(Schema::hasColumn('roles', 'system_kind'));
         $this->assertDatabaseCount('permissions', 4);
         $old = DB::table('audit_events')->orderBy('id')->get()->toJson();
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000001_add_workspace_governance.php'])->assertSuccessful();
         $fields = ['id', 'tenant_id', 'actor_id', 'action', 'resource_type', 'resource_id', 'changes', 'occurred_at'];
         $this->assertSame($old, DB::table('audit_events')->where('actor_type', 'user')->orderBy('id')->get($fields)->toJson());
         foreach ([$a, $b] as $tenant) {
@@ -56,7 +56,7 @@ class GovernanceMigrationTest extends TestCase
             $event = DB::table('audit_events')->where('tenant_id', $tenant->id)->where('actor_type', 'migration')->sole();
             $this->assertNull($event->actor_id);
             $this->assertSame('access.foundation.upgraded', $event->action);
-            $this->assertSame(CapabilityCatalog::OWNER, json_decode($event->changes, true)['capabilities']);
+            $this->assertSame(array_values(array_diff(CapabilityCatalog::OWNER, ['tenant.members.invite'])), json_decode($event->changes, true)['capabilities']);
         }
         try {
             $this->artisan('migrate:rollback', ['--step' => 1])->run();
@@ -72,11 +72,11 @@ class GovernanceMigrationTest extends TestCase
     {
         $tenant = $this->workspaceFor(User::factory()->create());
         $member = $this->memberFor($tenant, User::factory()->create());
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $ownerRole = DB::table('roles')->where('tenant_id', $tenant->id)->where('code', 'owner')->sole();
         DB::table('membership_roles')->insert(['tenant_id' => $tenant->id, 'membership_id' => $member->id, 'role_id' => $ownerRole->id, 'access_scope' => 'tenant']);
         try {
-            $this->artisan('migrate')->run();
+            $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000001_add_workspace_governance.php'])->run();
             $this->fail('Unexpected mapping must require explicit review.');
         } catch (\RuntimeException $exception) {
             $this->assertStringContainsString('Review the F1 owner bundle', $exception->getMessage());
@@ -85,7 +85,7 @@ class GovernanceMigrationTest extends TestCase
         $this->assertDatabaseCount('permissions', 4);
         $this->assertDatabaseCount('audit_events', 2);
         DB::table('membership_roles')->where('tenant_id', $tenant->id)->where('membership_id', $member->id)->where('role_id', $ownerRole->id)->delete();
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000001_add_workspace_governance.php'])->assertSuccessful();
         $this->assertDatabaseCount('audit_events', 3);
     }
 }

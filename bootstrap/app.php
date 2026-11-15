@@ -31,5 +31,5 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToPriorityList(ResolveWorkspace::class, EnsureEmailIsVerified::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->dontFlash(['code']);
+        $exceptions->dontFlash(['code', 'token']);
     })->create();
