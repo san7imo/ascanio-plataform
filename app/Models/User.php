@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\IdentityAccess\Jobs\SendAccountEmail;
 use App\Modules\IdentityAccess\Models\Person;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -53,6 +55,16 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function sendEmailVerificationNotification(): void
+    {
+        SendAccountEmail::dispatch($this->id, 'verify', hash('sha256', Str::lower($this->email)))->afterCommit();
+    }
+
+    public function sendPasswordResetNotification(#[\SensitiveParameter] $token): void
+    {
+        SendAccountEmail::dispatch($this->id, 'reset', hash('sha256', Str::lower($this->email)), $token)->afterCommit();
     }
 
     public function person(): BelongsTo

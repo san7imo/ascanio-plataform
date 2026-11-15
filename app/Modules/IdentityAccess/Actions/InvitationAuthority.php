@@ -7,6 +7,7 @@ use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
 use Closure;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 
 class InvitationAuthority
@@ -20,7 +21,9 @@ class InvitationAuthority
             $tenant = Tenant::query()->findOrFail($invitation->tenant_id);
             $actor = User::query()->findOrFail($invitation->inviter_id);
             $member = $tenant->memberships()->whereKey($invitation->source_membership_id)->where('user_id', $actor->id)->firstOrFail();
-            abort_unless((int) $member->access_version === (int) $invitation->source_access_version, 403);
+            if ((int) $member->access_version !== (int) $invitation->source_access_version) {
+                throw new AuthorizationException;
+            }
             $this->context->establish($tenant, $member);
             Gate::forUser($actor)->authorize('view', $tenant);
             Gate::forUser($actor)->authorize('inviteMembers', $tenant);
