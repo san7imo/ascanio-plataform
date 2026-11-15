@@ -3,15 +3,16 @@
 Fecha de auditoría: 14 de noviembre de 2026. Base revisada: `origin/main` en `b345691`.
 Decisión: conservar el roadmap del README, ajustar sus dependencias y ejecutarlo mediante las entregas de este documento. Este plan documenta trabajo futuro; no acredita su implementación ni autoriza despliegues.
 
-Actualización F2: 15 de noviembre de 2026. Base de entrega: `4f0187a`. La [auditoría previa](implementation/repository-audit-2026-11-15.md) conserva el corte anterior a F2; su borrador local fue revisado y completado en [la entrega F2](implementation/f2-workspace-governance.md). Las secciones 1–3 conservan el diagnóstico inicial; el estado vigente es:
+Actualización F3: 15 de noviembre de 2026. Base de entrega: `1614736`. La [auditoría previa](implementation/repository-audit-2026-11-15.md) conserva el corte anterior a F2; su borrador local fue revisado y completado en [la entrega F2](implementation/f2-workspace-governance.md). Las secciones 1–3 conservan el diagnóstico inicial; el estado vigente es:
 
 | Entrega | Estado vigente | Evidencia / siguiente paso |
 |---|---|---|
 | Arquitectura y scaffold | Integrados | PRs #1 y #2; sin merge pendiente de las dos ramas originales |
 | P0 | Integrado | [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); auditorías repetidas sin avisos en esta fecha |
 | F1 | Integrado y comprobado | [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5); regresión incluida en F2 |
-| F2 | Implementado y validado localmente | [Entrega, upgrade y límites](implementation/f2-workspace-governance.md); 91 pruebas / 776 aserciones; consultar CI del PR |
-| F3 / F4 | Pendientes | Invitaciones, jobs y cierre técnico de Foundation después de F2 |
+| F2 | Integrado | [PR #7](https://github.com/san7imo/ascanio-plataform/pull/7); regresión incluida en F3 |
+| F3 | Implementado y validado localmente | [Invitaciones, correo y límites](implementation/f3-team-invitations.md); 117 pruebas / 1123 aserciones; consultar CI del PR |
+| F4 | Pendiente | Cierre integrado de jobs, revocación y traducciones de Foundation |
 | O0 / O1 | Pendientes | Compatibilidad/capacidad de Kroma sin confirmar; avanzar con evidencia del proveedor |
 | Hitos 2–6 | Diseño objetivo | Mantener dependencias del ADR 0001; no hay módulos musicales implementados |
 
@@ -92,7 +93,7 @@ Para documentos, revisar consistencia, enlaces locales, Markdown y diff --check.
 
 ## 5. Trabajo inmediato y Foundation
 
-Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Estado al 15 de noviembre: P0 integrado mediante [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); [registro de cambios, pruebas y límites](security/dependency-maintenance.md). F1 integrado mediante [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5), con sus tres jobs remotos aprobados y regresión local repetida: [recorridos, migración y pruebas](implementation/f1-workspace-foundation.md). F2 está implementado y validado localmente, incluidos roles/delegación, MFA, transferencia, UI y conexión PostgreSQL restringida: [evidencia y límites](implementation/f2-workspace-governance.md). F3/F4 y O0/O1 siguen pendientes; no hay conexiones ni operaciones en Kroma.
+Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Estado al 15 de noviembre: P0 integrado mediante [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); [registro de cambios, pruebas y límites](security/dependency-maintenance.md). F1 integrado mediante [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5), con sus tres jobs remotos aprobados y regresión local repetida: [recorridos, migración y pruebas](implementation/f1-workspace-foundation.md). F2 está implementado y validado localmente, incluidos roles/delegación, MFA, transferencia, UI y conexión PostgreSQL restringida: [evidencia y límites](implementation/f2-workspace-governance.md). F3 implementa invitaciones de equipo con entrega cifrada, autoridad revalidada y aceptación atómica: [recorridos y pruebas](implementation/f3-team-invitations.md). F4 y O0/O1 siguen pendientes; no hay conexiones ni operaciones en Kroma.
 
 ### P0 — Mantenimiento de dependencias y controles
 
@@ -271,7 +272,7 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Siguiente acción y mantenimiento del plan
 
-La siguiente entrega de código es **F3: invitaciones de equipo y notificaciones**, sobre F1/F2 y los criterios de aceptación de §5. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. El orden inválido del rollback total histórico (users antes de sessions) requiere un procedimiento de recuperación probado antes de staging; no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
+La siguiente entrega de código es **F4: jobs, revocación y cierre técnico de Foundation**, sobre F1–F3 y los criterios de aceptación de §5. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. El orden inválido del rollback total histórico (users antes de sessions) requiere un procedimiento de recuperación probado antes de staging; no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 

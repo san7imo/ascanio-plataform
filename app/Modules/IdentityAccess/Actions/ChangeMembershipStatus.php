@@ -37,6 +37,7 @@ class ChangeMembershipStatus
                 return;
             }
             $previous = $member->status;
+            $member->increment('access_version');
             $member->update(['status' => $status, 'revoked_at' => $status === 'revoked' ? now() : null]);
             $this->audit->execute($actor, $tenant, 'membership.'.$status, 'membership', $member->id, ['previous' => $previous, 'status' => $status]);
         });

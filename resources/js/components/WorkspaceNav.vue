@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { index, members, roles, show } from '@/routes/workspaces';
+import { index, invitations, members, roles, show } from '@/routes/workspaces';
 import type { Workspace } from '@/types/workspace';
 
 defineProps<{ workspace: Workspace }>();
@@ -23,6 +23,12 @@ defineProps<{ workspace: Workspace }>();
             :href="roles(workspace.id)"
             class="underline"
             >Roles y capacidades</Link
+        >
+        <Link
+            v-if="workspace.can_invite_members"
+            :href="invitations(workspace.id)"
+            class="underline"
+            >Invitaciones</Link
         >
     </nav>
 </template>

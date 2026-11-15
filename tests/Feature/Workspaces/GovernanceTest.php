@@ -52,7 +52,7 @@ class GovernanceTest extends TestCase
         $this->roleFor($b, name: 'Secreto B');
         $this->actingAs($actor)->get(route('workspaces.roles', $a))->assertInertia(fn (Assert $page) => $page
             ->component('workspaces/Roles')->where('roles.total', 13)->has('roles.data', 10)
-            ->has('capabilities', 6)->where('mfaReady', false)->missing('workspace.operator_party_id'));
+            ->has('capabilities', 7)->where('mfaReady', false)->missing('workspace.operator_party_id'));
         $this->get(route('workspaces.roles', [$a, 'search' => 'Secreto B', 'page' => 2]))
             ->assertInertia(fn (Assert $page) => $page->where('roles.total', 0)->has('roles.data', 0));
         $this->get(route('workspaces.roles', [$a, 'page' => 2]))->assertInertia(fn (Assert $page) => $page->has('roles.data', 3));
