@@ -2,7 +2,7 @@
 
 Plataforma SaaS independiente para organizar la operación musical de sellos, editoriales, empresas de management y profesionales independientes.
 
-**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite, Fortify, PostgreSQL y Redis, con P0 de dependencias integrado. F1 añade creación/selección de workspaces, identidad mínima declarada, memberships iniciales, permisos por tenant, consultas/policies, revocación y auditoría. Los módulos musicales, grants e invitaciones siguen siendo diseño objetivo. Foundation completo continúa pendiente de F2–F4 y de comprobar Kroma. Evidencia y límites: [entrega F1](docs/implementation/f1-workspace-foundation.md) y [mantenimiento P0](docs/security/dependency-maintenance.md).
+**Estado al 15 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite, Fortify, PostgreSQL y Redis, con P0 de dependencias y F1 integrados en `main`. F1 añade creación/selección de workspaces, identidad mínima declarada, memberships iniciales, permisos por tenant, consultas/policies, revocación y auditoría. Los módulos musicales, grants e invitaciones siguen siendo diseño objetivo. Foundation completo continúa pendiente de F2–F4 y de comprobar Kroma. Evidencia y límites: [auditoría actual y siguiente ejecución](docs/implementation/repository-audit-2026-11-15.md), [entrega F1](docs/implementation/f1-workspace-foundation.md) y [mantenimiento P0](docs/security/dependency-maintenance.md).
 
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
 
