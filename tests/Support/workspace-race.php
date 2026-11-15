@@ -5,12 +5,15 @@ use App\Models\User;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\RecordAudit;
 use App\Modules\IdentityAccess\Actions\RevokeMembership;
+use App\Modules\IdentityAccess\Actions\TransferOwnership;
+use App\Modules\IdentityAccess\Data\SensitiveProof;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use PragmaRX\Google2FA\Google2FA;
 
 require dirname(__DIR__, 2).'/vendor/autoload.php';
 $app = require dirname(__DIR__, 2).'/bootstrap/app.php';
@@ -48,11 +51,12 @@ try {
     if ($operation === 'create') {
         $tenant = $app->make(CreateWorkspace::class)->execute($user, ['name' => 'Concurrent synthetic', 'locale' => 'es', 'timezone' => 'UTC'], $value);
         echo json_encode(['result' => 'ok', 'id' => $tenant->id]);
-    } elseif ($operation === 'revoke') {
+    } elseif (in_array($operation, ['revoke', 'transfer'], true)) {
         $tenant = Tenant::findOrFail($targetId);
         $member = $tenant->memberships()->where('user_id', $userId)->firstOrFail();
         $app->make(TenantContext::class)->establish($tenant, $member);
-        $app->make(RevokeMembership::class)->execute($user, $tenant, $value);
+        $proof = new SensitiveProof('password', (new Google2FA)->getCurrentOtp(decrypt($user->two_factor_secret)));
+        $app->make($operation === 'transfer' ? TransferOwnership::class : RevokeMembership::class)->execute($user, $tenant, $value, $proof);
         echo json_encode(['result' => 'ok']);
     } elseif ($operation === 'suspend') {
         DB::transaction(function () use ($user) {

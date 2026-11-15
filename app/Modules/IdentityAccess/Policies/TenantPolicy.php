@@ -34,4 +34,19 @@ class TenantPolicy
     {
         return $this->access->allows($user, $tenant, 'tenant.members.revoke');
     }
+
+    public function manageRoles(User $user, Tenant $tenant): bool
+    {
+        return $this->access->allows($user, $tenant, 'tenant.roles.manage');
+    }
+
+    public function assignRoles(User $user, Tenant $tenant): bool
+    {
+        return $this->access->allows($user, $tenant, 'tenant.members.assign_roles');
+    }
+
+    public function transferOwnership(User $user, Tenant $tenant): bool
+    {
+        return $this->access->isOwner($user, $tenant) && $this->access->allows($user, $tenant, 'tenant.ownership.transfer');
+    }
 }

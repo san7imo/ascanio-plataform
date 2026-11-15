@@ -6,6 +6,9 @@ export type Workspace = {
     can_update: boolean;
     can_view_members: boolean;
     can_revoke_members: boolean;
+    can_manage_roles: boolean;
+    can_assign_roles: boolean;
+    can_transfer_ownership: boolean;
 };
 
 export type Paginated<T> = {
