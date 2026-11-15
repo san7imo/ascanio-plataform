@@ -14,6 +14,8 @@ The current task boundary is architecture/documentation unless the user explicit
 
 README is the architecture/domain baseline, this file is the engineering contract, and an issue/task supplies acceptance criteria. Direct user instructions take precedence. Future ADRs must explicitly state which decisions they supersede. Do not invent missing `docs/` files or claim to have read them.
 
+Execution is detailed in [docs/implementation-plan.md](docs/implementation-plan.md). Read its current delivery and [ADR 0001](docs/adr/0001-implementation-sequencing.md) before implementing: Foundation establishes membership-based access; typed resource grants are added with real document/catalog/split/contract targets. Documents starts before Rights needs evidence. This changes delivery sequencing, not module ownership, tenant isolation or authorization requirements. A plan is not authorization to implement all milestones.
+
 ## 2. Stack and structure
 
 Target stack: PHP 8.3+, Laravel 12, PostgreSQL, Redis, Laravel queues, private local storage on the acquired Kroma server, Vue 3, TypeScript, Vite and Inertia. Production files remain on Kroma; S3 or another paid storage provider is not part of the MVP.
