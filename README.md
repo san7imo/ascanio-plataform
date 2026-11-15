@@ -2,9 +2,11 @@
 
 Plataforma SaaS independiente para organizar la operación musical de sellos, editoriales, empresas de management y profesionales independientes.
 
-**Estado al 12 de octubre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite implementada, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente.
+**Estado al 14 de noviembre de 2026:** base técnica Laravel 12 / Vue 3 / TypeScript / Inertia / Vite integrada en `main`, con Fortify y sesiones, PostgreSQL de desarrollo/pruebas y Redis para caché y colas. El resto de modelos y módulos de este documento sigue siendo diseño objetivo. Esta entrega no implementa tenants, memberships ni funciones musicales. El hito Foundation completo continúa pendiente. La revisión detectó avisos de seguridad en dependencias que deben atenderse antes del siguiente desarrollo funcional.
 
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
+
+El [plan de implementación](docs/implementation-plan.md) audita este roadmap y lo desglosa en entregas, dependencias, pruebas y decisiones pendientes. El [ADR 0001](docs/adr/0001-implementation-sequencing.md) precisa el orden de grants y documentos. Este README conserva la base de arquitectura y dominio; [AGENTS.md](AGENTS.md) mantiene el contrato de ingeniería. La [comprobación Kroma](docs/hosting/kroma-compatibility.md) contiene evidencia histórica aportada por el usuario, sin confirmar compatibilidad de producción.
 
 ## 1. Producto y actores
 
@@ -441,14 +443,16 @@ CWR no es un formato de liquidación genérico ni sustituto de reportes de royal
 | Hito | Entrega | Criterio de cierre |
 |---|---|---|
 | 0. Diseño y dependencias | Modelo de este README, matriz de acceso, perfil CWR, firma e informe Kroma | Decisiones pendientes asignadas; backlog acotado |
-| 1. Foundation | Scaffold, autenticación, tenancy, memberships, permisos, grants, contexto, auditoría y CI | Usuario multi-tenant; acceso A→B bloqueado; cambio de contexto probado |
-| 2. Parties y catálogo | Fichas, perfiles artísticos, obras, recordings, releases y créditos | Editorial sin recording y artista independiente usan el mismo core |
+| 1. Foundation | Scaffold, autenticación, identidad mínima, tenancy, memberships, permisos, invitaciones de equipo, contexto, auditoría y CI | Usuario multi-tenant; acceso A→B bloqueado; revocación/cambio de contexto probados; compatibilidad Kroma documentada |
+| 2. Parties, documentos base y catálogo | Fichas, documentos privados base, grants sobre recursos existentes, perfiles artísticos, obras, recordings, releases y créditos | Editorial sin recording y artista independiente usan el mismo core; invitado accede solo a recursos/campos concedidos |
 | 3. Rights y colaboración | Derechos, splits versionados, invitaciones y portal mínimo | Persona consulta su participación sin catálogo completo; versiones inmutables |
 | 4. Contratos y Vault | Dos split sheets, generación, proveedor de firma y documentos privados | Todos revisan/firman versión exacta; callbacks idempotentes; evidencia descargable |
 | 5. Registration | Readiness, expedientes, CWR para primer perfil y seguimiento manual | Export validado; envío/aceptación con evidencia; no circularidad de requisitos |
 | 6. Validación del MVP | Flujos completos en staging y restauración ensayada | Pruebas por al menos tres contextos operativos y seguridad completas |
 
 El portal básico se entrega en hito 3, no se pospone al módulo de regalías. Los participantes ven porcentajes y contratos; los saldos de regalías se añaden después, cuando exista cálculo y fuente de ingresos real.
+
+Según el [ADR 0001](docs/adr/0001-implementation-sequencing.md), IdentityAccess conserva la propiedad de grants e invitaciones, pero incorpora cada FK y policy cuando exista su recurso: documentos/catálogo en hito 2, versiones de splits en hito 3 y contratos en hito 4. El núcleo de Documents se adelanta al hito 2 para respaldar evidencia de derechos; el Vault contractual completo permanece en hito 4. No crear tablas musicales vacías para cerrar Foundation ni habilitar acceso por un ID arbitrario.
 
 Escenarios obligatorios: sello con productor externo; editorial con obra no grabada y administración parcial; artista independiente con manager; mismo usuario en varios contextos; grupo con varios integrantes; dos publishers con divulgación limitada.
 
@@ -478,7 +482,7 @@ Definir antes de habilitar uploads límites configurables por archivo/tenant y r
 
 Los backups locales se mantienen privados, con retención que respete el disco disponible y restauración ensayada. Una copia en el mismo servidor comparte su riesgo de pérdida; una descarga manual de una copia autorizada puede añadirse sin contratar almacenamiento externo. No borrar archivos, correos o backups de otros proyectos como parte de esta tarea.
 
-Development y staging usan datos sintéticos; producción tendrá servicios, credenciales y storage separados. CI compila artefactos reproducibles y despliega staging según configuración; producción tiene aprobación humana. No se ha desplegado ni auditado el servidor en esta fase.
+Development y staging usan datos sintéticos; producción tendrá servicios, credenciales y storage separados. CI actualmente verifica build, pruebas y calidad; no hay despliegue a staging configurado. Staging y su entrega se preparan tras validar Kroma; producción tiene aprobación humana. No se ha desplegado ni auditado el servidor en esta fase.
 
 Medidas: cookies seguras, CSRF, rate limiting, sesiones revocables, least privilege, allowlists de campos, cifrado de datos sensibles y documentos, secretos fuera de Git, MFA para gobierno/accesos sensibles, monitorización de fallos y restauración verificada. No exponer emails, tokens de invitación o contratos en logs, analytics ni repositorio público.
 
