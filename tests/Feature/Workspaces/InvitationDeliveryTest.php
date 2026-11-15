@@ -5,6 +5,7 @@ namespace Tests\Feature\Workspaces;
 use App\Models\User;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Actions\ManageTeamInvitation;
+use App\Modules\IdentityAccess\CapabilityCatalog;
 use App\Modules\IdentityAccess\Mail\TeamInvitationMail;
 use App\Modules\IdentityAccess\Models\Permission;
 use App\Modules\IdentityAccess\Models\Role;
@@ -97,17 +98,18 @@ class InvitationDeliveryTest extends TestCase
     public function test_invitation_schema_upgrades_existing_governance_and_preserves_history_on_rollback(): void
     {
         [$owner, $tenant, $role] = $this->setupInvite();
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $this->assertDatabaseCount('permissions', 7);
         $this->artisan('migrate')->assertSuccessful();
-        $this->assertDatabaseCount('permissions', 8);
+        $this->assertDatabaseCount('permissions', count(CapabilityCatalog::OWNER));
         $event = DB::table('audit_events')->where('tenant_id', $tenant->id)->where('action', 'access.invitations.upgraded')->sole();
         $this->assertNull($event->actor_id);
         $this->assertSame('migration', $event->actor_type);
         $proof = $this->proofFor($owner);
         app(CreateTeamInvitation::class)->execute($owner, $tenant, 'history@example.invalid', [['role_id' => $role->id, 'scope' => 'tenant']], 7, $proof);
         try {
-            $this->artisan('migrate:rollback', ['--step' => 1])->run();
+            // Exercise F3's own preservation guard; P1 independently protects its upgrade evidence.
+            (require database_path('migrations/2026_11_15_000002_add_team_invitations.php'))->down();
             $this->fail('Invitation history must survive.');
         } catch (\RuntimeException $exception) {
             $this->assertStringContainsString('history must be preserved', $exception->getMessage());

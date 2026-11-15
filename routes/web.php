@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Parties\TenantPartyController;
 use App\Http\Controllers\TeamInvitationClaimController;
 use App\Http\Controllers\Workspaces\GovernanceController;
 use App\Http\Controllers\Workspaces\TeamInvitationController;
@@ -28,6 +29,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [WorkspaceController::class, 'show'])->name('workspaces.show');
         Route::post('select', [WorkspaceController::class, 'select'])->name('workspaces.select');
         Route::patch('/', [WorkspaceController::class, 'update'])->middleware('throttle:30,1')->name('workspaces.update');
+        Route::get('parties', [TenantPartyController::class, 'index'])->name('parties.index');
+        Route::get('parties/create', [TenantPartyController::class, 'create'])->name('parties.create');
+        Route::post('parties', [TenantPartyController::class, 'store'])->middleware('throttle:30,1')->name('parties.store');
+        Route::get('parties/{party}', [TenantPartyController::class, 'show'])->whereUuid('party')->name('parties.show');
+        Route::get('parties/{party}/edit', [TenantPartyController::class, 'edit'])->whereUuid('party')->name('parties.edit');
+        Route::patch('parties/{party}', [TenantPartyController::class, 'update'])->whereUuid('party')->middleware('throttle:30,1')->name('parties.update');
         Route::get('members', [WorkspaceController::class, 'members'])->name('workspaces.members');
         Route::get('roles', [GovernanceController::class, 'roles'])->name('workspaces.roles');
         Route::get('invitations', [TeamInvitationController::class, 'index'])->name('workspaces.invitations');

@@ -39,7 +39,7 @@ class GovernanceMigrationTest extends TestCase
         $b = $this->workspaceFor($second);
         $this->memberFor($a, $second, owner: true);
         // Reconstruct the exact F1 schema from the current fixture, then upgrade.
-        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
         $this->assertFalse(Schema::hasColumn('roles', 'system_kind'));
         $this->assertDatabaseCount('permissions', 4);
         $old = DB::table('audit_events')->orderBy('id')->get()->toJson();
@@ -56,7 +56,7 @@ class GovernanceMigrationTest extends TestCase
             $event = DB::table('audit_events')->where('tenant_id', $tenant->id)->where('actor_type', 'migration')->sole();
             $this->assertNull($event->actor_id);
             $this->assertSame('access.foundation.upgraded', $event->action);
-            $this->assertSame(array_values(array_diff(CapabilityCatalog::OWNER, ['tenant.members.invite'])), json_decode($event->changes, true)['capabilities']);
+            $this->assertSame(array_values(array_filter(CapabilityCatalog::OWNER, fn ($code) => str_starts_with($code, 'tenant.') && $code !== 'tenant.members.invite')), json_decode($event->changes, true)['capabilities']);
         }
         try {
             $this->artisan('migrate:rollback', ['--step' => 1])->run();
@@ -72,7 +72,7 @@ class GovernanceMigrationTest extends TestCase
     {
         $tenant = $this->workspaceFor(User::factory()->create());
         $member = $this->memberFor($tenant, User::factory()->create());
-        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
         $ownerRole = DB::table('roles')->where('tenant_id', $tenant->id)->where('code', 'owner')->sole();
         DB::table('membership_roles')->insert(['tenant_id' => $tenant->id, 'membership_id' => $member->id, 'role_id' => $ownerRole->id, 'access_scope' => 'tenant']);
         try {
