@@ -3,9 +3,21 @@
 Fecha de auditoría: 14 de noviembre de 2026. Base revisada: `origin/main` en `b345691`.
 Decisión: conservar el roadmap del README, ajustar sus dependencias y ejecutarlo mediante las entregas de este documento. Este plan documenta trabajo futuro; no acredita su implementación ni autoriza despliegues.
 
+Actualización: 15 de noviembre de 2026. Base integrada comprobada: `95e3618`. La [auditoría actual](implementation/repository-audit-2026-11-15.md) confirma los merges, distingue el borrador local F2 y registra las verificaciones repetidas sobre la base integrada. Las secciones 1–3 conservan el diagnóstico inicial; el estado vigente es:
+
+| Entrega | Estado vigente | Evidencia / siguiente paso |
+|---|---|---|
+| Arquitectura y scaffold | Integrados | PRs #1 y #2; sin merge pendiente de las dos ramas originales |
+| P0 | Integrado | [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); auditorías repetidas sin avisos en esta fecha |
+| F1 | Integrado y comprobado | [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5); 70 pruebas / 472 aserciones en la revisión actual |
+| F2 | Pendiente de completar | Borrador local aislado, sin endpoints/UX/pruebas completas; ejecutar el alcance de §5 |
+| F3 / F4 | Pendientes | Invitaciones, jobs y cierre técnico de Foundation después de F2 |
+| O0 / O1 | Pendientes | Compatibilidad/capacidad de Kroma sin confirmar; avanzar con evidencia del proveedor |
+| Hitos 2–6 | Diseño objetivo | Mantener dependencias del ADR 0001; no hay módulos musicales implementados |
+
 ## 1. Fuentes, producto y estado comprobado
 
-Se leyeron todos los documentos Markdown disponibles en el checkout: [README](../README.md), [AGENTS](../AGENTS.md), [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md) y el [informe Kroma](hosting/kroma-compatibility.md), que estaba pendiente de commit. Se inventariaron los Markdown de todas las ramas locales/remotas y se compararon sus diferencias. También se revisaron historial, PRs, búsqueda de issues, dependencias, scripts, rutas, modelo User, harness de pruebas y workflow de CI.
+En la auditoría inicial se leyeron todos los documentos Markdown disponibles entonces en el checkout: [README](../README.md), [AGENTS](../AGENTS.md), [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md) y el [informe Kroma](hosting/kroma-compatibility.md), que estaba pendiente de commit. Se inventariaron los Markdown de todas las ramas locales/remotas y se compararon sus diferencias. También se revisaron historial, PRs, búsqueda de issues, dependencias, scripts, rutas, modelo User, harness de pruebas y workflow de CI.
 
 El PRD 360º, los planes comercial/funcional y los reels mencionados en README no están adjuntos ni versionados en estas ramas. No se afirma haber releído esos originales. Sus referencias no amplían el alcance del MVP. No se encontró otro plan de implementación separado ni issues de trabajo: el plan disponible era README §12, complementado por sus decisiones pendientes y AGENTS.
 
@@ -13,7 +25,7 @@ Ascanio es un SaaS para operaciones musicales diversas. Un User es una cuenta; P
 
 El MVP permite trabajar una composición sin recording, gestionar catálogo y derechos con alcance explícito, acordar splits versionados, colaborar sin exponer el catálogo completo, generar dos tipos de split sheet, firmar una versión exacta y preparar un registro para un receptor concreto. No incluye royalties, pagos, contabilidad, billing, distribución, API pública, IA ni la visión 360º completa.
 
-| Entrega existente | Evidencia y límite |
+| Entrega existente al inicio de la planificación | Evidencia y límite histórico |
 |---|---|
 | Arquitectura de dominio | README/AGENTS integrados mediante PR #1; decisiones de firma, CWR y hosting pendientes |
 | Base técnica y cuenta global | PR #2; Laravel 12, Vue 3, TypeScript, Inertia, Fortify, UUID de User y sesiones cifradas |
@@ -80,11 +92,11 @@ Para documentos, revisar consistencia, enlaces locales, Markdown y diff --check.
 
 ## 5. Trabajo inmediato y Foundation
 
-Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Actualización del 14 de noviembre: P0 integrado mediante [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); [registro de cambios, pruebas y límites](security/dependency-maintenance.md). F1 implementado y validado localmente en `feat/workspace-foundation`: [recorridos, migración y pruebas](implementation/f1-workspace-foundation.md); el estado remoto corresponde a los checks de su PR. F2–F4 y O0/O1 siguen pendientes; no hay conexiones ni operaciones en Kroma.
+Estado inicial de la planificación: P0 y todas las entregas F/O estaban pendientes. Estado al 15 de noviembre: P0 integrado mediante [PR #4](https://github.com/san7imo/ascanio-plataform/pull/4); [registro de cambios, pruebas y límites](security/dependency-maintenance.md). F1 integrado mediante [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5), con sus tres jobs remotos aprobados y regresión local repetida: [recorridos, migración y pruebas](implementation/f1-workspace-foundation.md). F2–F4 y O0/O1 siguen pendientes; no hay conexiones ni operaciones en Kroma.
 
 ### P0 — Mantenimiento de dependencias y controles
 
-Dependencia: base técnica integrada. Próximo PR recomendado: `fix/dependency-security`.
+Dependencia: base técnica integrada. Entrega completada en `fix/dependency-security`; los criterios siguientes se conservan como referencia de cierre y mantenimiento.
 
 - Revisar los avisos Composer/npm actuales, su cadena de dependencia y la exposición del código. Contrastar parches y requisitos con fuentes oficiales en la ejecución; no fijar en este plan versiones supuestamente seguras para siempre.
 - Aplicar cambios compatibles con Laravel 12, PHP 8.3/8.4, Node 22 y el frontend existente, conservando lockfiles. Una incompatibilidad real se documenta antes de cambiar una versión mayor; no usar audit fix --force ni cambiar el stack por conveniencia.
@@ -128,6 +140,29 @@ Fuera de F1: catálogo, claims automáticos de terceros, recursos compartidos y 
 Dependencia: F1. Entregar roles privados por tenant, catálogo global de capacidades, access_scope tenant/assigned_resources, asignaciones y policies explícitas. Añadir gestión de equipo, delegación limitada y transferencia de ownership con confirmación de identidad/MFA según la operación sensible.
 
 Cierre: mismo usuario con roles diferentes en A/B; owner/admin no delega capacidades fuera de su autoridad; no existe Gate::before universal; suspensión/revocación invalida los caminos dependientes y cachés. Transferencia y retirada concurrente de owners preservan al menos uno activo, también ante borrado de cuenta. Permisos assigned_resources sin un objetivo autorizado deniegan; no equivalen a acceso completo. Runtime no puede editar/borrar eventos de auditoría en una prueba con rol restringido PostgreSQL. Si esos privilegios aún no pueden garantizarse en Kroma, no se declara cumplimiento operativo.
+
+Desglose de ejecución para un PR F2, desde `main` actualizado:
+
+| Paso | Implementación acotada | Prueba de aceptación |
+|---|---|---|
+| F2.1 | Catálogo de capacidades actuales y marca explícita de delegabilidad; rol protegido de gobierno; migración aditiva para F1 existente | Upgrade con varios tenants sin privilegios cruzados ni cambios de historia; ningún nombre de rol actúa como bypass |
+| F2.2 | Acciones, requests, policies y consultas de roles/asignaciones; pantallas españolas | Crear/editar/retirar solo capacidades delegables; comprobar tanto permisos anteriores como nuevos; FK/IDs cruzados, búsqueda/conteos y props aislados |
+| F2.3 | Suspender/reactivar/revocar membresías y transferir gobierno en transacciones | Revalidar autoridad dentro del lock; conservar un propietario activo; cambios efectivos en otras sesiones sin afectar membresías independientes |
+| F2.4 | Confirmación sensible con Fortify/MFA, sin proveedor ni dependencia nuevos | Contraseña incorrecta, MFA ausente/no confirmado, código inválido o reutilizado y rate limit; secretos fuera de props, auditoría y old input |
+| F2.5 | Prueba con conexión PostgreSQL runtime restringida y procedimiento de privilegios | Runtime real sin ownership/superuser/BYPASSRLS puede operar y añadir auditoría, pero no actualizar/borrar/truncar ni desactivar sus protecciones |
+| F2.6 | Regresión integrada, revisión visual y documentación de upgrade/límites | Suite PostgreSQL con carreras independientes, Pint, lint, formato, tipos, build y auditorías; registrar resultados de ese head |
+
+Los pasos son partes de F2, no hitos nuevos ni permisos para abrir otros módulos. No publicar una UI que prometa transferencias o MFA antes de completar las acciones y sus pruebas.
+
+Propuesta concreta para cerrar las decisiones de gobierno de F2 al iniciar su implementación:
+
+- La transferencia requiere propietario vigente, capability específica y confirmación de contraseña/MFA. El destinatario es otro miembro activo del mismo workspace, con cuenta activa, correo verificado y MFA confirmado. La transferencia cambia gobierno del workspace, nunca identidad legal ni derechos musicales.
+- El rol protegido de propietario no se edita/asigna por el editor ordinario. Las demás capacidades solo se conceden, modifican o retiran dentro de la autoridad delegable del actor; tener una capacidad no basta para delegarla. `assigned_resources` sigue denegando operaciones sin un recurso real autorizado.
+- Exigir confirmación sensible también al cambiar roles, asignaciones o estados de membresías. Un código TOTP consumido no se reutiliza para otra mutación, incluso en otro workspace. La transacción debe revertir el consumo si falla la mutación/auditoría.
+- Conservar los roles independientes del propietario anterior. Rechazar targets ajenos, cuentas inválidas y carreras que dejen el espacio sin propietario activo. Revalidar delegación al reactivar una membresía para evitar escalamiento indirecto.
+- Migrar F1 sin reescribir su migración ni atribuir cambios automáticos a un actor humano ficticio. Especificar procedencia de cualquier backfill y recuperación compatible con la auditoría append-only.
+
+Estas propuestas precisan el alcance pendiente; el borrador local todavía no las acredita. Reutilizarlo exige revisar su migración y completar transferencia, estados, requests, rutas, UX y pruebas. Las invitaciones/altas de terceros pertenecen a F3. El test de privilegios local no confirma permisos ni disponibilidad operativa en Kroma.
 
 ### F3 — Invitaciones de equipo y notificaciones
 
@@ -236,7 +271,7 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Siguiente acción y mantenimiento del plan
 
-La siguiente entrega de código es **F2: gobierno del workspace y administración de capacidades**, tras integrar F1. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
+La siguiente entrega de código es **F2: gobierno del workspace y administración de capacidades**, sobre F1 ya integrada. O0 avanza mediante evidencia aportada por el titular/proveedor. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. El orden inválido del rollback total histórico (users antes de sessions) requiere un procedimiento de recuperación probado antes de staging; no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 

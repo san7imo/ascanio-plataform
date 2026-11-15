@@ -1,7 +1,7 @@
 # Entrega F1 — Primer recorrido multi-tenant
 
 Fecha: 14 de noviembre de 2026. Base: `439208a` (P0). Rama: `feat/workspace-foundation`.
-Estado: implementación y validación local completadas; consultar los checks del PR para su validación remota. F1 no cierra Foundation operativo ni confirma Kroma.
+Estado: integrada en `main` mediante [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5), con checks PHP 8.3/8.4 y dependency-audit aprobados. La [auditoría del 15 de noviembre](repository-audit-2026-11-15.md) repite la validación local de la base integrada. F1 no cierra Foundation operativo ni confirma Kroma.
 
 ## Comportamiento entregado
 
