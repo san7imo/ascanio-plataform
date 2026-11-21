@@ -3,7 +3,7 @@
 Fecha de auditoría: 14 de noviembre de 2026. Base revisada: `origin/main` en `b345691`.
 Decisión: conservar el roadmap del README, ajustar sus dependencias y ejecutarlo mediante las entregas de este documento. Este plan documenta trabajo futuro; no acredita su implementación ni autoriza despliegues.
 
-Actualización F4: 15 de noviembre de 2026. Base de entrega: `d894210`, con F3 integrada mediante [PR #8](https://github.com/san7imo/ascanio-plataform/pull/8). La [auditoría previa](implementation/repository-audit-2026-11-15.md) conserva el corte anterior a F2; su borrador local fue revisado y completado en [la entrega F2](implementation/f2-workspace-governance.md). Las secciones 1–3 conservan el diagnóstico inicial; el estado vigente es:
+Actualización P1: 15 de noviembre de 2026. Base de entrega: `75e7c68`, con F4 integrada mediante [PR #9](https://github.com/san7imo/ascanio-plataform/pull/9). La [auditoría previa](implementation/repository-audit-2026-11-15.md) conserva el corte anterior a F2; su borrador local fue revisado y completado en [la entrega F2](implementation/f2-workspace-governance.md). Las secciones 1–3 conservan el diagnóstico inicial; el estado vigente es:
 
 | Entrega | Estado vigente | Evidencia / siguiente paso |
 |---|---|---|
@@ -12,9 +12,10 @@ Actualización F4: 15 de noviembre de 2026. Base de entrega: `d894210`, con F3 i
 | F1 | Integrado y comprobado | [PR #5](https://github.com/san7imo/ascanio-plataform/pull/5); regresión incluida en F2 |
 | F2 | Integrado | [PR #7](https://github.com/san7imo/ascanio-plataform/pull/7); regresión incluida en F3 |
 | F3 | Integrado | [PR #8](https://github.com/san7imo/ascanio-plataform/pull/8); regresión incluida en F4 |
-| F4 | Implementado y validado localmente | [Jobs, revocación, traducciones y límites](implementation/f4-foundation-readiness.md); 127 pruebas / 1218 aserciones; consultar CI del PR |
+| F4 | Integrado | [PR #9](https://github.com/san7imo/ascanio-plataform/pull/9); cierre técnico con operación pendiente O0 |
+| P1 | Implementado y validado localmente | [Fichas privadas, permisos, revisiones y límites](implementation/p1-tenant-parties.md); 143 pruebas / 1502 aserciones; consultar CI del PR |
 | O0 / O1 | Pendientes | Compatibilidad/capacidad de Kroma sin confirmar; avanzar con evidencia del proveedor |
-| Hitos 2–6 | Diseño objetivo | Mantener dependencias del ADR 0001; no hay módulos musicales implementados |
+| Resto de hitos 2–6 | Diseño objetivo | Parties local inicia el hito 2; documentos, catálogo y módulos musicales siguen pendientes |
 
 ## 1. Fuentes, producto y estado comprobado
 
@@ -272,7 +273,7 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Siguiente acción y mantenimiento del plan
 
-Integrar y revisar **F4: cierre técnico de Foundation** antes de iniciar otra entrega. Después, la siguiente entrega local es **P1: TenantParties provisionales y privacidad/procedencia**, acotada por §6; no incluye catálogo, documentos ni vinculación automática a identidades globales. O0 avanza mediante evidencia aportada por el titular/proveedor y sigue bloqueando el cierre operativo del hito 1. D1 depende además de O1; no habilitar uploads reales. La [guía operativa](operations/foundation-readiness.md) conserva las verificaciones aún pendientes. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. El orden inválido del rollback total histórico (users antes de sessions) requiere un procedimiento de recuperación probado antes de staging; no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
+F4 está integrada mediante PR #9. Revisar e integrar **P1: contrapartes privadas y provisionales**, acotada por §6 y su [entrega](implementation/p1-tenant-parties.md); no incluye catálogo, documentos ni vinculación automática a identidades globales. La siguiente entrega es **D1: documentos privados**, con O1 como dependencia para capacidad, ruta persistente y escaneo. Preparar sus fixtures locales no habilita uploads reales. O0 avanza mediante evidencia aportada por el titular/proveedor y sigue bloqueando el cierre operativo del hito 1. D1 depende además de O1; no habilitar uploads reales. La [guía operativa](operations/foundation-readiness.md) conserva las verificaciones aún pendientes. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado, sin confundirse con excepciones de auditoría. El orden inválido del rollback total histórico (users antes de sessions) requiere un procedimiento de recuperación probado antes de staging; no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 

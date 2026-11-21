@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Actions\SaveRole;
 use App\Modules\IdentityAccess\TenantContext;
+use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use Illuminate\Support\Facades\DB;
@@ -40,9 +41,10 @@ class GovernanceRuntimeRoleTest extends TestCase
             }
             $migration->unprepared("GRANT CONNECT ON DATABASE ascanio_test TO {$role}; GRANT USAGE ON SCHEMA public TO {$role}");
             // Current application tables, not a grant on all future business data.
-            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles';
+            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles,tenant_parties,party_identifiers,tenant_party_business_types';
             $migration->unprepared("GRANT SELECT,INSERT,UPDATE,DELETE ON {$tables} TO {$role}");
-            $migration->unprepared("GRANT SELECT ON permissions,audit_events TO {$role}");
+            $migration->unprepared("GRANT SELECT ON permissions,audit_events,business_types TO {$role}");
+            $migration->unprepared("GRANT SELECT,INSERT ON tenant_party_revisions TO {$role}");
             $migration->unprepared("GRANT INSERT (id,tenant_id,actor_id,action,resource_type,resource_id,changes,occurred_at) ON audit_events TO {$role}");
             $migration->unprepared("GRANT USAGE,SELECT ON SEQUENCE jobs_id_seq,failed_jobs_id_seq TO {$role}");
             $actor = User::factory()->create();
@@ -69,10 +71,24 @@ class GovernanceRuntimeRoleTest extends TestCase
             $inviteProof = $this->proofFor($actor);
             $invitation = app(CreateTeamInvitation::class)->execute($actor, $tenant, 'runtime-invite@example.invalid', [['role_id' => $roleModel->id, 'scope' => 'tenant']], 7, $inviteProof);
             $this->assertSame('simulated', $invitation->delivery_status);
-            $this->assertDatabaseCount('audit_events', 5);
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+            $party = app(SaveTenantParty::class)->execute($actor, $tenant, null, [
+                'kind' => 'organization', 'display_name' => 'Runtime counterpart', 'business_type_codes' => ['publishing'], 'identifiers' => [],
+            ]);
+            app(SaveTenantParty::class)->execute($actor, $tenant, $party->id, [
+                'kind' => 'organization', 'display_name' => 'Updated runtime counterpart', 'business_type_codes' => ['publishing'], 'identifiers' => [], 'version' => 1,
+            ]);
+            $this->assertDatabaseCount('tenant_party_revisions', 2);
+            $this->assertDatabaseCount('audit_events', 7);
             $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
 
             $forbidden = [
+                "UPDATE tenant_party_revisions SET snapshot = '{}'",
+                'DELETE FROM tenant_party_revisions',
+                'TRUNCATE tenant_party_revisions',
+                'ALTER TABLE tenant_party_revisions DISABLE TRIGGER party_revision_immutable',
+                'DROP FUNCTION reject_party_revision_mutation()',
+                "UPDATE business_types SET name = 'forged'",
                 "UPDATE audit_events SET action = 'forged'",
                 'DELETE FROM audit_events',
                 'TRUNCATE audit_events',

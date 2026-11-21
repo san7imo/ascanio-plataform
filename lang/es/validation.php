@@ -56,6 +56,9 @@ return [
     'unique' => 'El valor de :attribute ya está registrado.',
     'uuid' => 'Selecciona un identificador válido para :attribute.',
     'attributes' => [
+        'display_name' => 'nombre visible', 'legal_name' => 'nombre legal declarado', 'phone' => 'teléfono',
+        'notes' => 'notas privadas', 'source_note' => 'procedencia declarada',
+        'business_type_codes' => 'actividades', 'identifiers' => 'identificadores', 'version' => 'versión',
         'name' => 'nombre', 'email' => 'correo electrónico', 'password' => 'contraseña',
         'current_password' => 'contraseña actual', 'password_confirmation' => 'confirmación de contraseña',
         'code' => 'código MFA', 'recovery_code' => 'código de recuperación', 'token' => 'enlace',

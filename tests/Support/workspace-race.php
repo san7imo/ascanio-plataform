@@ -12,6 +12,7 @@ use App\Modules\IdentityAccess\Data\SensitiveProof;
 use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
+use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +52,15 @@ while (! is_file($barrier.'/go')) {
 try {
     $user = User::findOrFail($userId);
 
-    if ($operation === 'accept-invite') {
+    if ($operation === 'edit-party') {
+        $tenant = Tenant::findOrFail($targetId);
+        $app->make(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $userId)->sole());
+        $party = $app->make(SaveTenantParty::class)->execute($user, $tenant, $value, [
+            'kind' => 'person', 'display_name' => 'Edición concurrente '.$worker,
+            'business_type_codes' => [], 'identifiers' => [], 'version' => 1,
+        ]);
+        echo json_encode(['result' => 'ok', 'id' => $party->id]);
+    } elseif ($operation === 'accept-invite') {
         $invitation = TeamInvitation::query()->where('tenant_id', $targetId)->findOrFail($value);
         $app->make(AcceptTeamInvitation::class)->execute($user, ['id' => $value, 'hash' => $invitation->token_hash, 'until' => time() + 3600]);
         echo json_encode(['result' => 'ok']);

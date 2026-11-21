@@ -9,6 +9,7 @@ use App\Modules\IdentityAccess\Models\Permission;
 use App\Modules\IdentityAccess\Models\Role;
 use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\TenantContext;
+use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -154,7 +155,7 @@ class WorkspaceConcurrencyTest extends TestCase
 
     public function test_foundation_migrations_roll_back_and_reapply_without_rewriting_scaffold_history(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 4])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenants'));
         $this->assertTrue(Schema::hasTable('users'));
         $this->assertFalse(Schema::hasColumn('users', 'status'));
@@ -193,6 +194,27 @@ class WorkspaceConcurrencyTest extends TestCase
         sort($outcomes);
         $this->assertSame(['denied', 'ok'], $outcomes);
         $this->assertSame(1, $tenant->memberships()->where('is_owner', true)->where('status', 'active')->count());
+    }
+
+    public function test_two_party_edits_of_one_version_preserve_one_winner_and_both_historical_snapshots(): void
+    {
+        $owner = User::factory()->create();
+        $tenant = $this->workspaceFor($owner);
+        app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+        $party = app(SaveTenantParty::class)->execute($owner, $tenant, null, [
+            'kind' => 'person', 'display_name' => 'Nombre original', 'business_type_codes' => [], 'identifiers' => [],
+        ]);
+        app(TenantContext::class)->clear();
+        $operation = ['edit-party', $owner->id, $tenant->id, $party->id];
+        $results = $this->race([$operation, $operation]);
+        $outcomes = array_column($results, 'result');
+        sort($outcomes);
+        $this->assertSame(['denied', 'ok'], $outcomes);
+        $this->assertSame(2, $party->fresh()->version);
+        $this->assertDatabaseCount('tenant_party_revisions', 2);
+        $first = DB::table('tenant_party_revisions')->where('tenant_id', $tenant->id)->where('version', 1)->sole();
+        $this->assertSame('Nombre original', json_decode($first->snapshot, true)['display_name']);
+        $this->assertSame(1, DB::table('audit_events')->where('tenant_id', $tenant->id)->where('action', 'party.updated')->count());
     }
 
     private function invitationFixture(User $owner, $tenant, User $recipient)

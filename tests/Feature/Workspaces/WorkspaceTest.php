@@ -5,6 +5,7 @@ namespace Tests\Feature\Workspaces;
 use App\Models\User;
 use App\Modules\IdentityAccess\Actions\RecordAudit;
 use App\Modules\IdentityAccess\Actions\UpdateWorkspace;
+use App\Modules\IdentityAccess\CapabilityCatalog;
 use App\Modules\IdentityAccess\Models\AuditEvent;
 use App\Modules\IdentityAccess\Models\Party;
 use App\Modules\IdentityAccess\Models\Tenant;
@@ -48,7 +49,7 @@ class WorkspaceTest extends TestCase
         $this->assertSame($user->fresh()->person_id, $first->operator_party_id);
         $this->assertSame($first->operator_party_id, $second->operator_party_id);
         $this->assertSame('self_declared_account', Party::sole()->provenance);
-        $this->assertDatabaseCount('permissions', 8);
+        $this->assertDatabaseCount('permissions', count(CapabilityCatalog::OWNER));
 
         foreach ([$first, $second, $first] as $tenant) {
             $this->post(route('workspaces.select', $tenant))->assertRedirect(route('workspaces.show', $tenant))->assertSessionHas('current_workspace_id', $tenant->id);
@@ -104,7 +105,7 @@ class WorkspaceTest extends TestCase
             $this->assertDatabaseCount($table, 0);
         }
         $this->assertNull($user->fresh()->person_id);
-        $this->assertDatabaseCount('permissions', 8);
+        $this->assertDatabaseCount('permissions', count(CapabilityCatalog::OWNER));
     }
 
     public function test_workspace_discovery_search_counts_and_pagination_are_account_and_capability_bounded(): void
