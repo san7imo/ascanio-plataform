@@ -74,3 +74,12 @@ La existencia de entradas antiguas, una página de presupuesto o una URL de cuen
 - [Manifiesto de capturas](2026-11-22/manifest.json): dimensiones, bytes y SHA-256 de los JPEG originales. No se incluyen cookies/sesiones, datos de clientes, HTML ejecutable o código de terceros como dependencia.
 
 Esta entrega modifica documentación y referencias. Se comprueban enlaces locales, estructura Markdown, JSON, integridad/dimensiones de imágenes y git diff --check. No ejecuta pruebas de Laravel/frontend ni las presenta como resultado de una réplica todavía inexistente. El plan y el [ADR 0002](../../adr/0002-public-institutional-site.md) fijan PUB0–PUB3; no se ha publicado ni cambiado ascaniopub.com, su WordPress o Kroma.
+
+## Comparación de la primera implementación
+
+PUB1.1–PUB1.2 añaden layout y portada locales sobre main f732ecb; la referencia
+original anterior se conserva. Las [tomas locales y sus mediciones](pub1-local/manifest.json)
+y el [manifiesto de recursos originales](public-assets.json) corresponden a esa
+entrega parcial, sin publicación ni pruebas de compra/envío. El [paquete PUB1](../../implementation/pub1-public-site.md#primera-entrega-pub11-y-pub12)
+registra cambios deliberados de altura, contraste, texto móvil y accesibilidad,
+y distingue las páginas interiores todavía pendientes.

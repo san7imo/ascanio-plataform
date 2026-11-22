@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-11-22T03:21:10.702154+00:00",
+  "base": "main f732ecb",
+  "scope": "Local PUB1.1–PUB1.2 only; not production or complete PUB1.",
+  "browser": "Google Chrome headless, DPR 1, scrollbars hidden; desktop 1440×1000, mobile 390×844; extra layout checks at 320 and 768 px.",
+  "source_reference": "../2026-11-22/",
+  "files": [
+    {
+      "file": "home-desktop.jpg",
+      "sha256": "7782c31e1ba297b63a8b8ff2a8e5b2e6e878c4efa1805333a3465d06f5fcab77",
+      "bytes": 268123,
+      "dimensions": [
+        1440,
+        2294
+      ]
+    },
+    {
+      "file": "home-mobile.jpg",
+      "sha256": "bb5ab9f254519dee8a20604e1939ea2b7089a1300edb8cbe75ccd739defd1cbd",
+      "bytes": 139352,
+      "dimensions": [
+        390,
+        2595
+      ]
+    },
+    {
+      "file": "menu-mobile.jpg",
+      "sha256": "b641ebd7cc9686de78a1229c3f5fd560a82f6ad06ab0843f7cde523a9551dfe8",
+      "bytes": 31303,
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "file": "review.json",
+      "sha256": "2b5ed618785d5cbda5dfe5ac29982fa5a74a84d663bbe3710ce1ec43dbb56f7d",
+      "bytes": 4880
+    }
+  ]
+}

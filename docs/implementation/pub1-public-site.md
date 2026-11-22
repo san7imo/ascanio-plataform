@@ -1,12 +1,12 @@
 # PUB1 — Paquete de implementación del sitio público
 
-Estado: planificado; implementación pendiente. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
+Estado: en implementación. PUB1.1 y PUB1.2 preparados para revisión local; PUB1.3–PUB1.5 pendientes. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
 
-Este documento concreta PUB1 del [plan](../implementation-plan.md), conforme al [ADR 0002](../adr/0002-public-institutional-site.md) y a las [50 capturas de referencia](../references/ascaniopub/README.md). El titular eligió reproducir las páginas de productos y conservar la compra actual. No es una entrega de código ni una autorización de publicación.
+Este documento concreta PUB1 del [plan](../implementation-plan.md), conforme al [ADR 0002](../adr/0002-public-institutional-site.md) y a las [50 capturas de referencia](../references/ascaniopub/README.md). El titular eligió reproducir las páginas de productos y conservar la compra actual. Este documento separa el paquete completo de su primera entrega de código; no autoriza publicación.
 
 ## Base y resultado esperado
 
-Antes de abrir código de PUB1, integrar las entregas revisadas de G1 y del plan público, actualmente en PRs #12 y #13, y reconciliar README/AGENTS/plan manteniendo ambas decisiones. Verificar base/head y checks del resultado integrado. La rama de implementación propuesta es feat/public-institutional-site desde ese main; no trabajar sobre una copia que omita G1 o el ADR público.
+Base integrada comprobada: main f732ecb, después de PR #12 (G1, aca2ad7) y PR #13 (referencia/plan público, f732ecb). Se resolvió el conflicto documental conservando G1 y PUB0–PUB3; CI de la combinación aprobó auditorías y PHP 8.3/8.4 antes del merge. La primera implementación parte de esa base en feat/public-institutional-site.
 
 El resultado local es una réplica navegable del sitio institucional en Laravel/Vue/Inertia: marca, composición, contenido y recursos de referencia en escritorio/móvil. La web pública presenta servicios; la aplicación privada sigue operando con Fortify, memberships y grants. No se cambia la estrategia de tenants, base de datos o storage para acomodar el sitio.
 
@@ -61,3 +61,64 @@ PUB3 valida localmente el conjunto y mantiene separada la puerta operativa. Si f
 ## Fuera del paquete
 
 Carrito/pagos/pedidos nuevos, migración de clientes comerciales, SSO WordPress, CMS/blog, EPK/webs por tenant, nuevas funciones musicales, cambios de stack, datos privados reales y despliegue. Las capacidades publicitadas en el sitio no amplían el MVP backend por sí mismas.
+
+## Primera entrega: PUB1.1 y PUB1.2
+
+Preparada en rama para revisión, todavía sin integrar ni publicar. Reemplaza `/`
+con la portada de referencia: logo, seis enlaces de navegación, banner musical,
+introducción, siete tarjetas enlazadas, tarjeta estática de merchandising y CTA
+fotográfico. El layout tiene menú móvil por botón, Enter/Tab/Escape, foco visible
+y enlace para saltar al contenido. Los enlaces a Fortify hacen una navegación
+completa para cargar la plantilla privada; la cuenta comercial sigue separada.
+
+Se versionan 21 archivos originales, aproximadamente 750 KB, incluidas cuatro
+fuentes WOFF2 y sus dos licencias. El [manifiesto](../references/ascaniopub/public-assets.json)
+registra procedencia y hashes. No se requieren hotlinks de imágenes/fuentes ni
+runtime WordPress. La portada excluye las props compartidas de cuenta y sidebar,
+incluso con sesión; no consulta ni incorpora recursos de tenants.
+
+Decisiones explícitas frente a la referencia:
+
+- Se reserva la altura del banner para evitar que tape la introducción/tarjetas.
+- Se conserva estático el titular del Mundo: no hay carrusel ni animación que
+  requiera una versión alternativa para movimiento reducido.
+- Se eleva el texto móvil a 16 px y el contraste de navegación, y se incorpora
+  un botón visible de menú y áreas táctiles de al menos 44 px.
+- Merchandising conserva su imagen sin enlace: el origen no tiene un destino
+  comprobado; no se inventa una compra o servicio.
+- Un pie discreto añade entrada Fortify, tienda y enlaces legales existentes.
+- No se copia el banner de aceptación de terceros: esta portada no carga
+  analítica, reCAPTCHA ni plugins de pago. El inventario/consentimiento final
+  sigue pendiente en PUB2. Las cookies técnicas de Laravel siguen su configuración.
+
+Solo `/` tiene réplica local en esta entrega. Navegación, siete tarjetas, CTA,
+tienda y legales conservan enlaces fijos a las páginas actuales de ascaniopub.com.
+No se implementan redirecciones dinámicas ni se afirma continuidad después de
+un cambio de raíz del dominio. El mapa está en resources/js/lib/public-site.ts;
+PUB1.3 reemplazará destinos al entregar las seis páginas de servicios y la guía,
+y PUB1.4 hará lo mismo con contacto, productos y legales. No se envían formularios,
+se añade al carrito ni se inicia compra en las comprobaciones.
+
+La siguiente entrega es **PUB1.3: seis servicios y guía**, una vez revisada esta
+base. PUB1 completo, PUB2/PUB3, C1 y la publicación siguen pendientes. No hay
+migraciones ni cambios de Kroma/DNS/WordPress y las cargas reales siguen apagadas.
+
+Comprobaciones ejecutadas de esta entrega:
+
+- composer run ci:check con PHP 8.4: **183 pruebas / 2166 aserciones** sobre
+  PostgreSQL, Pint, Wayfinder, lint, formato, tipos y tooling aprobados;
+  Composer/npm sin avisos de vulnerabilidades.
+- npm run build con PHP_BINARY=php8.4: aprobado después del ajuste visual final.
+- Chrome local: escritorio 1440×1000, móvil 390×844 y anchos adicionales 320/768;
+  sin imágenes faltantes, elementos recortados ni peticiones externas durante
+  la carga pública. Enter abre los seis enlaces, Tab enfoca el primero y Escape
+  cierra/restaura foco. No se ejercitaron compras ni envíos externos.
+- [Captura desktop](../references/ascaniopub/pub1-local/home-desktop.jpg),
+  [móvil](../references/ascaniopub/pub1-local/home-mobile.jpg),
+  [menú abierto](../references/ascaniopub/pub1-local/menu-mobile.jpg),
+  [mediciones](../references/ascaniopub/pub1-local/review.json) y
+  [manifiesto](../references/ascaniopub/pub1-local/manifest.json).
+
+Estos resultados no sustituyen PUB1.5/PUB3 sobre las dieciséis páginas ni la
+revisión editorial y operativa antes de publicar. PHP 8.3 se comprueba en CI del
+PR; no se declara probado localmente en esta entrega.

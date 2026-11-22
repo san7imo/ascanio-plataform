@@ -4,6 +4,7 @@ use App\Http\Controllers\Documents\DocumentController;
 use App\Http\Controllers\Documents\DocumentSharingController;
 use App\Http\Controllers\Documents\SharedDocumentController;
 use App\Http\Controllers\Parties\TenantPartyController;
+use App\Http\Controllers\PublicSiteController;
 use App\Http\Controllers\ResourceInvitationClaimController;
 use App\Http\Controllers\TeamInvitationClaimController;
 use App\Http\Controllers\Workspaces\GovernanceController;
@@ -11,11 +12,8 @@ use App\Http\Controllers\Workspaces\TeamInvitationController;
 use App\Http\Controllers\Workspaces\WorkspaceController;
 use App\Http\Middleware\ResolveWorkspace;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
 
-Route::inertia('/', 'Welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
+Route::get('/', [PublicSiteController::class, 'home'])->name('home');
 
 Route::get('team-invitations/review', [TeamInvitationClaimController::class, 'review'])->middleware(['auth', 'verified'])->name('team-invitations.review');
 Route::post('team-invitations/accept', [TeamInvitationClaimController::class, 'accept'])->middleware(['auth', 'verified', 'throttle:10,1'])->name('team-invitations.accept');
