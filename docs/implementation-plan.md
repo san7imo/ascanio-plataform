@@ -15,11 +15,11 @@ Actualización D1: 21 de noviembre de 2026. Base de entrega: `1c4a088`, con P1 i
 | F4 | Integrado | [PR #9](https://github.com/san7imo/ascanio-plataform/pull/9); cierre técnico con operación pendiente O0 |
 | P1 | Integrado | [PR #10](https://github.com/san7imo/ascanio-plataform/pull/10); regresión incluida en D1 |
 | D1 | Integrado mediante [PR #11](https://github.com/san7imo/ascanio-plataform/pull/11), merge 06f3c34 | [Versiones privadas, cuarentena, descarga y límites](implementation/d1-private-documents.md); 165 pruebas / 1801 aserciones; cargas reales deshabilitadas y O1 pendiente |
-| G1 | Implementado en PR, pendiente de integrar | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; no repetidos por este cambio documental |
+| G1 | Integrado mediante PR #12, merge aca2ad7 | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; no repetidos por este cambio documental |
 | PUB0 | Completado: inspección de lectura, inventario y capturas | [Referencias fechadas](references/ascaniopub/README.md), rutas, capturas desktop/móvil y decisión de conservar compra actual |
 | PUB1–PUB3 | Planificados; implementación pendiente | Réplica pública, integración de recorridos y validación según §4.1; sin nuevo motor de comercio |
 | O0 / O1 | Pendientes de evidencia técnica | Titular aportó PHP CLI/extensiones por SSH; faltan cuota/inodos, endpoints de servicios, ruta privada, escáner y operación medidos. [Preparación O1](operations/documents-readiness.md) |
-| Resto de hitos 2–6 | Diseño objetivo | Parties/Documents integrados, G1 pendiente de integrar y fachada pública planificada; catálogo y módulos musicales posteriores siguen pendientes |
+| Resto de hitos 2–6 | Diseño objetivo | Parties/Documents/G1 integrados y fachada pública planificada; catálogo y módulos musicales posteriores siguen pendientes |
 
 Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. Esta actualización es documental; no implementa ni publica la réplica.
 
@@ -304,13 +304,13 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Orden de ejecución y siguiente entrega
 
-La próxima implementación es **PUB1**, acotada por su [paquete de trabajo](implementation/pub1-public-site.md). La actualización documental no significa que G1 o el nuevo sitio ya estén en main: el corte verificado mantiene main en 06f3c34 y PRs #12/#13 abiertos. PUB0 sí está completado como inspección de lectura y referencia, sin implementación del reemplazo.
+La próxima implementación es **PUB1**, acotada por su [paquete de trabajo](implementation/pub1-public-site.md). La actualización documental no significa que G1 o el nuevo sitio ya estén en main: G1 se integró mediante PR #12 en aca2ad7; PR #13 sigue en revisión para incorporar la referencia pública. PUB0 sí está completado como inspección de lectura y referencia, sin implementación del reemplazo.
 
 ### 12.1. Secuencia de trabajo
 
 | Orden | Trabajo | Resultado que habilita el siguiente paso |
 |---|---|---|
-| 1 | Revisar e integrar G1 [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12) y el plan público [PR #13](https://github.com/san7imo/ascanio-plataform/pull/13) | Main contiene el acceso privado y ADR 0002. Integrar G1 primero y reconciliar los cambios documentales del plan conservando PUB0–PUB3 y la compra existente; comprobar el resultado integrado antes de abrir código nuevo |
+| 1 | Completar la integración del plan público [PR #13](https://github.com/san7imo/ascanio-plataform/pull/13), con G1 ya integrado | Main contiene el acceso privado y ADR 0002. G1 ya está integrado; reconciliar los cambios documentales del plan conservando PUB0–PUB3 y la compra existente; comprobar el resultado integrado antes de abrir código nuevo |
 | 2 | Implementar PUB1 desde ese main, en feat/public-institutional-site | Layout/marca, portada, seis servicios, guía, contacto, listado/tres productos y tres legales; revisión local de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
 | 3 | Implementar las partes definidas de PUB2 | Navegación, acceso, consentimiento y enlaces comprobados; conectar contacto/búsqueda solo con destino real autorizado. Conservar la compra existente; las dependencias no resueltas quedan registradas por recorrido |
 | 4 | Ejecutar la validación local de PUB3 | Comparación desktop/móvil, accesibilidad, SEO, rutas y privacidad aprobadas; lista explícita de pendientes operativos para publicar |

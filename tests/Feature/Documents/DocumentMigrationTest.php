@@ -35,7 +35,7 @@ class DocumentMigrationTest extends TestCase
 
     public function test_upgrade_from_p1_preserves_evidence_and_gives_only_the_protected_initial_bundle_new_authority(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $owner = User::factory()->create();
         $tenant = $this->workspaceFor($owner);
         $ordinary = $this->memberFor($tenant, User::factory()->create());
@@ -43,7 +43,7 @@ class DocumentMigrationTest extends TestCase
         DB::table('role_permissions')->whereIn('permission_id', $ids)->delete();
         DB::table('permissions')->whereIn('id', $ids)->delete();
         $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_21_000001_add_private_documents.php'])->assertSuccessful();
         $this->assertSame($before, DB::table('audit_events')->where('actor_type', 'user')->orderBy('id')->get()->toJson());
         $event = DB::table('audit_events')->where('action', 'access.documents.upgraded')->sole();
         $this->assertNull($event->actor_id);
@@ -64,9 +64,9 @@ class DocumentMigrationTest extends TestCase
 
     public function test_pristine_schema_rolls_back_and_reapplies_but_existing_documents_prevent_history_loss(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('documents'));
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_21_000001_add_private_documents.php'])->assertSuccessful();
         $owner = User::factory()->create();
         $tenant = $this->workspaceFor($owner);
         Document::create(['tenant_id' => $tenant->id, 'created_by' => $owner->id, 'title' => 'Synthetic historical metadata']);

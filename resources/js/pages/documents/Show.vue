@@ -7,6 +7,7 @@ import WorkspaceNav from '@/components/WorkspaceNav.vue';
 import WorkspacePagination from '@/components/WorkspacePagination.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { download, index, retry } from '@/routes/documents';
+import { index as sharing } from '@/routes/documents/sharing';
 import type { DocumentDetail, DocumentVersion } from '@/types/document';
 import type { Paginated, Workspace } from '@/types/workspace';
 
@@ -15,6 +16,7 @@ defineProps<{
     document: DocumentDetail;
     versions: Paginated<DocumentVersion>;
     canUpload: boolean;
+    canShare: boolean;
     uploadsEnabled: boolean;
     errors: { scan?: string };
 }>();
@@ -48,6 +50,12 @@ const states = {
                 descarga vuelve a comprobar tus permisos y la integridad de esa
                 versión.
             </p>
+            <Link
+                v-if="canShare"
+                :href="sharing([workspace.id, document.id])"
+                class="w-fit text-sm underline"
+                >Compartir una versión</Link
+            >
             <DocumentUploadForm
                 v-if="canUpload && uploadsEnabled"
                 :key="`${workspace.id}:${document.id}`"

@@ -88,3 +88,26 @@ No se solicita una contraseña, clave privada, token cPanel ni acceso SSH. Para 
 El usuario confirmó disponibilidad general de capacidad y almacenamiento en Kroma. Se registra como información del titular; no es una medición remota ni acredita una ruta privada, cuota/inodos actuales o un escáner. No se proporcionaron esos valores ni se autorizó una conexión directa nueva.
 
 D1 se desarrolla con fixtures y deja las cargas reales deshabilitadas. La [preparación O1](../operations/documents-readiness.md) precisa el probe de cuota, reservas/límites, almacenamiento privado persistente, escaneo, cifrado/retención y restauración pendientes. El resto de la matriz conserva sus límites; no se extrapolan los valores de octubre ni se declara compatible la operación por las pruebas locales.
+
+
+## Inspección SSH aportada por el titular — 22 de noviembre de 2026 UTC
+
+El titular ejecutó consultas de lectura desde su propia sesión SSH y compartió las salidas entre 01:12 y 01:16 UTC (21 de noviembre en Colombia). Esta evidencia amplía el informe histórico; no es una conexión directa ni una medición independiente del agente. No se incluyen IP, usuario, credenciales ni URLs de sesión. No hubo despliegue, instalación, modificación de servicios, consultas de negocio o pruebas con archivos reales.
+
+| Comprobación aportada | Resultado y alcance |
+|---|---|
+| Sistema y cuenta | Linux x86_64, kernel 4.18.0-477.27.2.lve.el8; cuenta sin privilegios root. El kernel indica CloudLinux/LVE; no permite deducir límites efectivos. |
+| PHP CLI | 8.4.28 NTS, OPcache; binario /usr/local/bin/php, ini /opt/alt/php84/etc/php.ini y /opt/alt/php84/link/conf/alt_php.ini. PHP web aún sin comprobar. |
+| Extensiones CLI | Incluye PDO, pdo_pgsql/pgsql, redis, fileinfo, mbstring, intl, DOM/XML/XMLWriter, OpenSSL, curl, zip, bcmath y pcntl. No se ha ejecutado Composer check-platform-reqs allí. |
+| Límites CLI | upload_max_filesize=512M, post_max_size=512M, memory_limit=512M, max_execution_time=0; upload_tmp_dir, sys_temp_dir, open_basedir y disable_functions vacíos. No equivalen a configuración web ni permiso para daemons. |
+| Herramientas visibles en PATH | Composer, Git, crontab, redis-cli y redis-server. Composer/Git y el servidor Redis sin versión comprobada. No aparecen node/npm, psql, pg_isready, pg_config, ss, quota, supervisorctl, clamscan, clamdscan o freshclam en las búsquedas ejecutadas. Ausencia en PATH no prueba ausencia en todo el hosting. |
+| Redis CLI | 5.0.3. Es versión del cliente, no del servicio ni prueba de compatibilidad operativa. |
+| Conexiones locales | Apertura/cierre TCP mediante PHP a 127.0.0.1:5432 y :6379: ambas rechazadas, código 111. No hay servicio TCP accesible en esos endpoints desde esa sesión; falta confirmar endpoints alternativos, sockets y autorización de cuenta con Kroma. |
+| Rutas públicas visibles | public_html bajo HOME y www como enlace a public_html. HOME 0711; public_html 0750, propiedad de la cuenta y grupo nobody. Faltan raíces de dominios adicionales y ruta privada persistente permitida; no se creó ninguna carpeta. |
+| Filesystem | df muestra 2,2 T totales, 2,0 T usados, 139 G disponibles, 94% utilizado; 121.796.288 inodos libres del filesystem. No son cuota/inodos disponibles para la cuenta ni presupuesto de Ascanio. |
+| Consulta de cuota/API | quota no disponible. UAPI con --user falla por setuid de usuario ordinario; sin esa opción falla al ejecutar /usr/local/cpanel/cpanel, no disponible en la sesión. No se elevan permisos ni reparan binarios para esta inspección. |
+| Seguridad del hosting | PHP incluye i360 y monarxprotect; no acredita una interfaz invocable para escanear cada original ni sus firmas/límites. MalwareScanner operativo sigue pendiente. |
+
+El titular no dispone de acceso cPanel en este momento. La cuota/inodos actuales, método automatizado de medición, PostgreSQL/Redis asignados, límites LVE, workers, región, SMTP, escáner, cifrado y backups/restauración requieren evidencia adicional del panel/proveedor. Los límites ulimit de la shell no prueban las políticas del hosting. Los recursos web pueden compilarse localmente/CI antes de una entrega futura; no se requiere instalar Node en Kroma por este hallazgo.
+
+O0/O1 siguen abiertos, DOCUMENT_UPLOADS_ENABLED=false y adaptadores reales pendientes. Se continúa desarrollo local con PostgreSQL/Redis y fixtures; no se adopta MySQL, otro hosting ni almacenamiento externo como consecuencia de esta inspección.

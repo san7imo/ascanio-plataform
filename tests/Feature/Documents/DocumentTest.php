@@ -365,7 +365,7 @@ class DocumentTest extends TestCase
         $this->reject(fn () => DB::table('document_versions')->insert($row), '23503');
         $this->reject(fn () => DB::table('document_versions')->where('tenant_id', $a->id)->update(['sha256' => str_repeat('0', 64)]), '23514');
         $this->reject(fn () => DB::table('document_versions')->where('tenant_id', $a->id)->delete(), '23514');
-        $this->reject(fn () => DB::statement('TRUNCATE document_versions'), '23514');
+        $this->reject(fn () => DB::statement('TRUNCATE document_versions CASCADE'), '23514');
         $this->scan($version);
         $this->reject(fn () => DB::table('document_versions')->where('tenant_id', $a->id)->update(['scan_status' => 'quarantined']), '23514');
     }

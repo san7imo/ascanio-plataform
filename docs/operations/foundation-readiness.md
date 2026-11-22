@@ -6,7 +6,7 @@ Fecha de corte: 15 de noviembre de 2026. Estado: procedimiento preparado; operac
 
 | Puerta | Evidencia necesaria | Estado |
 |---|---|---|
-| Runtime Kroma | PHP web/CLI compatible, extensiones, Composer, PostgreSQL/Redis y región comprobados | Pendiente O0 |
+| Runtime Kroma | PHP web/CLI compatible, extensiones, Composer, PostgreSQL/Redis y región comprobados | PHP CLI/extensiones aportados por el titular; conexiones TCP locales rechazadas; resto pendiente O0 |
 | Procesos | Supervisión/reinicio de worker o alternativa acotada permitida por el proveedor; límites y cron | Pendiente O0 |
 | Permisos | Credenciales distintas de migración/runtime; runtime sin DDL ni modificación del historial | Probado solo localmente con login restringido |
 | Web y storage | HTTPS, raíz pública exclusiva public/, storage privado persistente fuera de toda raíz pública, permisos y secretos fuera del repositorio | Pendiente O0 |
