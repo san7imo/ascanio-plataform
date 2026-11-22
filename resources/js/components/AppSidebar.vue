@@ -14,6 +14,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as sharedDocuments } from '@/routes/shared-documents';
 import { index as workspaces } from '@/routes/workspaces';
 import type { NavItem } from '@/types';
 
@@ -22,6 +23,11 @@ const mainNavItems: NavItem[] = [
         title: 'Inicio',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Documentos compartidos',
+        href: sharedDocuments(),
+        icon: Building2,
     },
     { title: 'Mis espacios', href: workspaces(), icon: Building2 },
 ];

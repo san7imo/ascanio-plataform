@@ -34,7 +34,7 @@ class PartyMigrationTest extends TestCase
 
     public function test_upgrade_preserves_existing_history_adds_only_initial_owner_capabilities_and_invalidates_old_authority_epochs(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
         $first = User::factory()->create();
         $a = $this->workspaceFor($first);
         $b = $this->workspaceFor(User::factory()->create());
@@ -67,7 +67,7 @@ class PartyMigrationTest extends TestCase
 
     public function test_pristine_schema_can_be_reapplied_but_recorded_party_history_cannot_be_downgraded(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenant_parties'));
         $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000003_add_tenant_parties.php'])->assertSuccessful();
         $owner = User::factory()->create();

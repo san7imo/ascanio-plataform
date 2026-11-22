@@ -6,9 +6,11 @@ use App\Models\User;
 use App\Modules\Documents\Actions\UploadDocumentVersion;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\InvitationRoles;
+use App\Modules\IdentityAccess\Actions\ShareDocumentVersion;
 use App\Modules\IdentityAccess\Models\Permission;
 use App\Modules\IdentityAccess\Models\Role;
 use App\Modules\IdentityAccess\Models\TeamInvitation;
+use App\Modules\IdentityAccess\Queries\DocumentGrantAccess;
 use App\Modules\IdentityAccess\TenantContext;
 use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
@@ -159,7 +161,7 @@ class WorkspaceConcurrencyTest extends TestCase
 
     public function test_foundation_migrations_roll_back_and_reapply_without_rewriting_scaffold_history(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 5])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 6])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenants'));
         $this->assertTrue(Schema::hasTable('users'));
         $this->assertFalse(Schema::hasColumn('users', 'status'));
@@ -317,5 +319,40 @@ class WorkspaceConcurrencyTest extends TestCase
         sort($outcomes);
         $this->assertSame(['denied', 'ok'], $outcomes);
         $this->assertSame($invitation->fresh()->status === 'accepted' ? 1 : 0, $tenant->memberships()->where('user_id', $recipient->id)->count());
+    }
+
+    public function test_resource_invitation_is_consumed_once_and_concurrent_revocation_leaves_no_access(): void
+    {
+        SyntheticDocumentEnvironment::configure();
+        $owner = User::factory()->create();
+        $tenant = $this->workspaceFor($owner);
+        $recipient = User::factory()->create();
+        app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+        $version = app(UploadDocumentVersion::class)->execute($owner, $tenant, null, [
+            'title' => 'Synthetic concurrent share', 'upload_key' => (string) Str::uuid(),
+        ], UploadedFile::fake()->createWithContent('race-share.txt', 'Synthetic race share'));
+        try {
+            $proof = $this->proofFor($owner);
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+            $invitation = app(ShareDocumentVersion::class)->invite($owner, $tenant, $version->document_id, $version->id, $recipient->email, 'file', 7, $proof);
+            $operation = ['accept-resource', $recipient->id, $tenant->id, $invitation->id];
+            $outcomes = array_column($this->race([$operation, $operation]), 'result');
+            sort($outcomes);
+            $this->assertSame(['denied', 'ok'], $outcomes);
+            $this->assertDatabaseCount('resource_grants', 1);
+            $this->assertSame(1, DB::table('audit_events')->where('action', 'resource_invitation.accepted')->count());
+            $proof = $this->proofFor($owner);
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+            $next = app(ShareDocumentVersion::class)->invite($owner, $tenant, $version->document_id, $version->id, $recipient->email, 'file', 7, $proof);
+            $outcomes = array_column($this->race([
+                ['accept-resource', $recipient->id, $tenant->id, $next->id],
+                ['revoke-resource', $owner->id, $tenant->id, $next->id],
+            ]), 'result');
+            $this->assertContains('ok', $outcomes);
+            $this->assertFalse(app(DocumentGrantAccess::class)->query($recipient)->where('resource_grants.invitation_id', $next->id)->exists());
+            $this->assertSame(1, $tenant->memberships()->count());
+        } finally {
+            Storage::disk('documents')->deleteDirectory('tenants');
+        }
     }
 }

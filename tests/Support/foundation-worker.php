@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\IdentityAccess\Mail\ResourceInvitationMail;
 use App\Modules\IdentityAccess\Mail\TeamInvitationMail;
 use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -55,6 +56,7 @@ echo Artisan::output();
 Redis::rpush($key, json_encode([
     'phase' => 'summary', 'pid' => getmypid(),
     'invitations' => $mode === 'mail-failure' ? 0 : Mail::sent(TeamInvitationMail::class)->count(),
+    'resource_invitations' => $mode === 'mail-failure' ? 0 : Mail::sent(ResourceInvitationMail::class)->count(),
     'accounts' => array_sum(array_map(static fn ($types) => array_sum(array_map('count', $types)), Notification::sentNotifications())),
 ], JSON_THROW_ON_ERROR));
 exit($exit);

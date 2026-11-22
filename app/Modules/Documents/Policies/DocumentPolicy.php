@@ -21,6 +21,14 @@ class DocumentPolicy
         return $document->tenant_id === $tenant->id && $this->viewAny($actor, $tenant);
     }
 
+    public function share(User $actor, Document $document, Tenant $tenant): bool
+    {
+        return $this->view($actor, $document, $tenant)
+            && $this->access->allows($actor, $tenant, 'documents.share')
+            && $this->access->allows($actor, $tenant, 'tenant.view')
+            && $this->access->canDelegate($actor, $tenant, 'documents.view');
+    }
+
     public function create(User $actor, Tenant $tenant): bool
     {
         return $this->viewAny($actor, $tenant) && $this->access->allows($actor, $tenant, 'documents.upload');

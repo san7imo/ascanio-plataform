@@ -42,6 +42,7 @@ class DocumentController extends Controller
             'workspace' => $workspaces->projection($workspace),
             'document' => ['id' => $record->id, 'title' => $record->title, 'description' => $record->description, 'version_count' => (int) $record->version_count],
             'versions' => $queries->versions($request->user(), $workspace, $record),
+            'canShare' => Gate::allows('share', [$record, $workspace]),
             'uploadsEnabled' => (bool) config('documents.uploads_enabled'), 'canUpload' => Gate::allows('upload', [$record, $workspace]),
         ]);
     }
