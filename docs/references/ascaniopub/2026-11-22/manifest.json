@@ -1,0 +1,467 @@
+{
+  "source": "https://ascaniopub.com/",
+  "date_utc": "2026-11-22",
+  "format": "JPEG quality 85; original browser captures, no retouching",
+  "viewports": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "files": [
+    {
+      "file": "aviso-legal-desktop.jpg",
+      "bytes": 1308351,
+      "dimensions": [
+        1440,
+        5812
+      ],
+      "sha256": "b2c994ff2c23a80d1cdb17f4200a006a435d9e05f2872be1134ebceaa685d2c6"
+    },
+    {
+      "file": "aviso-legal-mobile.jpg",
+      "bytes": 1253140,
+      "dimensions": [
+        390,
+        15388
+      ],
+      "sha256": "82775017af8804653a539647393ecd03e5658bf358d349e517f734b74563662f"
+    },
+    {
+      "file": "carrito-desktop.jpg",
+      "bytes": 57522,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "d458183a353570da033b48c45d0866dc52a2f48e4a41d42010dfb59b11f42194"
+    },
+    {
+      "file": "carrito-mobile.jpg",
+      "bytes": 32732,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "a811c72ef68ee98820f4a64abc1d056a47bb0306771fcb19fa121c67f6a1a6a1"
+    },
+    {
+      "file": "checkout-desktop.jpg",
+      "bytes": 57522,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "d458183a353570da033b48c45d0866dc52a2f48e4a41d42010dfb59b11f42194"
+    },
+    {
+      "file": "checkout-mobile.jpg",
+      "bytes": 32732,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "a811c72ef68ee98820f4a64abc1d056a47bb0306771fcb19fa121c67f6a1a6a1"
+    },
+    {
+      "file": "contacto-desktop-before-interaction.jpg",
+      "bytes": 51064,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "1e48d7ea6a48e854e3f577bb3f2922bd5397c783127562da4e6c1a57ac85509b"
+    },
+    {
+      "file": "contacto-desktop.jpg",
+      "bytes": 88441,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "52f8afad031b995e7575198c1ded81c89b0fd1b9118e4d853f15e60d5be9a561"
+    },
+    {
+      "file": "contacto-mobile-before-interaction.jpg",
+      "bytes": 31271,
+      "dimensions": [
+        390,
+        945
+      ],
+      "sha256": "0f211b290fe11865f5360d24fb6ae52c4c6e7a513b25ab4e8e8c683613ee6fd8"
+    },
+    {
+      "file": "contacto-mobile.jpg",
+      "bytes": 45268,
+      "dimensions": [
+        390,
+        1022
+      ],
+      "sha256": "e7c93f42fe2ed67fa38d550d5d35fe10ce2d4b4ba910a6333d2356592cd56ecf"
+    },
+    {
+      "file": "cookies-desktop.jpg",
+      "bytes": 493174,
+      "dimensions": [
+        1440,
+        2788
+      ],
+      "sha256": "0141d0af7c543b0b72ab9320bc3371333e571ffe2e743710e1dd834a02f33333"
+    },
+    {
+      "file": "cookies-mobile.jpg",
+      "bytes": 479990,
+      "dimensions": [
+        390,
+        6638
+      ],
+      "sha256": "0588d3e6a4d1fc084404c6f711acf79054e9ff837e8a79d73c081f87fe1c70ca"
+    },
+    {
+      "file": "cookies-preferences-desktop.jpg",
+      "bytes": 102951,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "d4173be6aca40f8d214f1f43057d5a9af4732498dac0dbb6cb05a6ee6544852c"
+    },
+    {
+      "file": "cuenta-comercial-desktop.jpg",
+      "bytes": 65083,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "e32f73db140e69b9376de149433739518becaca157b6dd7d3b739849f2586229"
+    },
+    {
+      "file": "cuenta-comercial-mobile.jpg",
+      "bytes": 37385,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "eaf47afce0ea1eac8efb04b572a7ad96e67b61bbb3bd8753cf48b9ae748a9970"
+    },
+    {
+      "file": "desarrollo-web-desktop.jpg",
+      "bytes": 176938,
+      "dimensions": [
+        1440,
+        1703
+      ],
+      "sha256": "043629342cb3b1ea81a8dbafc8ab105a6c48989d200ab55caedca4e02a08a62c"
+    },
+    {
+      "file": "desarrollo-web-mobile.jpg",
+      "bytes": 168421,
+      "dimensions": [
+        390,
+        3933
+      ],
+      "sha256": "ab6ff00616a66635ff502f7ab2fff4e2e6b57e3e60eb1ca585584a57843c3fd9"
+    },
+    {
+      "file": "distribucion-desktop.jpg",
+      "bytes": 97934,
+      "dimensions": [
+        1440,
+        1170
+      ],
+      "sha256": "68f8487e0ed798a49b7a52ce7effaff269a6eabeb1d0bf4fb6cbe149c828e6ab"
+    },
+    {
+      "file": "distribucion-mobile.jpg",
+      "bytes": 44978,
+      "dimensions": [
+        390,
+        931
+      ],
+      "sha256": "73274a68d70cb7482014197dfe19f3197a3a6c3fbfb9bf7254a1be08925f2c73"
+    },
+    {
+      "file": "identidad-visual-desktop.jpg",
+      "bytes": 358154,
+      "dimensions": [
+        1440,
+        2517
+      ],
+      "sha256": "9c3b50c9d965f3fde9e682dd5b7202e23a2daa5ac7d7b6afdf06e1560043a30d"
+    },
+    {
+      "file": "identidad-visual-mobile.jpg",
+      "bytes": 196502,
+      "dimensions": [
+        390,
+        2837
+      ],
+      "sha256": "4e234b3351c313e1a4551afd6a080a46678f294032fcffe0540c854a5bc48124"
+    },
+    {
+      "file": "inicio-desktop-before-interaction.jpg",
+      "bytes": 185113,
+      "dimensions": [
+        1440,
+        1398
+      ],
+      "sha256": "93ea261edc9bf044d3be47f8d51016831547ef028b6efc9b0c8f25dd721fb3d4"
+    },
+    {
+      "file": "inicio-desktop-slider.jpg",
+      "bytes": 110678,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "466636addca80b3122936a211e3b4b146569add3b2ecb916527044c8d1d7f6e3"
+    },
+    {
+      "file": "inicio-desktop.jpg",
+      "bytes": 176575,
+      "dimensions": [
+        1440,
+        1398
+      ],
+      "sha256": "4f688ee12dbdf146f5ede1168689b73011bae13bc27df570381616080ae6c65d"
+    },
+    {
+      "file": "inicio-mobile.jpg",
+      "bytes": 94729,
+      "dimensions": [
+        390,
+        1734
+      ],
+      "sha256": "203887fdcc9af9a0c948df9078a9e79ea3888103e7331c879281e8890ed907da"
+    },
+    {
+      "file": "medios-desktop.jpg",
+      "bytes": 94176,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "ea9a35d2fe5509cdaa33760a46dd9ebae57f4c33dd431426672c45c95d9aece4"
+    },
+    {
+      "file": "medios-mobile.jpg",
+      "bytes": 40006,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "a38741771f0030a66fce59abef9be6125730f8c473b77b1bebe5c46492de491c"
+    },
+    {
+      "file": "navigation-desktop-hover.jpg",
+      "bytes": 111281,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "65db0d576ab8565b7877c1c0564b36930abc4cee31b173dcd33ddc366d99d981"
+    },
+    {
+      "file": "navigation-mobile-open.jpg",
+      "bytes": 37510,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "d20c69020dbba4e5b7023fc31220704c181aeb5a40aee2cd66cc39c71bb2e9f6"
+    },
+    {
+      "file": "pagina-heredada-desktop.jpg",
+      "bytes": 176575,
+      "dimensions": [
+        1440,
+        1398
+      ],
+      "sha256": "4f688ee12dbdf146f5ede1168689b73011bae13bc27df570381616080ae6c65d"
+    },
+    {
+      "file": "pagina-heredada-mobile.jpg",
+      "bytes": 94729,
+      "dimensions": [
+        390,
+        1734
+      ],
+      "sha256": "203887fdcc9af9a0c948df9078a9e79ea3888103e7331c879281e8890ed907da"
+    },
+    {
+      "file": "presupuesto-desktop.jpg",
+      "bytes": 47927,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "c57398f78124ab4b34af995c0e6aa56371608c67679b6793a9a97d42ce0c590b"
+    },
+    {
+      "file": "presupuesto-mobile.jpg",
+      "bytes": 26704,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "3de5d992b5b39ea53bf547534e98fef8955223db11424bbc27fa585b197e8bcb"
+    },
+    {
+      "file": "primeros-pasos-desktop.jpg",
+      "bytes": 718566,
+      "dimensions": [
+        1440,
+        4180
+      ],
+      "sha256": "f2d0f45e4de99e7863096b176fc748168ab5abd404e65036e2da74668af78a46"
+    },
+    {
+      "file": "primeros-pasos-mobile-accordion.jpg",
+      "bytes": 37132,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "bbcfdd2c67430a45c7febd145894582d20bacdbe84eb10da58f0ce63c1cd0b48"
+    },
+    {
+      "file": "primeros-pasos-mobile.jpg",
+      "bytes": 747979,
+      "dimensions": [
+        390,
+        11026
+      ],
+      "sha256": "1bc2ed659be9be6af62790670e0317dbdd84aeec56ede13c64cd613aa8414009"
+    },
+    {
+      "file": "privacidad-desktop.jpg",
+      "bytes": 605328,
+      "dimensions": [
+        1440,
+        3412
+      ],
+      "sha256": "aff0d372fae922d52b3af442291ab13f2ecbf81e8a54a216d05cfb352910666b"
+    },
+    {
+      "file": "privacidad-mobile.jpg",
+      "bytes": 553523,
+      "dimensions": [
+        390,
+        7570
+      ],
+      "sha256": "2817ac497e72a8cf3127232771426d013f92d45293ed1334e528fb6bd9e5ed1b"
+    },
+    {
+      "file": "producto-sincronizacion-desktop.jpg",
+      "bytes": 120666,
+      "dimensions": [
+        1440,
+        1526
+      ],
+      "sha256": "0fe914619a0fbc1c029fdcd007e9162817a4b347efe7ccce3fcd95773960c447"
+    },
+    {
+      "file": "producto-sincronizacion-mobile.jpg",
+      "bytes": 72041,
+      "dimensions": [
+        390,
+        1487
+      ],
+      "sha256": "b3f5611864a560dcde18551ac4d4d4701644aa7e1c51763a51aa17d68016161b"
+    },
+    {
+      "file": "producto-smart-url-desktop.jpg",
+      "bytes": 91206,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "7c1a0fdfea661591d3713450df8f02a9d161a5e7a994c486ae44159b2d9f6c9e"
+    },
+    {
+      "file": "producto-smart-url-mobile.jpg",
+      "bytes": 50105,
+      "dimensions": [
+        390,
+        849
+      ],
+      "sha256": "67d1a0dd3cc74dc214271f8271c0e74b83ec7330cfd361f79135b8e75338a1d2"
+    },
+    {
+      "file": "producto-vevo-desktop.jpg",
+      "bytes": 103073,
+      "dimensions": [
+        1440,
+        1038
+      ],
+      "sha256": "a4e70e54c486b3ee5524123c0e35b80f8d19c6b7caf3eaf889349e6daf71d73b"
+    },
+    {
+      "file": "producto-vevo-mobile.jpg",
+      "bytes": 54008,
+      "dimensions": [
+        390,
+        1001
+      ],
+      "sha256": "f8c11ff2aaaa6a651f481617a421489a31c7cd9a4ddf30f0ae5d1d5e164b90fc"
+    },
+    {
+      "file": "publishing-desktop.jpg",
+      "bytes": 96011,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "fd6d45077f54860681909dc1918da231c992d0788a228f0d2953b39c7f96691f"
+    },
+    {
+      "file": "publishing-mobile.jpg",
+      "bytes": 41382,
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "a361d894a97cfadc52bfe1734b72a8c6da78d6cfd21be3481d8df913c3930ef5"
+    },
+    {
+      "file": "social-media-desktop.jpg",
+      "bytes": 108611,
+      "dimensions": [
+        1440,
+        1410
+      ],
+      "sha256": "b7140cf7dee97218489cda87220a1a989807aed79f785a1cc68f3ba53cb93abb"
+    },
+    {
+      "file": "social-media-mobile.jpg",
+      "bytes": 75241,
+      "dimensions": [
+        390,
+        1839
+      ],
+      "sha256": "706b4c992c92ec2ea881e1b411d5e0b98a27b9ef2ad23fdb8452d07aa34b8205"
+    },
+    {
+      "file": "tienda-desktop.jpg",
+      "bytes": 59409,
+      "dimensions": [
+        1440,
+        1091
+      ],
+      "sha256": "8c151703b92486715f874e2012564536e106266d93ae4bcd4e14f637fc748070"
+    },
+    {
+      "file": "tienda-mobile.jpg",
+      "bytes": 93595,
+      "dimensions": [
+        390,
+        2046
+      ],
+      "sha256": "459cfd2545caafb5139f5972ab6c80e59622448bf5dcf972a638fed06219e62d"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ Plataforma SaaS independiente para organizar la operación musical de sellos, ed
 
 **Estado al 21 de noviembre de 2026:** Laravel 12 / Vue 3 / TypeScript / Inertia / Vite, Fortify, PostgreSQL y Redis, con P0, F1–F4 y P1 integrados en `main`. Foundation técnico cubre identidad, workspaces, memberships, roles/delegación, MFA, invitaciones, revocación, auditoría y jobs aislados. P1 añade contrapartes privadas provisionales y revisiones inmutables. El [núcleo D1](docs/implementation/d1-private-documents.md) incorpora documentos/versiones privadas, cuarentena, checksum y descarga autenticada, probado con archivos sintéticos. Las cargas reales permanecen deshabilitadas: [O1](docs/operations/documents-readiness.md) requiere cuota/inodos, ruta persistente y escáner comprobados. Kroma tiene disponibilidad general de almacenamiento confirmada por el titular; su operación concreta sigue pendiente. Grants a recursos y módulos musicales no están implementados. Consultar [plan vigente](docs/implementation-plan.md), [P1](docs/implementation/p1-tenant-parties.md), [F4](docs/implementation/f4-foundation-readiness.md) y [mantenimiento P0](docs/security/dependency-maintenance.md) para evidencia y límites.
 
+**Sitio público incorporado al alcance:** se replicará la web institucional de [ascaniopub.com](https://ascaniopub.com/), manteniendo marca, páginas y presentación de productos. El titular eligió conservar la compra actual, sin carrito/pagos propios. El sitio anónimo y el portal autenticado de participantes tienen recorridos distintos; sus permisos no cambian. Ver [ADR 0002](docs/adr/0002-public-institutional-site.md), [capturas e inventario](docs/references/ascaniopub/README.md) y entregas PUB0–PUB3 del plan. Esta actualización prepara la réplica; no la implementa ni publica.
+
 **Objetivo del MVP:** gestionar participantes, catálogo, derechos, splits, contratos, firmas y registros con acceso individual y aislamiento entre espacios de trabajo.
 
 El [plan de implementación](docs/implementation-plan.md) audita este roadmap y lo desglosa en entregas, dependencias, pruebas y decisiones pendientes. El [ADR 0001](docs/adr/0001-implementation-sequencing.md) precisa el orden de grants y documentos. Este README conserva la base de arquitectura y dominio; [AGENTS.md](AGENTS.md) mantiene el contrato de ingeniería. La [comprobación Kroma](docs/hosting/kroma-compatibility.md) contiene evidencia histórica aportada por el usuario, sin confirmar compatibilidad de producción.
@@ -39,7 +41,7 @@ Las relaciones son una red. Un artista no pertenece exclusivamente a un sello; u
 | `Work` equivale a composición; `Recording` representa grabación | Evita duplicar obras/composiciones y separa derechos | Relación N:M para varias obras/grabaciones |
 | Derechos separados del reparto de ingresos | Un productor puede recibir ingresos sin ser titular del master | Exigir base del porcentaje, derecho, territorio, vigencia y evidencia |
 | Inertia para la primera web | Reduce una segunda capa frontend sin acoplar reglas al renderizado | Acciones y DTOs reutilizables; no duplicar cada endpoint como REST |
-| Portal limitado de participantes en MVP | Consultar y aceptar splits pertenece al flujo inicial | EPK, web pública y pagos pasan a fases posteriores |
+| Portal limitado de participantes en MVP | Consultar y aceptar splits pertenece al flujo inicial | Web institucional de Ascanio incorporada por ADR 0002; EPK, webs de tenants y pagos propios siguen después |
 | CWR acotado por versión y destinatario | Entrega verificable | No prometer compatibilidad universal ni marcar exportación como registro |
 | Branding básico en MVP | Logo, colores y nombre | Dominios propios y SMTP por cliente requieren validación operativa posterior |
 
@@ -454,13 +456,15 @@ CWR no es un formato de liquidación genérico ni sustituto de reportes de royal
 | 5. Registration | Readiness, expedientes, CWR para primer perfil y seguimiento manual | Export validado; envío/aceptación con evidencia; no circularidad de requisitos |
 | 6. Validación del MVP | Flujos completos en staging y restauración ensayada | Pruebas por al menos tres contextos operativos y seguridad completas |
 
+La fachada pública institucional se incorpora mediante PUB0–PUB3 conforme al [ADR 0002](docs/adr/0002-public-institutional-site.md), conservando la compra actual. Es un frente de presentación previo al siguiente catálogo, sin renumerar los hitos de dominio ni introducir comercio propio.
+
 El portal básico se entrega en hito 3, no se pospone al módulo de regalías. Los participantes ven porcentajes y contratos; los saldos de regalías se añaden después, cuando exista cálculo y fuente de ingresos real.
 
 Según el [ADR 0001](docs/adr/0001-implementation-sequencing.md), IdentityAccess conserva la propiedad de grants e invitaciones, pero incorpora cada FK y policy cuando exista su recurso: documentos/catálogo en hito 2, versiones de splits en hito 3 y contratos en hito 4. El núcleo de Documents se adelanta al hito 2 para respaldar evidencia de derechos; el Vault contractual completo permanece en hito 4. No crear tablas musicales vacías para cerrar Foundation ni habilitar acceso por un ID arbitrario.
 
 Escenarios obligatorios: sello con productor externo; editorial con obra no grabada y administración parcial; artista independiente con manager; mismo usuario en varios contextos; grupo con varios integrantes; dos publishers con divulgación limitada.
 
-Fuera del MVP: royalties/recoupment/payouts, contabilidad fiscal multinacional, billing automático, EPK y webs públicas, booking/touring/ticketing, CRM comercial avanzado, partnerships/inversores, sync, A&R ampliado, fan CRM, marketing, commerce, analytics externos, IA/copiloto/audio, valoración, distribución DDEX y API pública.
+Fuera del MVP: royalties/recoupment/payouts, contabilidad fiscal multinacional, billing automático, EPK y webs públicas de tenants/artistas, booking/touring/ticketing, CRM comercial avanzado, partnerships/inversores, sync, A&R ampliado, fan CRM, marketing, commerce, analytics externos, IA/copiloto/audio, valoración, distribución DDEX y API pública.
 
 Notificaciones básicas, auditoría, protección de datos, backups y soporte operativo mínimo son foundation; no se difieren porque el PRD tenga módulos transversales posteriores.
 

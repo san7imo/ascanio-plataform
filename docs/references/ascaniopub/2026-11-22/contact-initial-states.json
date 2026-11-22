@@ -1,0 +1,22 @@
+[
+  {
+    "file": "contacto-desktop-before-interaction.jpg",
+    "url": "https://ascaniopub.com/contacto/",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capturedAt": "2026-11-22T02:10:37.189Z",
+    "deferredScripts": 26
+  },
+  {
+    "file": "contacto-mobile-before-interaction.jpg",
+    "url": "https://ascaniopub.com/contacto/",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "capturedAt": "2026-11-22T02:10:39.223Z",
+    "deferredScripts": 26
+  }
+]
