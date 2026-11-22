@@ -3,14 +3,18 @@
 namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
+use App\Modules\Documents\Actions\UploadDocumentVersion;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Actions\SaveRole;
 use App\Modules\IdentityAccess\TenantContext;
 use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Tests\Support\SyntheticDocumentEnvironment;
 use Tests\Support\WorkspaceFixtures;
 use Tests\TestCase;
 
@@ -41,10 +45,11 @@ class GovernanceRuntimeRoleTest extends TestCase
             }
             $migration->unprepared("GRANT CONNECT ON DATABASE ascanio_test TO {$role}; GRANT USAGE ON SCHEMA public TO {$role}");
             // Current application tables, not a grant on all future business data.
-            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles,tenant_parties,party_identifiers,tenant_party_business_types';
+            $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles,tenant_parties,party_identifiers,tenant_party_business_types,documents';
             $migration->unprepared("GRANT SELECT,INSERT,UPDATE,DELETE ON {$tables} TO {$role}");
             $migration->unprepared("GRANT SELECT ON permissions,audit_events,business_types TO {$role}");
-            $migration->unprepared("GRANT SELECT,INSERT ON tenant_party_revisions TO {$role}");
+            $migration->unprepared("GRANT SELECT,INSERT ON tenant_party_revisions,document_versions TO {$role}");
+            $migration->unprepared("GRANT UPDATE (scan_status,scan_generation,scan_requested_by,source_membership_id,source_access_version,failure_code,scanned_at,updated_at) ON document_versions TO {$role}");
             $migration->unprepared("GRANT INSERT (id,tenant_id,actor_id,action,resource_type,resource_id,changes,occurred_at) ON audit_events TO {$role}");
             $migration->unprepared("GRANT USAGE,SELECT ON SEQUENCE jobs_id_seq,failed_jobs_id_seq TO {$role}");
             $actor = User::factory()->create();
@@ -79,10 +84,23 @@ class GovernanceRuntimeRoleTest extends TestCase
                 'kind' => 'organization', 'display_name' => 'Updated runtime counterpart', 'business_type_codes' => ['publishing'], 'identifiers' => [], 'version' => 1,
             ]);
             $this->assertDatabaseCount('tenant_party_revisions', 2);
-            $this->assertDatabaseCount('audit_events', 7);
+            SyntheticDocumentEnvironment::configure();
+            $version = app(UploadDocumentVersion::class)->execute($actor, $tenant, null, [
+                'title' => 'Runtime document', 'upload_key' => (string) Str::uuid(),
+            ], UploadedFile::fake()->createWithContent('runtime.txt', 'Synthetic runtime document'));
+            $this->assertSame('clean', $version->fresh()->scan_status);
+            $response = $this->actingAs($actor)->get(route('documents.download', [$tenant, $version->document_id, $version->id]));
+            $response->assertOk();
+            $this->assertSame('Synthetic runtime document', $response->streamedContent());
+            $this->assertDatabaseCount('audit_events', 10);
             $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
 
             $forbidden = [
+                "UPDATE document_versions SET sha256 = 'forged'",
+                'DELETE FROM document_versions',
+                'TRUNCATE document_versions',
+                'ALTER TABLE document_versions DISABLE TRIGGER document_version_immutable',
+                'DROP FUNCTION protect_document_version()',
                 "UPDATE tenant_party_revisions SET snapshot = '{}'",
                 'DELETE FROM tenant_party_revisions',
                 'TRUNCATE tenant_party_revisions',
@@ -111,6 +129,7 @@ class GovernanceRuntimeRoleTest extends TestCase
             $this->assertSame($role, DB::selectOne('SELECT session_user AS name')->name);
         } finally {
             app(TenantContext::class)->clear();
+            Storage::disk('documents')->deleteDirectory('tenants');
             DB::purge('pgsql');
             config(['database.connections.pgsql' => $original]);
             if ($created) {

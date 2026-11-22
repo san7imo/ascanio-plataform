@@ -81,3 +81,10 @@ No se solicita una contraseña, clave privada, token cPanel ni acceso SSH. Para 
 - Recepción y clasificación del texto cPanel aportado por el usuario; no se realizó conexión directa ni acceso a sus URLs de sesión.
 - Revisión de enlaces locales, Markdown y whitespace del informe.
 - No se repitieron pruebas de aplicación: esta incorporación y este informe son documentales, sin cambios de código, dependencias ni migraciones.
+
+
+## Actualización aportada el 21 de noviembre de 2026
+
+El usuario confirmó disponibilidad general de capacidad y almacenamiento en Kroma. Se registra como información del titular; no es una medición remota ni acredita una ruta privada, cuota/inodos actuales o un escáner. No se proporcionaron esos valores ni se autorizó una conexión directa nueva.
+
+D1 se desarrolla con fixtures y deja las cargas reales deshabilitadas. La [preparación O1](../operations/documents-readiness.md) precisa el probe de cuota, reservas/límites, almacenamiento privado persistente, escaneo, cifrado/retención y restauración pendientes. El resto de la matriz conserva sus límites; no se extrapolan los valores de octubre ni se declara compatible la operación por las pruebas locales.

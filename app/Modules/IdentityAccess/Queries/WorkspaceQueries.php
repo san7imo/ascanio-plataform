@@ -52,6 +52,7 @@ class WorkspaceQueries
 
         return [
             'id' => $tenant->id, 'name' => $tenant->name, 'locale' => $tenant->locale, 'timezone' => $tenant->timezone,
+            'can_view_documents' => $this->access->allows(auth()->user(), $tenant, 'documents.view'),
             'can_view_parties' => $this->access->allows(auth()->user(), $tenant, 'parties.view'),
             'can_update' => Gate::allows('update', $tenant), 'can_view_members' => Gate::allows('viewMembers', $tenant),
             'can_revoke_members' => Gate::allows('revokeMember', $tenant),

@@ -2,6 +2,7 @@
 
 // Subprocess harness for synthetic PostgreSQL races. Never read a real database.
 use App\Models\User;
+use App\Modules\Documents\Actions\UploadDocumentVersion;
 use App\Modules\IdentityAccess\Actions\AcceptTeamInvitation;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\ManageTeamInvitation;
@@ -15,9 +16,12 @@ use App\Modules\IdentityAccess\TenantContext;
 use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use PragmaRX\Google2FA\Google2FA;
+use Tests\Support\SyntheticDocumentEnvironment;
 
 require dirname(__DIR__, 2).'/vendor/autoload.php';
 $app = require dirname(__DIR__, 2).'/bootstrap/app.php';
@@ -52,7 +56,19 @@ while (! is_file($barrier.'/go')) {
 try {
     $user = User::findOrFail($userId);
 
-    if ($operation === 'edit-party') {
+    if (in_array($operation, ['append-document', 'admit-document'], true)) {
+        SyntheticDocumentEnvironment::configure(false);
+        if ($operation === 'admit-document') {
+            config(['documents.app_limit_bytes' => 100]);
+        }
+        $tenant = Tenant::findOrFail($targetId);
+        $app->make(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $userId)->sole());
+        $version = $app->make(UploadDocumentVersion::class)->execute($user, $tenant, $operation === 'append-document' ? $value : null, [
+            'title' => 'Synthetic concurrent document', 'upload_key' => (string) Str::uuid(),
+            'expected_version' => $operation === 'append-document' ? 1 : null,
+        ], UploadedFile::fake()->createWithContent('race.txt', str_repeat('x', 60)));
+        echo json_encode(['result' => 'ok', 'id' => $version->id]);
+    } elseif ($operation === 'edit-party') {
         $tenant = Tenant::findOrFail($targetId);
         $app->make(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $userId)->sole());
         $party = $app->make(SaveTenantParty::class)->execute($user, $tenant, $value, [

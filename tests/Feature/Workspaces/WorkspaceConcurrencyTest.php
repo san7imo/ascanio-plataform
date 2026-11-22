@@ -3,6 +3,7 @@
 namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
+use App\Modules\Documents\Actions\UploadDocumentVersion;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\InvitationRoles;
 use App\Modules\IdentityAccess\Models\Permission;
@@ -11,10 +12,13 @@ use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\TenantContext;
 use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
+use Tests\Support\SyntheticDocumentEnvironment;
 use Tests\Support\WorkspaceFixtures;
 use Tests\TestCase;
 
@@ -155,7 +159,7 @@ class WorkspaceConcurrencyTest extends TestCase
 
     public function test_foundation_migrations_roll_back_and_reapply_without_rewriting_scaffold_history(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 4])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 5])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenants'));
         $this->assertTrue(Schema::hasTable('users'));
         $this->assertFalse(Schema::hasColumn('users', 'status'));
@@ -215,6 +219,52 @@ class WorkspaceConcurrencyTest extends TestCase
         $first = DB::table('tenant_party_revisions')->where('tenant_id', $tenant->id)->where('version', 1)->sole();
         $this->assertSame('Nombre original', json_decode($first->snapshot, true)['display_name']);
         $this->assertSame(1, DB::table('audit_events')->where('tenant_id', $tenant->id)->where('action', 'party.updated')->count());
+    }
+
+    public function test_two_concurrent_document_appends_cannot_overwrite_an_original_or_reuse_a_version_number(): void
+    {
+        SyntheticDocumentEnvironment::configure();
+        try {
+            $owner = User::factory()->create();
+            $tenant = $this->workspaceFor($owner);
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+            $first = app(UploadDocumentVersion::class)->execute($owner, $tenant, null, [
+                'title' => 'Original document', 'upload_key' => (string) Str::uuid(),
+            ], UploadedFile::fake()->createWithContent('original.txt', 'Frozen original bytes'));
+            app(TenantContext::class)->clear();
+            $operation = ['append-document', $owner->id, $tenant->id, $first->document_id];
+            $results = $this->race([$operation, $operation]);
+            $outcomes = array_column($results, 'result');
+            sort($outcomes);
+            $this->assertSame(['denied', 'ok'], $outcomes);
+            $this->assertDatabaseCount('document_versions', 2);
+            $this->assertSame([1, 2], DB::table('document_versions')->where('tenant_id', $tenant->id)->orderBy('number')->pluck('number')->all());
+            $this->assertSame('Frozen original bytes', Storage::disk('documents')->get($first->storage_path));
+        } finally {
+            Storage::disk('documents')->deleteDirectory('tenants');
+        }
+    }
+
+    public function test_two_different_tenants_cannot_race_past_the_shared_managed_file_budget(): void
+    {
+        SyntheticDocumentEnvironment::configure();
+        try {
+            $first = User::factory()->create();
+            $second = User::factory()->create();
+            $a = $this->workspaceFor($first);
+            $b = $this->workspaceFor($second);
+            $results = $this->race([
+                ['admit-document', $first->id, $a->id, '-'],
+                ['admit-document', $second->id, $b->id, '-'],
+            ]);
+            $outcomes = array_column($results, 'result');
+            sort($outcomes);
+            $this->assertSame(['denied', 'ok'], $outcomes);
+            $this->assertDatabaseCount('document_versions', 1);
+            $this->assertSame(60, (int) DB::table('document_versions')->sum('size_bytes'));
+        } finally {
+            Storage::disk('documents')->deleteDirectory('tenants');
+        }
     }
 
     private function invitationFixture(User $owner, $tenant, User $recipient)

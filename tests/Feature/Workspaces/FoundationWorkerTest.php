@@ -3,6 +3,8 @@
 namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
+use App\Modules\Documents\Actions\UploadDocumentVersion;
+use App\Modules\Documents\Jobs\ScanDocumentVersion;
 use App\Modules\IdentityAccess\Actions\ChangeMembershipStatus;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Jobs\SendAccountEmail;
@@ -12,12 +14,15 @@ use App\Modules\IdentityAccess\Models\Role;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 use Tests\Support\FoundationContextProbe;
+use Tests\Support\SyntheticDocumentEnvironment;
 use Tests\Support\WorkspaceFixtures;
 use Tests\TestCase;
 
@@ -129,6 +134,47 @@ class FoundationWorkerTest extends TestCase
         $this->assertDatabaseCount('failed_jobs', 1);
         $this->assertSame(1, $tenantA->memberships()->count());
         $this->assertSame(2, $tenantB->memberships()->count());
+    }
+
+    public function test_real_shared_worker_scans_versions_for_two_tenants_and_blocks_revoked_upload_authority(): void
+    {
+        SyntheticDocumentEnvironment::configure();
+        $owner = User::factory()->create();
+        $a = $this->workspaceFor($owner, 'Document A');
+        $b = $this->workspaceFor($owner, 'Document B');
+        $delegate = User::factory()->create();
+        $membership = $this->memberFor($b, $delegate, ['tenant.view', 'documents.view', 'documents.upload']);
+        $manager = Queue::getFacadeRoot();
+        Queue::fake();
+        $versions = [];
+        try {
+            foreach ([[$owner, $a], [$delegate, $b], [$owner, $b]] as [$actor, $tenant]) {
+                app(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $actor->id)->sole());
+                $versions[] = app(UploadDocumentVersion::class)->execute($actor, $tenant, null, [
+                    'title' => 'Synthetic queued document', 'upload_key' => (string) Str::uuid(),
+                ], UploadedFile::fake()->createWithContent('worker.txt', 'Synthetic worker bytes'));
+            }
+            $jobs = Queue::pushed(ScanDocumentVersion::class)->all();
+        } finally {
+            Queue::swap($manager);
+            app(TenantContext::class)->clear();
+        }
+        try {
+            $proof = $this->proofFor($owner);
+            app(TenantContext::class)->establish($b, $b->memberships()->where('user_id', $owner->id)->sole());
+            app(ChangeMembershipStatus::class)->execute($owner, $b, $membership->id, 'revoked', $proof);
+            app(TenantContext::class)->clear();
+            foreach ([new FoundationContextProbe($a->id, $this->key, true), $jobs[0], new FoundationContextProbe($b->id, $this->key), $jobs[1], $jobs[2]] as $job) {
+                Queue::connection('redis')->push($job, '', $this->queue);
+            }
+            $this->runWorker('document-scans');
+            $this->assertSame('clean', $versions[0]->fresh()->scan_status);
+            $this->assertSame('blocked', $versions[1]->fresh()->scan_status);
+            $this->assertSame('authority_revoked', $versions[1]->fresh()->failure_code);
+            $this->assertSame('clean', $versions[2]->fresh()->scan_status);
+        } finally {
+            Storage::disk('documents')->deleteDirectory('tenants');
+        }
     }
 
     public function test_provider_failure_is_redacted_and_the_next_tenant_job_runs_without_context(): void

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
+import { index as documents } from '@/routes/documents';
 import { index as parties } from '@/routes/parties';
 import { index, invitations, members, roles, show } from '@/routes/workspaces';
 import type { Workspace } from '@/types/workspace';
@@ -12,6 +13,12 @@ defineProps<{ workspace: Workspace }>();
         <Link :href="index()" class="underline">Cambiar de espacio</Link>
         <Link :href="show(workspace.id)" class="underline"
             >Resumen y ajustes</Link
+        >
+        <Link
+            v-if="workspace.can_view_documents"
+            :href="documents(workspace.id)"
+            class="underline"
+            >Documentos</Link
         >
         <Link
             v-if="workspace.can_view_parties"

@@ -3,6 +3,7 @@ export type Workspace = {
     name: string;
     locale: string;
     timezone: string;
+    can_view_documents: boolean;
     can_view_parties: boolean;
     can_update: boolean;
     can_view_members: boolean;

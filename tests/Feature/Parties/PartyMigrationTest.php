@@ -34,18 +34,18 @@ class PartyMigrationTest extends TestCase
 
     public function test_upgrade_preserves_existing_history_adds_only_initial_owner_capabilities_and_invalidates_old_authority_epochs(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $first = User::factory()->create();
         $a = $this->workspaceFor($first);
         $b = $this->workspaceFor(User::factory()->create());
         $ordinary = $this->memberFor($a, User::factory()->create());
         // Current code creates the enlarged initial bundle. Reconstruct F4's
         // exact catalog/assignments before applying the additive P1 migration.
-        $ids = DB::table('permissions')->where('code', 'like', 'parties.%')->pluck('id');
+        $ids = DB::table('permissions')->where(fn ($query) => $query->where('code', 'like', 'parties.%')->orWhere('code', 'like', 'documents.%'))->pluck('id');
         DB::table('role_permissions')->whereIn('permission_id', $ids)->delete();
         DB::table('permissions')->whereIn('id', $ids)->delete();
         $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000003_add_tenant_parties.php'])->assertSuccessful();
         $this->assertSame($before, DB::table('audit_events')->where('actor_type', 'user')->orderBy('id')->get()->toJson());
         foreach ([$a, $b] as $tenant) {
             $event = DB::table('audit_events')->where('tenant_id', $tenant->id)->where('action', 'access.parties.upgraded')->sole();
@@ -67,9 +67,9 @@ class PartyMigrationTest extends TestCase
 
     public function test_pristine_schema_can_be_reapplied_but_recorded_party_history_cannot_be_downgraded(): void
     {
-        $this->artisan('migrate:rollback', ['--step' => 1])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 2])->assertSuccessful();
         $this->assertFalse(Schema::hasTable('tenant_parties'));
-        $this->artisan('migrate')->assertSuccessful();
+        $this->artisan('migrate', ['--path' => 'database/migrations/2026_11_15_000003_add_tenant_parties.php'])->assertSuccessful();
         $owner = User::factory()->create();
         $tenant = $this->workspaceFor($owner);
         app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
