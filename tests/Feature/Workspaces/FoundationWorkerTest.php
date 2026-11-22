@@ -7,7 +7,9 @@ use App\Modules\Documents\Actions\UploadDocumentVersion;
 use App\Modules\Documents\Jobs\ScanDocumentVersion;
 use App\Modules\IdentityAccess\Actions\ChangeMembershipStatus;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
+use App\Modules\IdentityAccess\Actions\ShareDocumentVersion;
 use App\Modules\IdentityAccess\Jobs\SendAccountEmail;
+use App\Modules\IdentityAccess\Jobs\SendResourceInvitation;
 use App\Modules\IdentityAccess\Jobs\SendTeamInvitation;
 use App\Modules\IdentityAccess\Models\Permission;
 use App\Modules\IdentityAccess\Models\Role;
@@ -193,5 +195,60 @@ class FoundationWorkerTest extends TestCase
         $payload = json_decode($failure->payload, true, flags: JSON_THROW_ON_ERROR);
         $this->assertStringNotContainsString($invitation->recipient_email, $payload['data']['command']);
         $this->assertStringNotContainsString('SendTeamInvitation', $payload['data']['command']);
+    }
+
+    public function test_shared_worker_encrypts_resource_tokens_and_revalidates_each_tenant_source(): void
+    {
+        SyntheticDocumentEnvironment::configure();
+        $jobs = [];
+        $invitations = [];
+        $tenants = [];
+        $owners = [];
+        try {
+            foreach (['A', 'B'] as $name) {
+                $owner = User::factory()->create();
+                $tenant = $this->workspaceFor($owner, 'Resource '.$name);
+                $owners[] = $owner;
+                $tenants[] = $tenant;
+                app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+                $version = app(UploadDocumentVersion::class)->execute($owner, $tenant, null, [
+                    'title' => 'Synthetic share worker', 'upload_key' => (string) Str::uuid(),
+                ], UploadedFile::fake()->createWithContent('worker-share.txt', 'Synthetic worker share'));
+                $proof = $this->proofFor($owner);
+                $manager = Queue::getFacadeRoot();
+                Queue::fake();
+                try {
+                    app(TenantContext::class)->establish($tenant, $tenant->memberships()->sole());
+                    $invitations[] = app(ShareDocumentVersion::class)->invite($owner, $tenant, $version->document_id, $version->id, 'worker@example.invalid', 'file', 7, $proof);
+                    $jobs[] = Queue::pushed(SendResourceInvitation::class)->sole();
+                } finally {
+                    Queue::swap($manager);
+                    app(TenantContext::class)->clear();
+                }
+            }
+            $tenants[0]->memberships()->where('user_id', $owners[0]->id)->increment('access_version');
+            $queue = Queue::connection('redis');
+            $queue->push(new FoundationContextProbe($tenants[0]->id, $this->key, true), '', $this->queue);
+            foreach ($jobs as $job) {
+                $queue->push($job, '', $this->queue);
+            }
+            $queue->push(new FoundationContextProbe($tenants[1]->id, $this->key), '', $this->queue);
+            $payloads = $queue->getRedis()->connection(config('queue.connections.redis.connection'))->lrange('queues:'.$this->queue, 0, -1);
+            $this->assertCount(4, $payloads);
+            foreach ([1, 2] as $index) {
+                $payload = json_decode($payloads[$index], true, flags: JSON_THROW_ON_ERROR);
+                $token = (new \ReflectionProperty($jobs[$index - 1], 'token'))->getValue($jobs[$index - 1]);
+                $this->assertStringNotContainsString($token, $payload['data']['command']);
+                $this->assertStringNotContainsString('SendResourceInvitation', $payload['data']['command']);
+                $this->assertInstanceOf(SendResourceInvitation::class, unserialize(decrypt($payload['data']['command'])));
+            }
+            $events = $this->runWorker();
+            $summary = array_values(array_filter($events, fn ($event) => $event['phase'] === 'summary'))[0];
+            $this->assertSame(1, $summary['resource_invitations']);
+            $this->assertSame('blocked', $invitations[0]->fresh()->delivery_status);
+            $this->assertSame('simulated', $invitations[1]->fresh()->delivery_status);
+        } finally {
+            Storage::disk('documents')->deleteDirectory('tenants');
+        }
     }
 }

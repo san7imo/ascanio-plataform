@@ -1,8 +1,8 @@
 # O1 — Preparación operativa de archivos privados
 
-Corte: 21 de noviembre de 2026. Estado: controles técnicos D1 implementados; valores/adaptadores del entorno y habilitación real pendientes. Complementa la [matriz Kroma](../hosting/kroma-compatibility.md), [Foundation operativo](foundation-readiness.md), [grants PostgreSQL](postgresql-runtime-role.md) y [D1](../implementation/d1-private-documents.md). No autoriza conexiones, instalaciones, pruebas con datos reales o despliegues.
+Corte: 22 de noviembre de 2026 UTC. Estado: controles técnicos D1 implementados; valores/adaptadores del entorno y habilitación real pendientes. Complementa la [matriz Kroma](../hosting/kroma-compatibility.md), [Foundation operativo](foundation-readiness.md), [grants PostgreSQL](postgresql-runtime-role.md) y [D1](../implementation/d1-private-documents.md). No autoriza conexiones, instalaciones, pruebas con datos reales o despliegues.
 
-El titular confirmó que Kroma dispone de capacidad y almacenamiento. Falta medir/configurar lo necesario para habilitar archivos, sin pedir credenciales ni presumir el margen antiguo de 5,73 GB.
+El titular confirmó que Kroma dispone de capacidad y almacenamiento. La inspección SSH aportada el 22 de noviembre confirma PHP CLI 8.4 y extensiones, pero las conexiones a PostgreSQL/Redis en los puertos locales habituales son rechazadas; UAPI no funciona en esa sesión y no hay acceso cPanel disponible. Véase la actualización de la [matriz Kroma](../hosting/kroma-compatibility.md). Falta medir/configurar lo necesario para habilitar archivos, sin pedir credenciales ni presumir el margen antiguo de 5,73 GB.
 
 | Evidencia / decisión | Necesaria antes de habilitar | Estado |
 |---|---|---|

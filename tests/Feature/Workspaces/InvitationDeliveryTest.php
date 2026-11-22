@@ -98,7 +98,7 @@ class InvitationDeliveryTest extends TestCase
     public function test_invitation_schema_upgrades_existing_governance_and_preserves_history_on_rollback(): void
     {
         [$owner, $tenant, $role] = $this->setupInvite();
-        $this->artisan('migrate:rollback', ['--step' => 3])->assertSuccessful();
+        $this->artisan('migrate:rollback', ['--step' => 4])->assertSuccessful();
         $this->assertDatabaseCount('permissions', 7);
         $this->artisan('migrate')->assertSuccessful();
         $this->assertDatabaseCount('permissions', count(CapabilityCatalog::OWNER));

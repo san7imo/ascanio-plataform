@@ -4,8 +4,10 @@ namespace Tests\Feature\Workspaces;
 
 use App\Models\User;
 use App\Modules\Documents\Actions\UploadDocumentVersion;
+use App\Modules\IdentityAccess\Actions\AcceptResourceInvitation;
 use App\Modules\IdentityAccess\Actions\CreateTeamInvitation;
 use App\Modules\IdentityAccess\Actions\SaveRole;
+use App\Modules\IdentityAccess\Actions\ShareDocumentVersion;
 use App\Modules\IdentityAccess\TenantContext;
 use App\Modules\Parties\Actions\SaveTenantParty;
 use Illuminate\Database\QueryException;
@@ -48,7 +50,9 @@ class GovernanceRuntimeRoleTest extends TestCase
             $tables = 'users,password_reset_tokens,sessions,cache,cache_locks,jobs,job_batches,failed_jobs,parties,persons,organizations,tenants,tenant_memberships,roles,role_permissions,membership_roles,team_invitations,team_invitation_roles,tenant_parties,party_identifiers,tenant_party_business_types,documents';
             $migration->unprepared("GRANT SELECT,INSERT,UPDATE,DELETE ON {$tables} TO {$role}");
             $migration->unprepared("GRANT SELECT ON permissions,audit_events,business_types TO {$role}");
-            $migration->unprepared("GRANT SELECT,INSERT ON tenant_party_revisions,document_versions TO {$role}");
+            $migration->unprepared("GRANT SELECT,INSERT ON tenant_party_revisions,document_versions,resource_invitations,resource_grants TO {$role}");
+            $migration->unprepared("GRANT UPDATE (status,accepted_by_id,accepted_at,token_hash,delivery_version,delivery_status,delivery_attempts,last_attempt_at,delivered_at,failure_code,updated_at) ON resource_invitations TO {$role}");
+            $migration->unprepared("GRANT UPDATE (revoked_at,updated_at) ON resource_grants TO {$role}");
             $migration->unprepared("GRANT UPDATE (scan_status,scan_generation,scan_requested_by,source_membership_id,source_access_version,failure_code,scanned_at,updated_at) ON document_versions TO {$role}");
             $migration->unprepared("GRANT INSERT (id,tenant_id,actor_id,action,resource_type,resource_id,changes,occurred_at) ON audit_events TO {$role}");
             $migration->unprepared("GRANT USAGE,SELECT ON SEQUENCE jobs_id_seq,failed_jobs_id_seq TO {$role}");
@@ -93,9 +97,26 @@ class GovernanceRuntimeRoleTest extends TestCase
             $response->assertOk();
             $this->assertSame('Synthetic runtime document', $response->streamedContent());
             $this->assertDatabaseCount('audit_events', 10);
+            $recipient = User::factory()->create();
+            $shareProof = $this->proofFor($actor);
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $actor->id)->sole());
+            $invitation = app(ShareDocumentVersion::class)->invite($actor, $tenant, $version->document_id, $version->id, $recipient->email, 'file', 7, $shareProof);
+            $grant = app(AcceptResourceInvitation::class)->execute($recipient, ['id' => $invitation->id, 'hash' => $invitation->token_hash, 'until' => time() + 3600]);
+            $shared = $this->actingAs($recipient)->get(route('shared-documents.download', $grant))->assertOk();
+            $this->assertSame('Synthetic runtime document', $shared->streamedContent());
+            app(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $actor->id)->sole());
+            app(ShareDocumentVersion::class)->manage($actor, $tenant, $version->document_id, $invitation->id, false);
+            $this->get(route('shared-documents.download', $grant))->assertNotFound();
             $before = DB::table('audit_events')->orderBy('id')->get()->toJson();
 
             $forbidden = [
+                "UPDATE resource_grants SET projection = 'metadata'",
+                "UPDATE resource_invitations SET recipient_email = 'forged@example.invalid'",
+                'DELETE FROM resource_grants',
+                'DELETE FROM resource_invitations',
+                'TRUNCATE resource_grants',
+                'ALTER TABLE resource_grants DISABLE TRIGGER resource_grant_history',
+                'DROP FUNCTION protect_resource_access()',
                 "UPDATE document_versions SET sha256 = 'forged'",
                 'DELETE FROM document_versions',
                 'TRUNCATE document_versions',

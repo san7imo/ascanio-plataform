@@ -3,13 +3,17 @@
 // Subprocess harness for synthetic PostgreSQL races. Never read a real database.
 use App\Models\User;
 use App\Modules\Documents\Actions\UploadDocumentVersion;
+use App\Modules\Documents\Models\DocumentVersion;
+use App\Modules\IdentityAccess\Actions\AcceptResourceInvitation;
 use App\Modules\IdentityAccess\Actions\AcceptTeamInvitation;
 use App\Modules\IdentityAccess\Actions\CreateWorkspace;
 use App\Modules\IdentityAccess\Actions\ManageTeamInvitation;
 use App\Modules\IdentityAccess\Actions\RecordAudit;
 use App\Modules\IdentityAccess\Actions\RevokeMembership;
+use App\Modules\IdentityAccess\Actions\ShareDocumentVersion;
 use App\Modules\IdentityAccess\Actions\TransferOwnership;
 use App\Modules\IdentityAccess\Data\SensitiveProof;
+use App\Modules\IdentityAccess\Models\ResourceInvitation;
 use App\Modules\IdentityAccess\Models\TeamInvitation;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\TenantContext;
@@ -76,6 +80,17 @@ try {
             'business_type_codes' => [], 'identifiers' => [], 'version' => 1,
         ]);
         echo json_encode(['result' => 'ok', 'id' => $party->id]);
+    } elseif ($operation === 'accept-resource') {
+        $invitation = ResourceInvitation::query()->where('tenant_id', $targetId)->findOrFail($value);
+        $app->make(AcceptResourceInvitation::class)->execute($user, ['id' => $value, 'hash' => $invitation->token_hash, 'until' => time() + 3600]);
+        echo json_encode(['result' => 'ok']);
+    } elseif ($operation === 'revoke-resource') {
+        $tenant = Tenant::findOrFail($targetId);
+        $invitation = ResourceInvitation::query()->where('tenant_id', $targetId)->findOrFail($value);
+        $version = DocumentVersion::query()->where('tenant_id', $targetId)->findOrFail($invitation->document_version_id);
+        $app->make(TenantContext::class)->establish($tenant, $tenant->memberships()->where('user_id', $userId)->sole());
+        $app->make(ShareDocumentVersion::class)->manage($user, $tenant, $version->document_id, $value, false);
+        echo json_encode(['result' => 'ok']);
     } elseif ($operation === 'accept-invite') {
         $invitation = TeamInvitation::query()->where('tenant_id', $targetId)->findOrFail($value);
         $app->make(AcceptTeamInvitation::class)->execute($user, ['id' => $value, 'hash' => $invitation->token_hash, 'until' => time() + 3600]);
