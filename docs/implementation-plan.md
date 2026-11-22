@@ -23,6 +23,8 @@ Actualización D1: 21 de noviembre de 2026. Base de entrega: `1c4a088`, con P1 i
 
 Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. Esta actualización es documental; no implementa ni publica la réplica.
 
+Actualización del orden ejecutable: 21 de noviembre de 2026 (America/Bogota). El estado de integración se contrastó con los PRs abiertos; las fechas UTC de las referencias se conservan. El detalle inmediato de PUB1 está en su [paquete de implementación](implementation/pub1-public-site.md).
+
 ## 1. Fuentes, producto y estado comprobado
 
 En la auditoría inicial se leyeron todos los documentos Markdown disponibles entonces en el checkout: [README](../README.md), [AGENTS](../AGENTS.md), [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md) y el [informe Kroma](hosting/kroma-compatibility.md), que estaba pendiente de commit. Se inventariaron los Markdown de todas las ramas locales/remotas y se compararon sus diferencias. También se revisaron historial, PRs, búsqueda de issues, dependencias, scripts, rutas, modelo User, harness de pruebas y workflow de CI.
@@ -300,11 +302,52 @@ Los responsables son funciones, sin asumir nombres ni disponibilidad de equipo. 
 
 Coedición/sincronización entre workspaces no es una decisión pendiente para poder comenzar: queda fuera del MVP. Incorporarla exigiría una decisión nueva sobre tenancy/visibilidad. No existen obligaciones de comprar otro servidor, S3 u otro servicio por la aprobación de este plan.
 
-## 12. Siguiente acción y mantenimiento del plan
+## 12. Orden de ejecución y siguiente entrega
 
-P1 y D1 están integradas mediante PRs #10 y [#11](https://github.com/san7imo/ascanio-plataform/pull/11). G1 está implementado y validado en [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12), pendiente de revisión/integración. La solicitud vigente añade **PUB0: inspección y capturas de ascaniopub.com**, con réplica visual de productos y compra existente conservada. El siguiente frente de implementación de interfaz es **PUB1**, seguido por los recorridos de PUB2 y la validación PUB3; después se retoma **C1: Work y créditos de composición**. Cada entrega mantiene alcance propio; no se comienza todo el catálogo por aprobar este plan. Las dependencias de operación no resueltas se documentan sin bloquear el trabajo local independiente.
+La próxima implementación es **PUB1**, acotada por su [paquete de trabajo](implementation/pub1-public-site.md). La actualización documental no significa que G1 o el nuevo sitio ya estén en main: el corte verificado mantiene main en 06f3c34 y PRs #12/#13 abiertos. PUB0 sí está completado como inspección de lectura y referencia, sin implementación del reemplazo.
 
-O0/O1 y los adaptadores reales de cuota/escaneo siguen pendientes; los uploads reales permanecen deshabilitados. Las consultas SSH aportadas no prueban endpoints alternativos ni cuota. Las [guías O0](operations/foundation-readiness.md)/[O1](operations/documents-readiness.md) conservan las puertas operativas. No se despliega ni se altera la compra o el sitio actual al preparar la réplica. Los avisos de herramientas P0 y el rollback total histórico users/sessions requieren seguimiento; no se reescriben migraciones compartidas. Contracts, royalties, pagos propios y un catálogo sin contexto/policies continúan fuera del trabajo inmediato.
+### 12.1. Secuencia de trabajo
+
+| Orden | Trabajo | Resultado que habilita el siguiente paso |
+|---|---|---|
+| 1 | Revisar e integrar G1 [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12) y el plan público [PR #13](https://github.com/san7imo/ascanio-plataform/pull/13) | Main contiene el acceso privado y ADR 0002. Integrar G1 primero y reconciliar los cambios documentales del plan conservando PUB0–PUB3 y la compra existente; comprobar el resultado integrado antes de abrir código nuevo |
+| 2 | Implementar PUB1 desde ese main, en feat/public-institutional-site | Layout/marca, portada, seis servicios, guía, contacto, listado/tres productos y tres legales; revisión local de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
+| 3 | Implementar las partes definidas de PUB2 | Navegación, acceso, consentimiento y enlaces comprobados; conectar contacto/búsqueda solo con destino real autorizado. Conservar la compra existente; las dependencias no resueltas quedan registradas por recorrido |
+| 4 | Ejecutar la validación local de PUB3 | Comparación desktop/móvil, accesibilidad, SEO, rutas y privacidad aprobadas; lista explícita de pendientes operativos para publicar |
+| 5 | Retomar C1, sin esperar el despliegue | Work/composición y créditos locales, incluyendo obras sin recording; grants tipados y políticas ampliados sobre el recurso real |
+| 6 | Continuar C2 → C3 → P2 y después R1–R3 | Recording/vínculos, releases, representación/evidencia y finalmente derechos/splits según dependencias y decisiones de cada tarea |
+| 7 | Continuar K1–K3 y T1–T3 cuando existan sus decisiones | Contratos/firma con contenido/proveedor definidos y Registration/CWR con receptor/perfil oficial; no usar su planificación como autorización para implementar todo |
+
+O0/O1 avanzan en paralelo. Si alguna integración PUB2 o el cierre operativo PUB3 queda pendiente por soporte, correo o enrutamiento, se termina lo independiente, se conserva el estado pendiente y se avanza con C1. La prioridad de interfaz pública no convierte el despliegue en una dependencia del catálogo. Las puertas de hitos 4–6 siguen vigentes.
+
+### 12.2. Primer paquete: cómo ejecutar PUB1
+
+1. Inventariar y versionar recursos de marca; preparar layout, navegación y mapa de rutas.
+2. Construir la portada y compararla con las capturas antes de extender la plantilla.
+3. Completar servicios y guía con sus acordeones.
+4. Completar presentación de productos, contacto y legales, con destinos existentes o dependencias documentadas; no publicar acciones incompletas como funcionales.
+5. Verificar el conjunto con datos sintéticos, pruebas de aislamiento aplicables, checks reales de frontend/backend y revisión visual. Abrir un PR enfocado que muestre evidencia y límites; integrar antes de ampliar alcance.
+
+El [paquete PUB1](implementation/pub1-public-site.md) contiene las rutas, pasos PUB1.1–PUB1.5, criterios de aceptación y exclusiones. No hace falta decidir firma, CWR o compatibilidad completa de Kroma para trabajar este layout local. Los precios/textos legales y contenido heredado necesitan revisión del titular antes de publicación, sin atribuirles validez por estar en una captura.
+
+### 12.3. Pendientes operativos y su impacto
+
+| Pendiente | Quién aporta la evidencia | Qué bloquea | Qué puede continuar |
+|---|---|---|---|
+| PostgreSQL/Redis asignados, endpoints, límites y workers de Kroma | Titular/proveedor; desarrollo contrasta | Cierre O0 y despliegue de la aplicación | Desarrollo y pruebas locales con PostgreSQL/Redis |
+| Cuota/inodos, ruta privada, escáner, capacidad y retención | Titular/proveedor con desarrollo | Cierre O1, adaptadores reales y cargas de archivos reales | G1/catálogo con fixtures; réplica de recursos públicos |
+| Transporte/destino de contacto y búsqueda de dominios | Titular/proveedor con desarrollo | Habilitar esos recorridos PUB2 en operación | Navegación, páginas, endpoints sintéticos de prueba y otros recorridos reales ya definidos |
+| Convivencia de rutas y compra WordPress existente | Titular/operación con desarrollo | Reemplazar el sitio público o su raíz de dominio | Réplica local y enlaces de referencia; no mover ni modificar la tienda |
+| Contenido comercial/legal vigente y rutas heredadas | Titular con revisión de contenido aplicable | Publicar textos definitivos y ejecutar redirecciones/retiradas | Maquetación basada en la referencia y lista de diferencias pendientes |
+| Copias, claves y restauración comprobada | Titular/operación con desarrollo | Preparación operativa, piloto con datos reales y recuperación | Verificación técnica local con fixtures, sin afirmar recuperabilidad de Kroma |
+
+DOCUMENT_UPLOADS_ENABLED permanece false. No se adquieren servicios, cambian motores/hosting, usan datos privados reales ni despliega por seguir este orden. Conservar compra actual significa mantener su operación real y sus destinos verificados, no implementar cobros propios ni copiar identidades comerciales al SaaS.
+
+### 12.4. Regla de seguimiento
+
+Cada entrega identifica tres estados distintos: **validada localmente**, **integrada en main** y **habilitada en operación**. Las evidencias y pruebas pertenecen al commit ejecutado; una captura no cierra un formulario y una suite local no cierra Kroma. Al iniciar la siguiente entrega se actualiza esta tabla, sin porcentajes subjetivos ni fechas prometidas sin capacidad de equipo acordada.
+
+Los avisos de herramientas P0 y el rollback histórico users/sessions conservan su seguimiento; no se reescriben migraciones compartidas. Contracts, royalties, pagos propios y recursos sin contexto/policies continúan fuera del trabajo inmediato.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 
