@@ -1,0 +1,158 @@
+{
+  "captured_at": "2026-11-22T03:54:41.249123+00:00",
+  "base": "main 4439aef, PUB1.1–PUB1.2 integrated through PR #14",
+  "scope": "PUB1.3 local service pages and guide. Not production or all PUB1.",
+  "browser": "Google Chrome headless, DPR 1, hidden scrollbars. Seven pages at widths 1440,390,320,768; screenshots at 1440×1000 and 390×844.",
+  "interactions": "Native menu, exclusive details accordions (Enter/Space), gallery next/previous with reduced motion. No external actions, purchases or submissions.",
+  "files": [
+    {
+      "file": "distribution-desktop.jpg",
+      "sha256": "394fd0571f0a323f48fe9e1d2d040a08ccfc1c9a9d15e29a274f512058fea4fd",
+      "bytes": 249334,
+      "dimensions": [
+        1440,
+        2194
+      ]
+    },
+    {
+      "file": "distribution-mobile.jpg",
+      "sha256": "553330863c14a284b80222c50c65eca9935316ce8828d9e44462d4a9d7779cca",
+      "bytes": 94585,
+      "dimensions": [
+        390,
+        1855
+      ]
+    },
+    {
+      "file": "gallery-mobile-next.jpg",
+      "sha256": "06282a6fa01adf51b77589f6e1778246a1f8cdc3b649cd31b167df282aaebe6b",
+      "bytes": 69135,
+      "dimensions": [
+        390,
+        844
+      ]
+    },
+    {
+      "file": "guide-desktop.jpg",
+      "sha256": "d4052ecb18726badfef1e094f7d9d8cd99396198f3a2179a7eaa593cf24b8485",
+      "bytes": 971869,
+      "dimensions": [
+        1440,
+        5622
+      ]
+    },
+    {
+      "file": "guide-mobile-collapsed.jpg",
+      "sha256": "419b710e5d060ef02fdcfa021f2ed07771eb41b8968a615b2c802a92e5f8a379",
+      "bytes": 98204,
+      "dimensions": [
+        390,
+        2120
+      ]
+    },
+    {
+      "file": "guide-mobile.jpg",
+      "sha256": "0bdebf700e95bc2d17223d5b38e8c9394ba58214c86e71ddaeb971b996f79167",
+      "bytes": 917970,
+      "dimensions": [
+        390,
+        12423
+      ]
+    },
+    {
+      "file": "media-desktop.jpg",
+      "sha256": "ae2bb2fb90a6240973ae73c6a70826e7a7ade62c56ea673998ea32b83f358f85",
+      "bytes": 95658,
+      "dimensions": [
+        1440,
+        1156
+      ]
+    },
+    {
+      "file": "media-mobile.jpg",
+      "sha256": "cbad6210eade6d4898d26ff8d61573ab554d004ca5502454fb7fb964330344a3",
+      "bytes": 53949,
+      "dimensions": [
+        390,
+        1189
+      ]
+    },
+    {
+      "file": "publishing-desktop.jpg",
+      "sha256": "36b08df4478445548d020a9cdbb3634b49d0d1817358da6a6934a7a73d6d9e67",
+      "bytes": 97833,
+      "dimensions": [
+        1440,
+        1156
+      ]
+    },
+    {
+      "file": "publishing-mobile.jpg",
+      "sha256": "3687b3224ce88973656a768335369a59e33166dde59946f9725dc13637f38574",
+      "bytes": 52853,
+      "dimensions": [
+        390,
+        1160
+      ]
+    },
+    {
+      "file": "review.json",
+      "sha256": "7dfde17807cbc5f5dfa56108c85fdd69ec518ac9fd19500d0da26d14494a5a5b",
+      "bytes": 35157
+    },
+    {
+      "file": "social-desktop.jpg",
+      "sha256": "fc20ded82a4f872b049f106ada1fd8da00e851cd82e0f39d17b5aebec7240acf",
+      "bytes": 164547,
+      "dimensions": [
+        1440,
+        2222
+      ]
+    },
+    {
+      "file": "social-mobile.jpg",
+      "sha256": "0607e1b2268f4d8ec446e0fab90765a89ed20b0bc803e8591095bbb00166cce4",
+      "bytes": 104108,
+      "dimensions": [
+        390,
+        2609
+      ]
+    },
+    {
+      "file": "visual-identity-desktop.jpg",
+      "sha256": "511b6835a4ad64b9de959284cdc9d84033e60cb7aa33e1f73431d2b3c0854a56",
+      "bytes": 491325,
+      "dimensions": [
+        1440,
+        3766
+      ]
+    },
+    {
+      "file": "visual-identity-mobile.jpg",
+      "sha256": "78dde98a1d88c0eafb9daf22b127b13b71d0654e2909c580657f0c253a25d374",
+      "bytes": 250599,
+      "dimensions": [
+        390,
+        3928
+      ]
+    },
+    {
+      "file": "web-desktop.jpg",
+      "sha256": "99ba3a634ddfebbf04a56c5a8b58a8031f547d7b67795b9d3d0e7ba4c064f8a3",
+      "bytes": 267434,
+      "dimensions": [
+        1440,
+        2824
+      ]
+    },
+    {
+      "file": "web-mobile.jpg",
+      "sha256": "a5c689646f56b6eb84b36a3621ea9c05dbcf6f59436e46c94df979404917e79e",
+      "bytes": 221048,
+      "dimensions": [
+        390,
+        5228
+      ]
+    }
+  ]
+}

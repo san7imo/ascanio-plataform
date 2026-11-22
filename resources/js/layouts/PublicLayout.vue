@@ -6,6 +6,7 @@ import {
     currentSite,
     publicLegalNavigation,
     publicNavigation,
+    publicHref,
 } from '@/lib/public-site';
 import { home, login, register } from '@/routes';
 import '../../css/public-site.css';
@@ -78,7 +79,7 @@ onBeforeUnmount(() => {
                 <a
                     v-for="item in publicNavigation"
                     :key="item.path"
-                    :href="currentSite + item.path"
+                    :href="publicHref(item.path)"
                     @click="closeMenu()"
                     >{{ item.label }}</a
                 >

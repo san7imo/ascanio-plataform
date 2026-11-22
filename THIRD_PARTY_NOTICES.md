@@ -31,8 +31,9 @@ THE SOFTWARE.
 
 The original logo, illustrations, platform marks, service tiles and photograph
 under `public/assets/ascanio/` were obtained from the public Ascanio website for
-the owner-requested replica. Their [source manifest](docs/references/ascaniopub/public-assets.json)
-records original URLs, byte sizes and SHA-256 checksums. No ownership transfer or
+the owner-requested replica. The [home asset manifest](docs/references/ascaniopub/public-assets.json) and
+[service/guide asset manifest](docs/references/ascaniopub/pub13-assets.json)
+record original URLs, byte sizes and SHA-256 checksums. No ownership transfer or
 license to third-party marks is asserted by their inclusion. Images are unchanged;
 WordPress plugins, scripts, tracking and payment integrations were not copied.
 
@@ -41,3 +42,10 @@ Copyright, reserved font names and terms are reproduced in
 [the Poppins license](public/assets/ascanio/fonts/poppins-OFL.txt) and
 [the Rubik license](public/assets/ascanio/fonts/rubik-OFL.txt). The CSS families
 AscanioPoppins/AscanioRubik are local aliases; the font binaries are unmodified.
+
+Public portfolio examples in the service pages retain the marks and credits
+already present on ascaniopub.com, including Dilo Records. These are public
+editorial images for the requested replica, not reused application code, tenant
+seeds or private customer fixtures. Guide content is a versioned editorial copy
+with a restricted HTML allowlist; it supplies no legal authority or universal
+validation rules to the SaaS catalog.

@@ -15,14 +15,14 @@ Actualización D1: 21 de noviembre de 2026. Base de entrega: `1c4a088`, con P1 i
 | F4 | Integrado | [PR #9](https://github.com/san7imo/ascanio-plataform/pull/9); cierre técnico con operación pendiente O0 |
 | P1 | Integrado | [PR #10](https://github.com/san7imo/ascanio-plataform/pull/10); regresión incluida en D1 |
 | D1 | Integrado mediante [PR #11](https://github.com/san7imo/ascanio-plataform/pull/11), merge 06f3c34 | [Versiones privadas, cuarentena, descarga y límites](implementation/d1-private-documents.md); 165 pruebas / 1801 aserciones; cargas reales deshabilitadas y O1 pendiente |
-| G1 | Integrado mediante PR #12, merge aca2ad7 | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; no repetidos por este cambio documental |
+| G1 | Integrado mediante PR #12, merge aca2ad7 | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; regresión incluida en PUB1.3 |
 | PUB0 | Completado: inspección de lectura, inventario y capturas | [Referencias fechadas](references/ascaniopub/README.md), rutas, capturas desktop/móvil y decisión de conservar compra actual |
-| PUB1 | En ejecución: PUB1.1–PUB1.2 preparados en rama para revisión | Layout/marca y portada locales; [entrega parcial y siguiente paso](implementation/pub1-public-site.md#primera-entrega-pub11-y-pub12). PUB1.3–PUB1.5 pendientes |
+| PUB1 | En ejecución: PUB1.1–PUB1.2 integrados (PR #14, 4439aef); PUB1.3 preparado en rama | Seis servicios y guía locales; [avance y siguiente paso](implementation/pub1-public-site.md#segunda-entrega-pub13--servicios-y-guía). PUB1.4–PUB1.5 pendientes |
 | PUB2–PUB3 | Pendientes | Integración de recorridos y validación completa según §4.1; sin nuevo motor de comercio |
 | O0 / O1 | Pendientes de evidencia técnica | Titular aportó PHP CLI/extensiones por SSH; faltan cuota/inodos, endpoints de servicios, ruta privada, escáner y operación medidos. [Preparación O1](operations/documents-readiness.md) |
 | Resto de hitos 2–6 | Diseño objetivo | Parties/Documents/G1 integrados y fachada pública en implementación; catálogo y módulos musicales posteriores siguen pendientes |
 
-Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. La referencia y el plan se integraron mediante PR #13 en f732ecb. La implementación local posterior entrega primero PUB1.1–PUB1.2; no se publica la réplica.
+Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. La referencia y el plan se integraron mediante PR #13 en f732ecb. PUB1.1–PUB1.2 se integraron mediante PR #14, 4439aef; PUB1.3 implementa localmente servicios/guía y espera revisión. No se publica la réplica.
 
 Actualización del orden ejecutable: 21 de noviembre de 2026 (America/Bogota). El estado de integración se contrastó con los PRs abiertos; las fechas UTC de las referencias se conservan. El detalle inmediato de PUB1 está en su [paquete de implementación](implementation/pub1-public-site.md).
 
@@ -305,14 +305,14 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Orden de ejecución y siguiente entrega
 
-**PUB1 está en ejecución**, acotado por su [paquete de trabajo](implementation/pub1-public-site.md). Main f732ecb contiene G1 (PR #12, aca2ad7) y el plan/referencia públicos (PR #13, f732ecb), con CI aprobado de la combinación. PUB1.1–PUB1.2 están preparados para revisión en feat/public-institutional-site, sin integrar ni publicar; la próxima implementación es PUB1.3 (seis servicios y guía). PUB0 está completado como inspección y referencia.
+**PUB1 está en ejecución**, acotado por su [paquete de trabajo](implementation/pub1-public-site.md). Main 4439aef contiene G1, el plan público y PUB1.1–PUB1.2 integrados mediante PRs #12, #13 y #14; CI PHP 8.3/8.4 del PR #14 aprobado antes del merge. PUB1.3 (seis servicios y guía) está preparado para revisión en feat/public-services-guide, sin integrar ni publicar. La próxima implementación es PUB1.4 (contacto, listado comercial, tres productos y tres legales). PUB0 conserva su referencia original.
 
 ### 12.1. Secuencia de trabajo
 
 | Orden | Trabajo | Resultado que habilita el siguiente paso |
 |---|---|---|
 | 1 | Completado: integrar G1 y el plan público, PRs #12 y #13 | Main f732ecb conserva el acceso privado, ADR 0002, PUB0–PUB3 y la compra existente; conflicto documental resuelto y CI de la combinación aprobado |
-| 2 | Implementar PUB1 desde ese main, en feat/public-institutional-site | Layout/marca, portada, seis servicios, guía, contacto, listado/tres productos y tres legales; revisión local de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
+| 2 | Implementar PUB1 por entregas enfocadas desde main; actual feat/public-services-guide | Portada/layout integrados, servicios/guía preparados en PUB1.3; faltan contacto, listado/tres productos, tres legales y revisión conjunta de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
 | 3 | Implementar las partes definidas de PUB2 | Navegación, acceso, consentimiento y enlaces comprobados; conectar contacto/búsqueda solo con destino real autorizado. Conservar la compra existente; las dependencias no resueltas quedan registradas por recorrido |
 | 4 | Ejecutar la validación local de PUB3 | Comparación desktop/móvil, accesibilidad, SEO, rutas y privacidad aprobadas; lista explícita de pendientes operativos para publicar |
 | 5 | Retomar C1, sin esperar el despliegue | Work/composición y créditos locales, incluyendo obras sin recording; grants tipados y políticas ampliados sobre el recurso real |

@@ -83,3 +83,14 @@ y el [manifiesto de recursos originales](public-assets.json) corresponden a esa
 entrega parcial, sin publicación ni pruebas de compra/envío. El [paquete PUB1](../../implementation/pub1-public-site.md#primera-entrega-pub11-y-pub12)
 registra cambios deliberados de altura, contraste, texto móvil y accesibilidad,
 y distingue las páginas interiores todavía pendientes.
+
+## Servicios y guía locales
+
+PUB1.3 continúa sobre main 4439aef (portada/layout integrados mediante PR #14).
+La [matriz y capturas locales](pub13-local/manifest.json) cubren las seis páginas
+de servicios y la guía en escritorio/móvil, con medidas adicionales a 320/768 px.
+El [manifiesto de recursos y contenido](pub13-assets.json) registra imágenes
+originales y procedencia editorial. Estas evidencias no prueban compra, envío,
+disponibilidad de dominios, aceptación de registros ni publicación. El [paquete
+PUB1](../../implementation/pub1-public-site.md#segunda-entrega-pub13--servicios-y-guía)
+recoge los ajustes deliberados y los recorridos que siguen pendientes.

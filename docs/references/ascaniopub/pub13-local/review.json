@@ -1,0 +1,1532 @@
+{
+  "pages": [
+    {
+      "name": "distribution",
+      "path": "/distribucion-digital",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 2194,
+      "heading": "Distribución Digital",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar este servicio",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "distribution",
+      "path": "/distribucion-digital",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 1855,
+      "heading": "Distribución Digital",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar este servicio",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "distribution",
+      "path": "/distribucion-digital",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 1813,
+      "heading": "Distribución Digital",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar este servicio",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "distribution",
+      "path": "/distribucion-digital",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 2001,
+      "heading": "Distribución Digital",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar este servicio",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "publishing",
+      "path": "/publishing",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1156,
+      "heading": "Publishing",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "publishing",
+      "path": "/publishing",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 1160,
+      "heading": "Publishing",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "publishing",
+      "path": "/publishing",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 1286,
+      "heading": "Publishing",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "publishing",
+      "path": "/publishing",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 1245,
+      "heading": "Publishing",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "visual-identity",
+      "path": "/identidad-visual",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 3766,
+      "heading": "Identidad Visual",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "visual-identity",
+      "path": "/identidad-visual",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 3928,
+      "heading": "Identidad Visual",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "visual-identity",
+      "path": "/identidad-visual",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 3937,
+      "heading": "Identidad Visual",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "visual-identity",
+      "path": "/identidad-visual",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 4034,
+      "heading": "Identidad Visual",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "web",
+      "path": "/desarrollo-web",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 2824,
+      "heading": "Desarrollo Web",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar dominios en Kroma Hosting",
+          "href": "https://kromahost.com"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=3"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=4"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=5"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "web",
+      "path": "/desarrollo-web",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 5228,
+      "heading": "Desarrollo Web",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar dominios en Kroma Hosting",
+          "href": "https://kromahost.com"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=3"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=4"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=5"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "web",
+      "path": "/desarrollo-web",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 5933,
+      "heading": "Desarrollo Web",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar dominios en Kroma Hosting",
+          "href": "https://kromahost.com"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=3"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=4"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=5"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "web",
+      "path": "/desarrollo-web",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 5097,
+      "heading": "Desarrollo Web",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Consultar dominios en Kroma Hosting",
+          "href": "https://kromahost.com"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=3"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=4"
+        },
+        {
+          "text": "Continuar en Kroma Hosting",
+          "href": "https://kromahost.com/cart.php?a=add&pid=5"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "media",
+      "path": "/medios-de-comunicacion",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1156,
+      "heading": "Medios de Comunicación",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "media",
+      "path": "/medios-de-comunicacion",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 1189,
+      "heading": "Medios de Comunicación",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "media",
+      "path": "/medios-de-comunicacion",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 1286,
+      "heading": "Medios de Comunicación",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "media",
+      "path": "/medios-de-comunicacion",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 1245,
+      "heading": "Medios de Comunicación",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "social",
+      "path": "/social-media",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 2222,
+      "heading": "Social Media",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "social",
+      "path": "/social-media",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 2609,
+      "heading": "Social Media",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "social",
+      "path": "/social-media",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 2553,
+      "heading": "Social Media",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "social",
+      "path": "/social-media",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 3770,
+      "heading": "Social Media",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "guide",
+      "path": "/tus-primeros-pasos",
+      "device": "desktop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 5622,
+      "heading": "Tus Primeros Pasos",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "guide",
+      "path": "/tus-primeros-pasos",
+      "device": "mobile",
+      "viewport": 390,
+      "width": 390,
+      "height": 12423,
+      "heading": "Tus Primeros Pasos",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "guide",
+      "path": "/tus-primeros-pasos",
+      "device": "narrow",
+      "viewport": 320,
+      "width": 320,
+      "height": 15917,
+      "heading": "Tus Primeros Pasos",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    },
+    {
+      "name": "guide",
+      "path": "/tus-primeros-pasos",
+      "device": "tablet",
+      "viewport": 768,
+      "width": 768,
+      "height": 7209,
+      "heading": "Tus Primeros Pasos",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "https://ascaniopub.com/contacto/"
+        }
+      ],
+      "forms": 0
+    }
+  ],
+  "interactions": {
+    "menuOpen": "true",
+    "menuTab": "Distribución musical",
+    "menuEscape": {
+      "expanded": "false",
+      "focus": "public-menu-toggle"
+    },
+    "galleryNext": {
+      "before": 0,
+      "after": 376,
+      "previousDisabled": false,
+      "nextDisabled": true
+    },
+    "galleryPrevious": 0,
+    "guideInitial": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "guideEnter": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "guideSpace": false,
+    "guideSections": [
+      {
+        "index": 0,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 1,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 2,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 3,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 4,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 5,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 6,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 7,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 8,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 9,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 10,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 11,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 12,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 13,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 14,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      },
+      {
+        "index": 15,
+        "viewport": 390,
+        "width": 390,
+        "clipped": []
+      }
+    ]
+  },
+  "home": {
+    "viewport": 390,
+    "width": 390,
+    "height": 2595,
+    "heading": "Distribución Musical",
+    "missingImages": [],
+    "clipped": [],
+    "links": [
+      {
+        "text": "Distribución musical",
+        "href": "/distribucion-digital"
+      },
+      {
+        "text": "Identidad visual",
+        "href": "/identidad-visual"
+      },
+      {
+        "text": "Social media",
+        "href": "/social-media"
+      },
+      {
+        "text": "Desarrollo web",
+        "href": "/desarrollo-web"
+      },
+      {
+        "text": "Primeros pasos",
+        "href": "/tus-primeros-pasos"
+      },
+      {
+        "text": "Contacto",
+        "href": "https://ascaniopub.com/contacto/"
+      },
+      {
+        "text": "",
+        "href": "/tus-primeros-pasos"
+      },
+      {
+        "text": "",
+        "href": "/distribucion-digital"
+      },
+      {
+        "text": "",
+        "href": "/publishing"
+      },
+      {
+        "text": "",
+        "href": "/identidad-visual"
+      },
+      {
+        "text": "",
+        "href": "/desarrollo-web"
+      },
+      {
+        "text": "",
+        "href": "/medios-de-comunicacion"
+      },
+      {
+        "text": "",
+        "href": "/social-media"
+      }
+    ],
+    "forms": 0
+  },
+  "network": {
+    "documents": [
+      {
+        "url": "http://127.0.0.1:8097/distribucion-digital",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/distribucion-digital",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/distribucion-digital",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/distribucion-digital",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/publishing",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/publishing",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/publishing",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/publishing",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/identidad-visual",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/identidad-visual",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/identidad-visual",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/identidad-visual",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/desarrollo-web",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/desarrollo-web",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/desarrollo-web",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/desarrollo-web",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/medios-de-comunicacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/medios-de-comunicacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/medios-de-comunicacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/medios-de-comunicacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/social-media",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/social-media",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/social-media",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/social-media",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/tus-primeros-pasos",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/tus-primeros-pasos",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/tus-primeros-pasos",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/tus-primeros-pasos",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8097/",
+        "status": 200
+      }
+    ],
+    "external": [],
+    "failures": [],
+    "errors": []
+  }
+}
