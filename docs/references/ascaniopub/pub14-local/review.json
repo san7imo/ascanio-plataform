@@ -1,0 +1,2823 @@
+{
+  "pages": [
+    {
+      "name": "contact",
+      "device": "desktop",
+      "path": "/contacto",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1656,
+      "heading": "Comunícate con nosotros",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Abrir formulario actual",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 3,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "contact",
+      "device": "mobile",
+      "path": "/contacto",
+      "viewport": 390,
+      "width": 390,
+      "height": 1883,
+      "heading": "Comunícate con nosotros",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Abrir formulario actual",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 3,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "contact",
+      "device": "narrow",
+      "path": "/contacto",
+      "viewport": 320,
+      "width": 320,
+      "height": 2011,
+      "heading": "Comunícate con nosotros",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Abrir formulario actual",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 3,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "contact",
+      "device": "tablet",
+      "path": "/contacto",
+      "viewport": 768,
+      "width": 768,
+      "height": 1744,
+      "heading": "Comunícate con nosotros",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Abrir formulario actual",
+          "href": "https://ascaniopub.com/contacto/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 3,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "shop",
+      "device": "desktop",
+      "path": "/shop",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1311,
+      "heading": "Shop",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Distribución VEVO",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Sincronización",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Smart URL",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Comprar en la tienda actual",
+          "href": "https://ascaniopub.com/shop/"
+        },
+        {
+          "text": "Carrito actual",
+          "href": "https://ascaniopub.com/cart/"
+        },
+        {
+          "text": "Cuenta comercial",
+          "href": "https://ascaniopub.com/my-account/"
+        },
+        {
+          "text": "Solicitar presupuesto",
+          "href": "https://ascaniopub.com/request-quote/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "shop",
+      "device": "mobile",
+      "path": "/shop",
+      "viewport": 390,
+      "width": 390,
+      "height": 2569,
+      "heading": "Shop",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Distribución VEVO",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Sincronización",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Smart URL",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Comprar en la tienda actual",
+          "href": "https://ascaniopub.com/shop/"
+        },
+        {
+          "text": "Carrito actual",
+          "href": "https://ascaniopub.com/cart/"
+        },
+        {
+          "text": "Cuenta comercial",
+          "href": "https://ascaniopub.com/my-account/"
+        },
+        {
+          "text": "Solicitar presupuesto",
+          "href": "https://ascaniopub.com/request-quote/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "shop",
+      "device": "narrow",
+      "path": "/shop",
+      "viewport": 320,
+      "width": 320,
+      "height": 2498,
+      "heading": "Shop",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Distribución VEVO",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Sincronización",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Smart URL",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Comprar en la tienda actual",
+          "href": "https://ascaniopub.com/shop/"
+        },
+        {
+          "text": "Carrito actual",
+          "href": "https://ascaniopub.com/cart/"
+        },
+        {
+          "text": "Cuenta comercial",
+          "href": "https://ascaniopub.com/my-account/"
+        },
+        {
+          "text": "Solicitar presupuesto",
+          "href": "https://ascaniopub.com/request-quote/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "shop",
+      "device": "tablet",
+      "path": "/shop",
+      "viewport": 768,
+      "width": 768,
+      "height": 1292,
+      "heading": "Shop",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Distribución VEVO",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/distribucion-vevo"
+        },
+        {
+          "text": "Sincronización",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/sincronizacion"
+        },
+        {
+          "text": "Smart URL",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Ver producto",
+          "href": "/product/smart-url"
+        },
+        {
+          "text": "Comprar en la tienda actual",
+          "href": "https://ascaniopub.com/shop/"
+        },
+        {
+          "text": "Carrito actual",
+          "href": "https://ascaniopub.com/cart/"
+        },
+        {
+          "text": "Cuenta comercial",
+          "href": "https://ascaniopub.com/my-account/"
+        },
+        {
+          "text": "Solicitar presupuesto",
+          "href": "https://ascaniopub.com/request-quote/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "vevo",
+      "device": "desktop",
+      "path": "/product/distribucion-vevo",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1397,
+      "heading": "Distribución VEVO",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 2,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "vevo",
+      "device": "mobile",
+      "path": "/product/distribucion-vevo",
+      "viewport": 390,
+      "width": 390,
+      "height": 1343,
+      "heading": "Distribución VEVO",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 2,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "vevo",
+      "device": "narrow",
+      "path": "/product/distribucion-vevo",
+      "viewport": 320,
+      "width": 320,
+      "height": 1449,
+      "heading": "Distribución VEVO",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 2,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "vevo",
+      "device": "tablet",
+      "path": "/product/distribucion-vevo",
+      "viewport": 768,
+      "width": 768,
+      "height": 1458,
+      "heading": "Distribución VEVO",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/distribucion-vevo/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 2,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "sync",
+      "device": "desktop",
+      "path": "/product/sincronizacion",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1955,
+      "heading": "Sincronización",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 7,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "sync",
+      "device": "mobile",
+      "path": "/product/sincronizacion",
+      "viewport": 390,
+      "width": 390,
+      "height": 1926,
+      "heading": "Sincronización",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 7,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "sync",
+      "device": "narrow",
+      "path": "/product/sincronizacion",
+      "viewport": 320,
+      "width": 320,
+      "height": 1960,
+      "heading": "Sincronización",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 7,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "sync",
+      "device": "tablet",
+      "path": "/product/sincronizacion",
+      "viewport": 768,
+      "width": 768,
+      "height": 2016,
+      "heading": "Sincronización",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/sincronizacion/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 7,
+      "enabledPreviewFields": 0,
+      "fieldValues": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "smart",
+      "device": "desktop",
+      "path": "/product/smart-url",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 1212,
+      "heading": "Smart URL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 1,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "smart",
+      "device": "mobile",
+      "path": "/product/smart-url",
+      "viewport": 390,
+      "width": 390,
+      "height": 1167,
+      "heading": "Smart URL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 1,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "smart",
+      "device": "narrow",
+      "path": "/product/smart-url",
+      "viewport": 320,
+      "width": 320,
+      "height": 1204,
+      "heading": "Smart URL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 1,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "smart",
+      "device": "tablet",
+      "path": "/product/smart-url",
+      "viewport": 768,
+      "width": 768,
+      "height": 1272,
+      "heading": "Smart URL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Elegir y comprar en la tienda actual",
+          "href": "https://ascaniopub.com/product/smart-url/"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 1,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": false,
+        "startNumbers": [],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "privacy",
+      "device": "desktop",
+      "path": "/privacy-policy",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 4251,
+      "heading": "POLÍTICA DE PRIVACIDAD",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "privacy",
+      "device": "mobile",
+      "path": "/privacy-policy",
+      "viewport": 390,
+      "width": 390,
+      "height": 9381,
+      "heading": "POLÍTICA DE PRIVACIDAD",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "privacy",
+      "device": "narrow",
+      "path": "/privacy-policy",
+      "viewport": 320,
+      "width": 320,
+      "height": 11859,
+      "heading": "POLÍTICA DE PRIVACIDAD",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "privacy",
+      "device": "tablet",
+      "path": "/privacy-policy",
+      "viewport": 768,
+      "width": 768,
+      "height": 5617,
+      "heading": "POLÍTICA DE PRIVACIDAD",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "notice",
+      "device": "desktop",
+      "path": "/aviso-legal",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 7499,
+      "heading": "AVISO LEGAL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "notice",
+      "device": "mobile",
+      "path": "/aviso-legal",
+      "viewport": 390,
+      "width": 390,
+      "height": 19181,
+      "heading": "AVISO LEGAL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "notice",
+      "device": "narrow",
+      "path": "/aviso-legal",
+      "viewport": 320,
+      "width": 320,
+      "height": 24303,
+      "heading": "AVISO LEGAL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "notice",
+      "device": "tablet",
+      "path": "/aviso-legal",
+      "viewport": 768,
+      "width": 768,
+      "height": 10384,
+      "heading": "AVISO LEGAL",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "cookies",
+      "device": "desktop",
+      "path": "/politica-de-cookies",
+      "viewport": 1440,
+      "width": 1440,
+      "height": 3564,
+      "heading": "POLÍTICA DE COOKIES",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "cookies",
+      "device": "mobile",
+      "path": "/politica-de-cookies",
+      "viewport": 390,
+      "width": 390,
+      "height": 8329,
+      "heading": "POLÍTICA DE COOKIES",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "cookies",
+      "device": "narrow",
+      "path": "/politica-de-cookies",
+      "viewport": 320,
+      "width": 320,
+      "height": 10229,
+      "heading": "POLÍTICA DE COOKIES",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "unapprovedLinks": []
+      }
+    },
+    {
+      "name": "cookies",
+      "device": "tablet",
+      "path": "/politica-de-cookies",
+      "viewport": 768,
+      "width": 768,
+      "height": 4717,
+      "heading": "POLÍTICA DE COOKIES",
+      "missingImages": [],
+      "clipped": [],
+      "links": [
+        {
+          "text": "Distribución musical",
+          "href": "/distribucion-digital"
+        },
+        {
+          "text": "Identidad visual",
+          "href": "/identidad-visual"
+        },
+        {
+          "text": "Social media",
+          "href": "/social-media"
+        },
+        {
+          "text": "Desarrollo web",
+          "href": "/desarrollo-web"
+        },
+        {
+          "text": "Primeros pasos",
+          "href": "/tus-primeros-pasos"
+        },
+        {
+          "text": "Contacto",
+          "href": "/contacto"
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacy-policy"
+        },
+        {
+          "text": "Aviso legal",
+          "href": "/aviso-legal"
+        },
+        {
+          "text": "Cookies",
+          "href": "/politica-de-cookies"
+        },
+        {
+          "text": "Tienda",
+          "href": "/shop"
+        },
+        {
+          "text": "Acceso a la plataforma",
+          "href": "/login"
+        },
+        {
+          "text": "Crear cuenta",
+          "href": "/register"
+        }
+      ],
+      "forms": 0,
+      "previewFields": 0,
+      "enabledPreviewFields": 0,
+      "fieldValues": [],
+      "legalCopy": {
+        "review": true,
+        "startNumbers": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "unapprovedLinks": []
+      }
+    }
+  ],
+  "interactions": {
+    "menuOpen": "true",
+    "menuTab": "Distribución musical",
+    "menuEscape": {
+      "expanded": "false",
+      "focus": "public-menu-toggle"
+    },
+    "orderByName": {
+      "value": "name-desc",
+      "titles": [
+        "Smart URL",
+        "Sincronización",
+        "Distribución VEVO"
+      ]
+    }
+  },
+  "existingRoutes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/distribucion-digital",
+      "status": 200
+    },
+    {
+      "path": "/publishing",
+      "status": 200
+    },
+    {
+      "path": "/identidad-visual",
+      "status": 200
+    },
+    {
+      "path": "/desarrollo-web",
+      "status": 200
+    },
+    {
+      "path": "/medios-de-comunicacion",
+      "status": 200
+    },
+    {
+      "path": "/social-media",
+      "status": 200
+    },
+    {
+      "path": "/tus-primeros-pasos",
+      "status": 200
+    }
+  ],
+  "distributionLinks": [
+    "/contacto",
+    "/product/distribucion-vevo",
+    "/product/sincronizacion",
+    "/product/smart-url"
+  ],
+  "network": {
+    "documents": [
+      {
+        "url": "http://127.0.0.1:8098/contacto",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/contacto",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/contacto",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/contacto",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/shop",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/shop",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/shop",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/shop",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/distribucion-vevo",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/distribucion-vevo",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/distribucion-vevo",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/distribucion-vevo",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/sincronizacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/sincronizacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/sincronizacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/sincronizacion",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/smart-url",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/smart-url",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/smart-url",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/product/smart-url",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/privacy-policy",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/privacy-policy",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/privacy-policy",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/privacy-policy",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/aviso-legal",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/aviso-legal",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/aviso-legal",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/aviso-legal",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/politica-de-cookies",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/politica-de-cookies",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/politica-de-cookies",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/politica-de-cookies",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8098/distribucion-digital",
+        "status": 200
+      }
+    ],
+    "external": [],
+    "failures": [],
+    "errors": []
+  }
+}

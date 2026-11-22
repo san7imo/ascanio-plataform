@@ -94,3 +94,15 @@ originales y procedencia editorial. Estas evidencias no prueban compra, envío,
 disponibilidad de dominios, aceptación de registros ni publicación. El [paquete
 PUB1](../../implementation/pub1-public-site.md#segunda-entrega-pub13--servicios-y-guía)
 recoge los ajustes deliberados y los recorridos que siguen pendientes.
+
+## Contacto, productos y legales locales
+
+PUB1.4 parte de main cf8944e (servicios/guía integrados mediante PR #15). Su
+[matriz de ocho páginas](pub14-local/manifest.json) distingue capturas completas
+de contacto/listado/productos y capturas de viewport de las páginas legales,
+con medidas de cuerpo completo en [review.json](pub14-local/review.json). El
+[manifiesto de recursos y cambios editoriales](pub14-assets.json) identifica
+imágenes, copias de origen y vínculos retirados. El [paquete PUB1](../../implementation/pub1-public-site.md#tercera-entrega-pub14--contacto-productos-y-legales)
+explica las vistas previas deshabilitadas y los destinos de operación existentes.
+No se envió contacto, eligió compra o vinculó una cuenta comercial. La revisión
+de los textos y de los enlaces ajenos del aviso original sigue pendiente.

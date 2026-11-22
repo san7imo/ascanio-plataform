@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import { Mail } from 'lucide-vue-next';
 import PublicHero from '@/components/PublicHero.vue';
 import PublicLayout from '@/layouts/PublicLayout.vue';
-import { currentSite, publicHref, publicServices } from '@/lib/public-site';
+import { publicHref, publicServices } from '@/lib/public-site';
 
 defineProps<{ canRegister: boolean }>();
 </script>
@@ -73,7 +73,7 @@ defineProps<{ canRegister: boolean }>();
                     artista completo
                 </p>
                 <a
-                    :href="currentSite + '/contacto/'"
+                    :href="publicHref('/contacto/')"
                     class="public-contact-button"
                     ><Mail :size="16" aria-hidden="true" /> Contáctanos</a
                 >

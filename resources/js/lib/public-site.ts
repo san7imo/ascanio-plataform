@@ -1,15 +1,19 @@
 import {
+    contact,
     distribution,
     guide,
     media,
     publishing,
+    shop,
     social,
     visualIdentity,
     web,
 } from '@/routes/public';
+import { cookies, notice, privacy } from '@/routes/public/legal';
+import { smart, sync, vevo } from '@/routes/public/products';
 
-// Only delivered pages resolve locally. Products/contact/legal remain on the
-// current site until PUB1.4; production domain cutover is still a PUB2 gate.
+// The sixteen editorial pages resolve locally. Purchase/contact submissions
+// stay on the existing site; production domain cutover is still a PUB2 gate.
 export const currentSite = 'https://ascaniopub.com';
 
 const localPages: Record<string, string> = {
@@ -20,6 +24,14 @@ const localPages: Record<string, string> = {
     '/medios-de-comunicacion/': media().url,
     '/social-media/': social().url,
     '/tus-primeros-pasos/': guide().url,
+    '/contacto/': contact().url,
+    '/shop/': shop().url,
+    '/product/distribucion-vevo/': vevo().url,
+    '/product/sincronizacion/': sync().url,
+    '/product/smart-url/': smart().url,
+    '/privacy-policy/': privacy().url,
+    '/aviso-legal/': notice().url,
+    '/politica-de-cookies/': cookies().url,
 };
 
 export function publicHref(path: string): string {

@@ -1,0 +1,134 @@
+{
+    "vevo": {
+        "key": "vevo",
+        "title": "Distribución VEVO",
+        "path": "/product/distribucion-vevo/",
+        "purchaseUrl": "https://ascaniopub.com/product/distribucion-vevo/",
+        "price": "8.95 € – 122.35 € + IVA",
+        "category": "Distribución Musical",
+        "image": {
+            "src": "/assets/ascanio/commerce/product-vevo.webp",
+            "width": 737,
+            "height": 772,
+            "alt": "Distribución VEVO"
+        },
+        "fields": [
+            {
+                "key": "option-1",
+                "label": "Canal VEVO",
+                "type": "select",
+                "placeholder": "Elige una opción",
+                "options": ["Si", "No"],
+                "description": ""
+            },
+            {
+                "key": "option-2",
+                "label": "Vídeos",
+                "type": "select",
+                "placeholder": "Elige una opción",
+                "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                "description": ""
+            }
+        ]
+    },
+    "sync": {
+        "key": "sync",
+        "title": "Sincronización",
+        "path": "/product/sincronizacion/",
+        "purchaseUrl": "https://ascaniopub.com/product/sincronizacion/",
+        "price": "10.95 € + IVA",
+        "category": "Sincronización",
+        "image": {
+            "src": "/assets/ascanio/commerce/product-sync.webp",
+            "width": 737,
+            "height": 772,
+            "alt": "Sincronización"
+        },
+        "fields": [
+            {
+                "key": "detail-1",
+                "label": "Nombre artistico *",
+                "type": "text",
+                "placeholder": "Escribe tu nombre artistico",
+                "options": [],
+                "description": ""
+            },
+            {
+                "key": "detail-2",
+                "label": "Titulo de la canción *",
+                "type": "text",
+                "placeholder": "Nombre de tu canción",
+                "options": [],
+                "description": ""
+            },
+            {
+                "key": "detail-3",
+                "label": "Fecha de lanzamiento *",
+                "type": "date",
+                "placeholder": "Fecha de lanzamiento en tiendas digitales",
+                "options": [],
+                "description": ""
+            },
+            {
+                "key": "detail-4",
+                "label": "URL Perfil Spotify *",
+                "type": "text",
+                "placeholder": "Link de tu perfil en Spotify",
+                "options": [],
+                "description": ""
+            },
+            {
+                "key": "detail-5",
+                "label": "URL de canción en Spotify",
+                "type": "text",
+                "placeholder": "URL de canción en Spotify",
+                "options": [],
+                "description": "Si tu canción aun no ha salido en las tiendas, el proceso se llevará a cabo a partir de la fecha de lanzamiento"
+            },
+            {
+                "key": "detail-6",
+                "label": "Letra de la canción *",
+                "type": "textarea",
+                "placeholder": "Agrega la letra de la canción completa como se canta con créditos para sincronizar",
+                "options": [],
+                "description": ""
+            },
+            {
+                "key": "detail-7",
+                "label": "Email de contacto *",
+                "type": "email",
+                "placeholder": "Tu correo electrónico",
+                "options": [],
+                "description": ""
+            }
+        ]
+    },
+    "smart": {
+        "key": "smart",
+        "title": "Smart URL",
+        "path": "/product/smart-url/",
+        "purchaseUrl": "https://ascaniopub.com/product/smart-url/",
+        "price": null,
+        "category": "Distribución Musical",
+        "image": {
+            "src": "/assets/ascanio/commerce/product-smart.webp",
+            "width": 300,
+            "height": 300,
+            "alt": "Smart URL"
+        },
+        "fields": [
+            {
+                "key": "option-1",
+                "label": "Plan",
+                "type": "select",
+                "placeholder": "Elige una opción",
+                "options": [
+                    "Plan Básico Gratis",
+                    "Plan Premium",
+                    "Plan Profesional"
+                ],
+                "description": ""
+            }
+        ]
+    }
+}

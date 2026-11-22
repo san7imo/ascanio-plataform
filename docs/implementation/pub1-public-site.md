@@ -1,12 +1,12 @@
 # PUB1 — Paquete de implementación del sitio público
 
-Estado: en implementación. PUB1.1 y PUB1.2 integrados mediante PR #14; PUB1.3 preparado para revisión local; PUB1.4–PUB1.5 pendientes. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
+Estado: en implementación. PUB1.1–PUB1.3 integrados mediante PRs #14/#15; PUB1.4 preparado para revisión local; PUB1.5 pendiente. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
 
 Este documento concreta PUB1 del [plan](../implementation-plan.md), conforme al [ADR 0002](../adr/0002-public-institutional-site.md) y a las [50 capturas de referencia](../references/ascaniopub/README.md). El titular eligió reproducir las páginas de productos y conservar la compra actual. Este documento separa el paquete completo de su primera entrega de código; no autoriza publicación.
 
 ## Base y resultado esperado
 
-Base integrada comprobada: main f732ecb, después de PR #12 (G1, aca2ad7) y PR #13 (referencia/plan público, f732ecb). Se resolvió el conflicto documental conservando G1 y PUB0–PUB3; CI de la combinación aprobó auditorías y PHP 8.3/8.4 antes del merge. La primera implementación partió de esa base en feat/public-institutional-site y se integró mediante [PR #14](https://github.com/san7imo/ascanio-plataform/pull/14), merge 4439aef. PUB1.3 parte de ese main en feat/public-services-guide.
+Base integrada comprobada: main f732ecb, después de PR #12 (G1, aca2ad7) y PR #13 (referencia/plan público, f732ecb). Se resolvió el conflicto documental conservando G1 y PUB0–PUB3; CI de la combinación aprobó auditorías y PHP 8.3/8.4 antes del merge. La primera implementación partió de esa base en feat/public-institutional-site y se integró mediante [PR #14](https://github.com/san7imo/ascanio-plataform/pull/14), merge 4439aef. PUB1.3 partió de ese main en feat/public-services-guide y se integró mediante [PR #15](https://github.com/san7imo/ascanio-plataform/pull/15), merge cf8944e, después de CI PHP 8.3/8.4 aprobado. PUB1.4 parte de cf8944e en feat/public-commerce-contact-legal.
 
 El resultado local es una réplica navegable del sitio institucional en Laravel/Vue/Inertia: marca, composición, contenido y recursos de referencia en escritorio/móvil. La web pública presenta servicios; la aplicación privada sigue operando con Fortify, memberships y grants. No se cambia la estrategia de tenants, base de datos o storage para acomodar el sitio.
 
@@ -96,7 +96,7 @@ tienda y legales conservan enlaces fijos a las páginas actuales de ascaniopub.c
 No se implementan redirecciones dinámicas ni se afirma continuidad después de
 un cambio de raíz del dominio. El mapa está en resources/js/lib/public-site.ts;
 PUB1.3 reemplaza esos siete destinos al entregar las seis páginas de servicios y la guía,
-y PUB1.4 hará lo mismo con contacto, productos y legales. No se envían formularios,
+y PUB1.4 completa lo mismo con contacto, productos y legales, descrito abajo. No se envían formularios,
 se añade al carrito ni se inicia compra en las comprobaciones.
 
 La secuencia acordada continuó con **PUB1.3: seis servicios y guía**, descrita abajo. PUB1 completo, PUB2/PUB3, C1 y la publicación siguen pendientes. No hay
@@ -124,11 +124,12 @@ PR; no se declara probado localmente en esta entrega.
 
 ## Segunda entrega: PUB1.3 — servicios y guía
 
-Preparada y comprobada localmente en feat/public-services-guide, basada en main
-4439aef. Todavía no integrada ni publicada. Las seis páginas de servicios y la
+Integrada mediante PR #15 en main cf8944e, con CI PHP 8.3/8.4 aprobado; sin
+publicar. La entrega partió de main 4439aef. Las seis páginas de servicios y la
 guía dejan de salir al sitio de origen: la navegación y las siete tarjetas de
-portada usan rutas locales generadas por Wayfinder. Contacto, tienda, fichas de
-productos, legales y los destinos de Kroma siguen en los servicios existentes.
+portada usan rutas locales generadas por Wayfinder. En ese corte, contacto,
+tienda, fichas y legales todavía enlazaban al sitio de origen; PUB1.4 añade sus
+páginas locales y conserva la operación externa. Kroma sigue en su propio sitio.
 
 | Página local | Contenido entregado | Interacción / destino |
 |---|---|---|
@@ -194,6 +195,103 @@ Verificación ejecutada:
   [identidad desktop](../references/ascaniopub/pub13-local/visual-identity-desktop.jpg)
   y [guía cerrada](../references/ascaniopub/pub13-local/guide-mobile-collapsed.jpg).
 
-La siguiente entrega es **PUB1.4: contacto, listado comercial, tres productos y
-tres legales**. PUB1.5/PUB2/PUB3 y la publicación siguen pendientes. No se alteran
+La secuencia acordada continuó con **PUB1.4: contacto, listado comercial, tres
+productos y tres legales**, descrita abajo. PUB1.5/PUB2/PUB3 y la publicación siguen pendientes. No se alteran
 Kroma, WordPress, DNS o compras existentes; DOCUMENT_UPLOADS_ENABLED sigue false.
+
+## Tercera entrega: PUB1.4 — contacto, productos y legales
+
+Preparada y comprobada localmente en feat/public-commerce-contact-legal, basada
+en main cf8944e. Todavía no integrada ni publicada. Las ocho páginas completan
+la presentación local de las dieciséis rutas principales; esto no cierra PUB1.5,
+PUB2/PUB3 ni las puertas operativas de publicación.
+
+| Página local | Contenido entregado | Acción real o límite explícito |
+|---|---|---|
+| /contacto | Banner original, ayuda, email/teléfono/dirección y tres campos de referencia | Campos deshabilitados; enlace al formulario actual y canales mailto/tel, sin envío local |
+| /shop | Tres productos, imágenes, categorías y precios visibles en origen | Fichas locales; orden de referencia o por nombre; compra, carrito, cuenta y presupuesto enlazan al sistema actual |
+| /product/distribucion-vevo | Imagen, título, rango de precio y dos grupos de opciones | Vista previa deshabilitada, opciones también visibles como texto; elegir/comprar en la ficha actual |
+| /product/sincronizacion | Imagen, título, precio y siete campos publicados | Vista previa vacía/deshabilitada; no recoge letras, contacto o datos de una canción localmente |
+| /product/smart-url | Imagen, título y tres planes publicados | Precio desconocido se conserva null; no se inventa 0, importe final o disponibilidad |
+| /privacy-policy | Copia editorial de la política publicada | Marcador visible de revisión pendiente; sin certificación de validez o adecuación a la nueva app |
+| /aviso-legal | Copia editorial del aviso publicado | Mantiene numeración de secciones; retira vínculos no aprobados conservando texto |
+| /politica-de-cookies | Copia editorial del texto publicado | No configura consentimiento, trackers ni proveedores; requiere revisión antes de publicar |
+
+La navegación, el CTA de portada, los contactos de servicios, las tres tarjetas
+de producto y los enlaces de pie apuntan ahora a las páginas locales mediante
+Wayfinder. La salida comercial usa las URLs fijas originales de ascaniopub.com,
+sin parámetros de carrito, IDs de clientes o vinculación de cuentas por email.
+Cuenta comercial WordPress y acceso Fortify mantienen etiquetas y destinos
+distintos. No se han implementado endpoints locales de carrito, checkout, cuenta
+comercial o presupuesto; sus entradas de tienda conservan el destino externo.
+La equivalencia /home-page-4 y las rutas heredadas siguen en el mapa de PUB2.
+
+Los campos son una vista previa deshabilitada dentro de fieldsets etiquetados:
+no hay formulario enviable, selector de cantidad, botón Añadir al carrito local,
+validación comercial o creación de pedidos. Cada página explica dónde completar
+la acción. Contacto no envía un éxito ficticio, y productos no descartan una
+selección escrita por el usuario al continuar en el sitio actual. No se copian
+nonce, formularios de plugins, reCAPTCHA, Stripe ni código de WooCommerce.
+
+Se versionan cuatro imágenes originales sin modificar, aproximadamente 68 KB, y
+JSON editorial de contacto, productos y legales. El [manifiesto de recursos y
+cambios editoriales](../references/ascaniopub/pub14-assets.json) registra URL,
+hashes, dimensiones y las ocho copias HTML públicas usadas como origen. El HTML
+bruto queda fuera de Git. No se accedió a pedidos/cuentas, envió contacto o
+ejecutó una compra. Los datos comerciales/legales publicados son contenido
+institucional de referencia, no registros de User, Party o TenantParty.
+
+Tratamiento explícito de la referencia:
+
+- Se conserva el fondo claro del listado y legales con el header de marca negro
+  para evitar el logo ilegible sobre blanco observado en el origen. Se muestran
+  los productos sin depender de animaciones de WordPress que los dejaban ocultos.
+- La ordenación local ofrece nombre A–Z/Z–A y orden de referencia. No simula
+  popularidad, fecha de ventas o comparaciones de precio sin datos estructurados.
+- Se conservan los precios publicados como strings; no se calculan IVA, totales,
+  descuentos o moneda. La ficha indica confirmar opciones/precios/condiciones
+  en la tienda actual. Revisar vigencia comercial antes de publicar.
+- Las tres páginas legales muestran aviso de copia de referencia y revisión
+  editorial pendiente. Mantienen el texto y numeración original con start en
+  listas; se eliminan atributos de plugins/estilo y formatos no admitidos.
+- El aviso enlaza «IP» a ceporros.com y «Google» a presencialismo.com en su HTML
+  de origen. Se retiraron esos vínculos de la réplica, conservando los anclajes
+  como texto; no se visitaron esos destinos ni se afirma haber corregido el
+  sitio de producción o determinado la causa. La incidencia requiere revisión
+  del contenido original por el titular.
+- También se desactivaron seis enlaces heredados HTTP de la política de cookies
+  manteniendo su texto; no se inventan nuevos destinos. Siete enlaces a la raíz
+  antigua se mapean a / local. Solo se conservan mailto institucional, AEPD y
+  el soporte HTTPS de Google ya citado en la referencia. Todo cambio está en
+  el manifiesto; no representa una auditoría jurídica.
+
+Verificación ejecutada:
+
+- composer run ci:check con PHP 8.4 y PostgreSQL/Redis: **203 pruebas / 2932
+  aserciones**, Pint, lint, formato, tipos, tooling y auditorías aprobados.
+- Build aprobado. Las nuevas pruebas cubren las ocho páginas sin/con sesión,
+  ausencia de props privadas/comerciales, parámetros ignorados, destinos fijos,
+  precio null y rechazo de envíos locales sin mail, jobs o peticiones externas.
+- HTML legal validado por allowlist de etiquetas, href y start numérico; revisión
+  pendiente y numeración 10/13/5 comprobadas. No hay scripts o campos activos
+  importados del texto.
+- Chrome: 32 combinaciones de ocho páginas y anchos 1440/390/320/768; sin
+  recortes horizontales, imágenes faltantes, campos de vista previa habilitados,
+  formularios enviables, errores JS o peticiones externas durante la carga.
+  Ordenación por nombre y menú Enter/Tab/Escape probados por teclado. Las otras
+  ocho rutas siguen respondiendo 200 y distribución enlaza sus fichas locales.
+- [Manifiesto de capturas](../references/ascaniopub/pub14-local/manifest.json),
+  [mediciones](../references/ascaniopub/pub14-local/review.json),
+  [contacto móvil](../references/ascaniopub/pub14-local/contact-mobile.jpg),
+  [tienda desktop](../references/ascaniopub/pub14-local/shop-desktop.jpg) y
+  [producto VEVO](../references/ascaniopub/pub14-local/vevo-mobile.jpg). Las seis
+  capturas legales muestran el viewport inicial; el cuerpo completo se mide
+  en DOM y su HTML se comprueba en pruebas, sin afirmar revisión jurídica.
+
+La siguiente entrega es **PUB1.5: revisión conjunta de las dieciséis páginas,
+navegación, acceso, referencias y límites**. PUB2 debe definir transporte real de
+contacto, consentimiento y convivencia de rutas comerciales antes de sustituir
+la raíz del dominio: conservar href al mismo dominio todavía no demuestra que
+WordPress, callbacks, carrito o compras funcionarán después del corte. PUB3,
+O0/O1 y la publicación siguen pendientes. No hay migraciones ni cambios de Kroma,
+DNS, WordPress, compras o DOCUMENT_UPLOADS_ENABLED=false.

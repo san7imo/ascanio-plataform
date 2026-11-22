@@ -1,0 +1,40 @@
+{
+    "title": "Comunícate con nosotros",
+    "subtitle": "Deja un mensaje para más información, te respondemos vía correo electrónico",
+    "hero": {
+        "src": "/assets/ascanio/commerce/contact-hero.webp",
+        "width": 1920,
+        "height": 767
+    },
+    "heading": "¿Necesitas ayuda?",
+    "email": "info@ascaniopub.com",
+    "phone": "+34 608 529 493",
+    "address": "Av. 8 de marzo 5, piso 3B. Vitoria, Alava",
+    "formUrl": "https://ascaniopub.com/contacto/",
+    "fields": [
+        {
+            "key": "contact-1",
+            "label": "Nombre",
+            "type": "text",
+            "placeholder": "Nombre",
+            "options": [],
+            "description": ""
+        },
+        {
+            "key": "contact-2",
+            "label": "Email",
+            "type": "email",
+            "placeholder": "Email",
+            "options": [],
+            "description": ""
+        },
+        {
+            "key": "contact-3",
+            "label": "Mensaje",
+            "type": "textarea",
+            "placeholder": "Mensaje",
+            "options": [],
+            "description": ""
+        }
+    ]
+}

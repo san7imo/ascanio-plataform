@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import PublicGallery from '@/components/PublicGallery.vue';
 import PublicHero from '@/components/PublicHero.vue';
 import PublicLayout from '@/layouts/PublicLayout.vue';
-import { currentSite } from '@/lib/public-site';
+import { publicHref } from '@/lib/public-site';
 import type { PublicServiceContent } from '@/types/public-site';
 
 defineProps<{ service: PublicServiceContent; canRegister: boolean }>();
@@ -47,7 +47,7 @@ defineProps<{ service: PublicServiceContent; canRegister: boolean }>();
                 <template v-for="tile in service.tiles" :key="tile.src">
                     <a
                         v-if="tile.path"
-                        :href="currentSite + tile.path"
+                        :href="publicHref(tile.path)"
                         class="public-service"
                         ><img
                             :src="tile.src"
@@ -65,7 +65,7 @@ defineProps<{ service: PublicServiceContent; canRegister: boolean }>();
                             loading="lazy"
                         />
                         <figcaption class="public-tile-note">
-                            <a :href="currentSite + '/contacto/'"
+                            <a :href="publicHref('/contacto/')"
                                 >Consultar este servicio</a
                             >
                         </figcaption>
@@ -134,7 +134,7 @@ defineProps<{ service: PublicServiceContent; canRegister: boolean }>();
                 <div>
                     <p>{{ service.paragraphs[1] }}</p>
                     <a
-                        :href="currentSite + '/contacto/'"
+                        :href="publicHref('/contacto/')"
                         class="public-secondary-button"
                         >Comunícate</a
                     >

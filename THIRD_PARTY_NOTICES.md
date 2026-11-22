@@ -32,8 +32,8 @@ THE SOFTWARE.
 The original logo, illustrations, platform marks, service tiles and photograph
 under `public/assets/ascanio/` were obtained from the public Ascanio website for
 the owner-requested replica. The [home asset manifest](docs/references/ascaniopub/public-assets.json) and
-[service/guide asset manifest](docs/references/ascaniopub/pub13-assets.json)
-record original URLs, byte sizes and SHA-256 checksums. No ownership transfer or
+[service/guide asset manifest](docs/references/ascaniopub/pub13-assets.json) and
+[contact/commerce manifest](docs/references/ascaniopub/pub14-assets.json) record original URLs, byte sizes and SHA-256 checksums. No ownership transfer or
 license to third-party marks is asserted by their inclusion. Images are unchanged;
 WordPress plugins, scripts, tracking and payment integrations were not copied.
 
@@ -49,3 +49,9 @@ editorial images for the requested replica, not reused application code, tenant
 seeds or private customer fixtures. Guide content is a versioned editorial copy
 with a restricted HTML allowlist; it supplies no legal authority or universal
 validation rules to the SaaS catalog.
+
+Public contact/product images and legal reference copies in PUB1.4 follow the
+same editorial-source boundary. Legal source links that were unapproved are
+unwrapped with their text retained, original list numbering is preserved, and
+all three copies retain an explicit editorial review marker. Inclusion does not
+certify their legal validity or current applicability to the new application.

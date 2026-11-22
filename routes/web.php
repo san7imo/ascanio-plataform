@@ -28,6 +28,24 @@ Route::name('public.')->group(function () {
     }
 
     Route::get('tus-primeros-pasos', [PublicSiteController::class, 'guide'])->name('guide');
+    Route::get('contacto', [PublicSiteController::class, 'contact'])->name('contact');
+    Route::get('shop', [PublicSiteController::class, 'shop'])->name('shop');
+
+    foreach ([
+        'distribucion-vevo' => 'vevo',
+        'sincronizacion' => 'sync',
+        'smart-url' => 'smart',
+    ] as $path => $product) {
+        Route::get('product/'.$path, [PublicSiteController::class, 'product'])->defaults('product', $product)->name('products.'.$product);
+    }
+
+    foreach ([
+        'privacy-policy' => 'privacy',
+        'aviso-legal' => 'notice',
+        'politica-de-cookies' => 'cookies',
+    ] as $path => $legal) {
+        Route::get($path, [PublicSiteController::class, 'legal'])->defaults('legal', $legal)->name('legal.'.$legal);
+    }
 });
 
 Route::get('team-invitations/review', [TeamInvitationClaimController::class, 'review'])->middleware(['auth', 'verified'])->name('team-invitations.review');
