@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Documents\DocumentController;
 use App\Http\Controllers\Parties\TenantPartyController;
 use App\Http\Controllers\TeamInvitationClaimController;
 use App\Http\Controllers\Workspaces\GovernanceController;
@@ -29,6 +30,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [WorkspaceController::class, 'show'])->name('workspaces.show');
         Route::post('select', [WorkspaceController::class, 'select'])->name('workspaces.select');
         Route::patch('/', [WorkspaceController::class, 'update'])->middleware('throttle:30,1')->name('workspaces.update');
+        Route::middleware('cache.headers:private;no_store')->group(function () {
+            Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
+            Route::post('documents', [DocumentController::class, 'store'])->middleware('throttle:10,1')->name('documents.store');
+            Route::get('documents/{document}', [DocumentController::class, 'show'])->whereUuid('document')->name('documents.show');
+            Route::post('documents/{document}/versions', [DocumentController::class, 'upload'])->whereUuid('document')->middleware('throttle:10,1')->name('documents.versions.store');
+            Route::get('documents/{document}/versions/{version}/download', [DocumentController::class, 'download'])->whereUuid('document')->whereUuid('version')->middleware('throttle:30,1')->name('documents.download');
+            Route::post('documents/{document}/versions/{version}/retry', [DocumentController::class, 'retry'])->whereUuid('document')->whereUuid('version')->middleware('throttle:10,1')->name('documents.retry');
+        });
         Route::get('parties', [TenantPartyController::class, 'index'])->name('parties.index');
         Route::get('parties/create', [TenantPartyController::class, 'create'])->name('parties.create');
         Route::post('parties', [TenantPartyController::class, 'store'])->middleware('throttle:30,1')->name('parties.store');

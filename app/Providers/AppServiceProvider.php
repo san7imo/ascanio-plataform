@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Modules\Documents\Models\Document;
+use App\Modules\Documents\Policies\DocumentPolicy;
+use App\Modules\Documents\Storage\CapacityProbe;
+use App\Modules\Documents\Storage\MalwareScanner;
+use App\Modules\Documents\Storage\UnavailableCapacityProbe;
+use App\Modules\Documents\Storage\UnavailableMalwareScanner;
 use App\Modules\IdentityAccess\Models\Tenant;
 use App\Modules\IdentityAccess\Policies\TenantPolicy;
 use App\Modules\IdentityAccess\TenantContext;
@@ -26,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->scoped(TenantContext::class);
+        $this->app->bind(CapacityProbe::class, UnavailableCapacityProbe::class);
+        $this->app->bind(MalwareScanner::class, UnavailableMalwareScanner::class);
     }
 
     /**
@@ -43,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
         Queue::failing($clearContext);
         Queue::looping($clearContext);
         Gate::policy(Tenant::class, TenantPolicy::class);
+        Gate::policy(Document::class, DocumentPolicy::class);
         Gate::policy(TenantParty::class, TenantPartyPolicy::class);
         RateLimiter::for('workspace-governance', fn (Request $request) => Limit::perMinute(10)->by('governance:'.$request->user()->id));
     }

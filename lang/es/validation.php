@@ -56,6 +56,8 @@ return [
     'unique' => 'El valor de :attribute ya está registrado.',
     'uuid' => 'Selecciona un identificador válido para :attribute.',
     'attributes' => [
+        'file' => 'archivo', 'title' => 'título', 'description' => 'descripción',
+        'upload_key' => 'formulario de carga', 'expected_version' => 'versión abierta',
         'display_name' => 'nombre visible', 'legal_name' => 'nombre legal declarado', 'phone' => 'teléfono',
         'notes' => 'notas privadas', 'source_note' => 'procedencia declarada',
         'business_type_codes' => 'actividades', 'identifiers' => 'identificadores', 'version' => 'versión',

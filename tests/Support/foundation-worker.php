@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Redis;
+use Tests\Support\SyntheticDocumentEnvironment;
 
 require dirname(__DIR__, 2).'/vendor/autoload.php';
 $app = require dirname(__DIR__, 2).'/bootstrap/app.php';
@@ -21,6 +22,9 @@ if (! $app->environment('testing') || config('database.default') !== 'pgsql'
 }
 
 [$script, $queue, $key, $mode] = $argv;
+if ($mode === 'document-scans') {
+    SyntheticDocumentEnvironment::configure(false);
+}
 Notification::fake();
 if ($mode === 'mail-failure') {
     Mail::shouldReceive('to')->andThrow(new RuntimeException('synthetic-provider-secret'));

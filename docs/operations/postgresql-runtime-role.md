@@ -1,6 +1,6 @@
 # PostgreSQL: separación entre migración y runtime
 
-Alcance: procedimiento de referencia para una futura configuración autorizada en una base exclusiva de Ascanio. No se ejecutó en Kroma ni se confirmó allí disponibilidad de roles, PostgreSQL o permisos DDL. F2 y P1 lo verifican con un LOGIN efímero en ascanio_test; el usuario propietario del entorno local/CI no pasa a ser una cuenta de producción.
+Alcance: procedimiento de referencia para una futura configuración autorizada en una base exclusiva de Ascanio. No se ejecutó en Kroma ni se confirmó allí disponibilidad de roles, PostgreSQL o permisos DDL. F2, P1 y D1 lo verifican con un LOGIN efímero en ascanio_test; el usuario propietario del entorno local/CI no pasa a ser una cuenta de producción.
 
 La cuenta migradora ejecuta DDL y es dueña de tablas/funciones, o tiene la facultad de un rol propietario separado. La cuenta runtime de web/workers no posee objetos, no es miembro de ese rol, no puede crear roles/bases ni tiene superuser/BYPASSRLS. NOINHERIT por sí solo no basta: también hay que comprobar que no pueda hacer SET ROLE al propietario. Esta configuración no incorpora RLS ni reemplaza las policies de aplicación.
 
@@ -26,7 +26,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON
     parties, persons, organizations, tenants, tenant_memberships,
     roles, role_permissions, membership_roles,
     team_invitations, team_invitation_roles,
-    tenant_parties, party_identifiers, tenant_party_business_types
+    tenant_parties, party_identifiers, tenant_party_business_types, documents
 TO ascanio_runtime;
 GRANT USAGE, SELECT ON SEQUENCE jobs_id_seq, failed_jobs_id_seq
 TO ascanio_runtime;
@@ -38,6 +38,15 @@ GRANT SELECT ON permissions, business_types TO ascanio_runtime;
 REVOKE ALL ON tenant_party_revisions FROM PUBLIC;
 REVOKE ALL ON tenant_party_revisions FROM ascanio_runtime;
 GRANT SELECT, INSERT ON tenant_party_revisions TO ascanio_runtime;
+
+-- Payload de versión inmutable; solo se actualiza el workflow de escaneo.
+REVOKE ALL ON document_versions FROM PUBLIC;
+REVOKE ALL ON document_versions FROM ascanio_runtime;
+GRANT SELECT, INSERT ON document_versions TO ascanio_runtime;
+GRANT UPDATE
+    (scan_status, scan_generation, scan_requested_by, source_membership_id,
+     source_access_version, failure_code, scanned_at, updated_at)
+ON document_versions TO ascanio_runtime;
 
 -- Auditar grants anteriores, incluidos roles heredados y PUBLIC.
 REVOKE ALL ON audit_events FROM PUBLIC;
@@ -54,9 +63,9 @@ No conceder ALL ni aplicar defaults que otorguen DML a todas las tablas futuras.
 
 ## Verificación
 
-Abrir una conexión nueva autenticada como runtime, no una sesión del administrador con SET ROLE. Comprobar current_user y session_user, atributos en pg_roles, ownership de objetos, has_schema_privilege('CREATE'), relaciones de membresía con el migrador y permisos de tabla/columna sobre audit_events. Probar con datos sintéticos una creación de workspace y una mutación de roles que inserten auditoría, además de crear/editar una contraparte con revisiones inmutables.
+Abrir una conexión nueva autenticada como runtime, no una sesión del administrador con SET ROLE. Comprobar current_user y session_user, atributos en pg_roles, ownership de objetos, has_schema_privilege('CREATE'), relaciones de membresía con el migrador y permisos de tabla/columna sobre audit_events. Probar con datos sintéticos una creación de workspace y una mutación de roles que inserten auditoría, además de crear/editar una contraparte con revisiones inmutables. D1 amplía la prueba a carga/escaneo sintéticos y descarga autenticada de una versión, además de ejecución de advisory locks transaccionales sin elevar el login.
 
-Las denegaciones esperadas deben ocurrir por permisos, además del trigger append-only. En el test F2 se exige SQLSTATE 42501 para UPDATE, DELETE, TRUNCATE, ALTER TABLE DISABLE TRIGGER, DROP TABLE/FUNCTION, SET ROLE al migrador, session_replication_role e INSERT de actor_type=migration. P1 añade denegaciones de edición/borrado/truncate de revisiones, desactivación de su trigger y edición del catálogo business_types. Mantener el catálogo y el historial original tras los intentos. Solo ejecutar pruebas destructivas de denegación en una base sintética preparada; no usar producción para probar si DROP falla.
+Las denegaciones esperadas deben ocurrir por permisos, además del trigger append-only. En el test F2 se exige SQLSTATE 42501 para UPDATE, DELETE, TRUNCATE, ALTER TABLE DISABLE TRIGGER, DROP TABLE/FUNCTION, SET ROLE al migrador, session_replication_role e INSERT de actor_type=migration. P1 añade denegaciones de edición/borrado/truncate de revisiones, desactivación de su trigger y edición del catálogo business_types. D1 comprueba también la denegación de UPDATE sobre checksum, DELETE/TRUNCATE y desactivación de guards en document_versions. Mantener el catálogo y el historial original tras los intentos. Solo ejecutar pruebas destructivas de denegación en una base sintética preparada; no usar producción para probar si DROP falla.
 
 GovernanceRuntimeRoleTest provisiona un LOGIN aleatorio mediante una conexión migradora separada, conecta con sus propias credenciales, opera y comprueba esas denegaciones. Los roles PostgreSQL existen a nivel de servidor. El login de montaje necesita CREATEROLE en el servidor de pruebas; los grants de aplicación del LOGIN efímero se limitan a ascanio_test. No se omite el test si falta ese privilegio. El LOGIN no posee objetos; al terminar se retiran únicamente sus grants y se elimina. La reconstrucción migrate:fresh está limitada por el guard a ascanio_test.
 
