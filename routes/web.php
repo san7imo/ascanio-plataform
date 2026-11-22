@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicSiteController::class, 'home'])->name('home');
 
+Route::name('public.')->group(function () {
+    foreach ([
+        'distribucion-digital' => 'distribution',
+        'publishing' => 'publishing',
+        'identidad-visual' => 'visual-identity',
+        'desarrollo-web' => 'web',
+        'medios-de-comunicacion' => 'media',
+        'social-media' => 'social',
+    ] as $path => $service) {
+        Route::get($path, [PublicSiteController::class, 'service'])->defaults('service', $service)->name($service);
+    }
+
+    Route::get('tus-primeros-pasos', [PublicSiteController::class, 'guide'])->name('guide');
+});
+
 Route::get('team-invitations/review', [TeamInvitationClaimController::class, 'review'])->middleware(['auth', 'verified'])->name('team-invitations.review');
 Route::post('team-invitations/accept', [TeamInvitationClaimController::class, 'accept'])->middleware(['auth', 'verified', 'throttle:10,1'])->name('team-invitations.accept');
 Route::get('team-invitations/{invitation}', [TeamInvitationClaimController::class, 'landing'])->whereUuid('invitation')->name('team-invitations.landing');

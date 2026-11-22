@@ -1,0 +1,359 @@
+{
+  "retrieved_at": "2026-11-22T03:40:53.348076+00:00",
+  "purpose": "PUB1.3 service/guide replica: unmodified public images; editorial content from the saved source inspection, not private customer fixtures.",
+  "assets": [
+    {
+      "path": "public/assets/ascanio/services/distribution-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/distribucion.png.webp",
+      "sha256": "41111dc3ee9cd45b34da524981951701c7da32209eaa428c30382ccd5ba11f95",
+      "bytes": 7306,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/distribution-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/PlatformDigital-1024x1024.png.webp",
+      "sha256": "0fa6cd3c99ec788af62dc8ecd3d2262f1af3eea8e3b677f9853b19fa209ddf75",
+      "bytes": 25338,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/distribution-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/distribucion-1-1024x1024.png.webp",
+      "sha256": "bc2d3914112c833878f69f7f8f42da84b98a5410aa38a53296940f225b0e1e51",
+      "bytes": 22776,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/distribution-3.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/DistSync-1-1024x1024.png.webp",
+      "sha256": "73967b8ea856799419f335e880a5371645db6cdf7dc6fcbc97285f47f4c9cdcb",
+      "bytes": 22020,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/distribution-4.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/SmartLink-2-1024x1024.png.webp",
+      "sha256": "0456a6265d759cd111d341a43654966f4f34bc7efa3b7f22a0d793c427557294",
+      "bytes": 19806,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/distribution-platforms.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/Banner-Ascanio-1024x683.jpg.webp",
+      "sha256": "f21faafdef274f2ae60fde83dad007dedc1354021a8f91f25cbe0477c3f1053d",
+      "bytes": 72034,
+      "dimensions": [
+        1024,
+        683
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/publishing-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/publisher.png.webp",
+      "sha256": "f75f3923a8963f79990d3438e291193f16e0bd66ddc3c974be3993199175cd09",
+      "bytes": 20918,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/visual-identity-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/BannerIdentidadVisual-1-scaled.jpg.webp",
+      "sha256": "0b754f1a57b25779c298292da32f7b2ee51d302b243f3ceda51de12cb852821a",
+      "bytes": 84596,
+      "dimensions": [
+        2560,
+        1023
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/djadrian-1-150x150.png.webp",
+      "sha256": "a9688d6198318e91120c1a1719880099d0ebd3319ad1ba1d012514cf243411a6",
+      "bytes": 6590,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/Pulgavier-1-150x150.png.webp",
+      "sha256": "52415f230a9a221707d18c344e87d89cc857e6fbf487fbf492309fbe5ee46974",
+      "bytes": 7392,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-3.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/Logo-Oficial-Blanco-150x150.png.webp",
+      "sha256": "893c83175b5848fe345ca7ea9f81c18e4bacba35c9b7f8be3e5489bae4f18e79",
+      "bytes": 2138,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-4.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/Sowt-1-150x150.png.webp",
+      "sha256": "35feae283097c2b6b9f3dd6ce961b74f094515d9c74e61e25fef6357c6a41b30",
+      "bytes": 6678,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-5.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/montenegro-150x150.png.webp",
+      "sha256": "db177e76d9eb576111ce3fbb02689a837703a8f6ce935e50369cd406a1362abc",
+      "bytes": 7754,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-1-6.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/mpk-150x150.png.webp",
+      "sha256": "1d07cc9898bb388e140ab8458c095019dc0939d81426e04a6c94e2c7176c82d4",
+      "bytes": 4518,
+      "dimensions": [
+        150,
+        150
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-2-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/PRESS-KIT-OLD-SCHOOL-FT.-NEW-SCHOOL_Pagina_1-scaled.jpg.webp",
+      "sha256": "3b455a83e762675bb65886d796d736a710737fd91315c154a2c5bcec14f44c34",
+      "bytes": 239100,
+      "dimensions": [
+        1991,
+        2560
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-2-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/PRESS-KIT-OLD-SCHOOL-FT.-NEW-SCHOOL_Pagina_2-scaled.jpg.webp",
+      "sha256": "a55c0cb126ce906d0cb24e9da7178116a2699d5c0291f0c02751c46034a17fe5",
+      "bytes": 226544,
+      "dimensions": [
+        1991,
+        2560
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-3-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/Tuvasacaer.jpg.webp",
+      "sha256": "d65fa754a2d9fcbba54fdb5fc2829cd0b28d7eda943014bee86ef93525be213b",
+      "bytes": 202522,
+      "dimensions": [
+        1854,
+        1530
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-3-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/suenosdelibertad.jpg.webp",
+      "sha256": "03dc2237c994ab2e10ee9411305bf3127e67712ec47a764221cd0705c3065d53",
+      "bytes": 172650,
+      "dimensions": [
+        1854,
+        1530
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-4-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/aperfectworldcd.png.webp",
+      "sha256": "14aef4fa02bd982055416fe3541af3aaf203faaac6c8a90aca193f867e23182a",
+      "bytes": 107526,
+      "dimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-4-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/volveraempezarcd.png.webp",
+      "sha256": "85729cd244fbde4f9a507597484293f8b389dd39d7825b5187f7b2352a962fdc",
+      "bytes": 88182,
+      "dimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-4-3.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/SleeplessNightCD.png.webp",
+      "sha256": "84539fc12c5c32f7380fd7451b347b37f2879261c90f6e24fa3a96995f02f4fe",
+      "bytes": 69066,
+      "dimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/portfolio-4-4.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/spacesowtCD.png.webp",
+      "sha256": "dd1ca3985e067ccfc3cc8dc1a3030a2a4e6df1ce880a132c01edbb1d48bf7d95",
+      "bytes": 118174,
+      "dimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/web-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/WebDesign-2.png.webp",
+      "sha256": "bf7429690ee198a2d6cb4660461507afd1100060da6f6f3878873cd2a42f9ae0",
+      "bytes": 8484,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/kroma-logo.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/Logo-Web-Kroma-Host-Blanco-300x109.png.webp",
+      "sha256": "aa12a2a0cc5e17d4f48edd85211d3aedcf40edbfb081d5864fcdd8fffd689704",
+      "bytes": 5362,
+      "dimensions": [
+        300,
+        109
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/media-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/medioscomun.png.webp",
+      "sha256": "22f6ba2112e342fc174f41750e4024321e337a0b1b21955a197244fa7702da8d",
+      "bytes": 14802,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/social-hero.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/SocialMedia.png",
+      "sha256": "c64cec00a40fbc5241120bce2f7bec57946ad306f21f9d04f23c928da27c46b6",
+      "bytes": 9731,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/social-1.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/SocialMedia1-1.png.webp",
+      "sha256": "f44957a140fca4416900ec09f1c865bd516148b6aa4060a321772d39dc71a337",
+      "bytes": 33868,
+      "dimensions": [
+        1000,
+        1000
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/social-2.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/SocialMedia2-1.png.webp",
+      "sha256": "085c8ba3882259105064727b2f8d4e27c1bae557fe0d0a9e2fd361a11be80f0d",
+      "bytes": 46742,
+      "dimensions": [
+        1000,
+        1000
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/social-3.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/Viralizate.png.webp",
+      "sha256": "5891fb8a061277614ad519e0a469cab9b1098f8846c2209a83add889edb60863",
+      "bytes": 69736,
+      "dimensions": [
+        1000,
+        1000
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/services/guide-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/primerospasos.png.webp",
+      "sha256": "cf68b90578d5f0bdd189a8ccd22409048225513bfdc87f570afc7baf9628268c",
+      "bytes": 11344,
+      "dimensions": [
+        1920,
+        767
+      ]
+    }
+  ],
+  "content": [
+    {
+      "path": "resources/content/public-site/services.json",
+      "sha256": "14d3c7eb015ea1a83bb088c21be7d8ac7f16ff53d23eec9510f322929fdecf73",
+      "source_pages": [
+        "https://ascaniopub.com/distribucion-digital/",
+        "https://ascaniopub.com/publishing/",
+        "https://ascaniopub.com/identidad-visual/",
+        "https://ascaniopub.com/desarrollo-web/",
+        "https://ascaniopub.com/medios-de-comunicacion/",
+        "https://ascaniopub.com/social-media/"
+      ],
+      "source_snapshots": [
+        {
+          "url": "https://ascaniopub.com/distribucion-digital/",
+          "sha256_of_saved_html": "459e4720c9f48be30a0e2f9162c0acdc032a39b7375ff8533e8da62d9ec5eb54"
+        },
+        {
+          "url": "https://ascaniopub.com/publishing/",
+          "sha256_of_saved_html": "ad66772a461bb504493091b9f6ba52b21ad35803cc34f9fd6e56ef2b1c109e9d"
+        },
+        {
+          "url": "https://ascaniopub.com/identidad-visual/",
+          "sha256_of_saved_html": "9190e8aaadba121919a6abc4c92423fca50b43a3e8638653b66f4418f75e6e46"
+        },
+        {
+          "url": "https://ascaniopub.com/desarrollo-web/",
+          "sha256_of_saved_html": "8f1c9d994cb5d602b8beed5b5c3ccc955330f1ba4b8ab4a661682e3f4d5874fb"
+        },
+        {
+          "url": "https://ascaniopub.com/medios-de-comunicacion/",
+          "sha256_of_saved_html": "7ebb718cf566470ba10ccf70bdb1dfcc8e696c50435ce558e8b4dcb1d1e1c255"
+        },
+        {
+          "url": "https://ascaniopub.com/social-media/",
+          "sha256_of_saved_html": "6ec5195f6d228760e2876cbe8424e224629ebcc3562ce51240d1b10ea02f8e07"
+        }
+      ]
+    },
+    {
+      "path": "resources/content/public-site/guide.json",
+      "sha256": "3fd0ffbce5c2d8eb1ffe8c68574aa6eddf3b39a2400898e93814bd90f040a956",
+      "source_pages": [
+        "https://ascaniopub.com/tus-primeros-pasos/"
+      ],
+      "source_snapshots": [
+        {
+          "url": "https://ascaniopub.com/tus-primeros-pasos/",
+          "sha256_of_saved_html": "e4f912541fc338c6a9039f386ac2cb9403620131d8dd49da2672bab7826d74c6"
+        }
+      ]
+    }
+  ]
+}

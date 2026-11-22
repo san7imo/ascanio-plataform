@@ -1,12 +1,12 @@
 # PUB1 — Paquete de implementación del sitio público
 
-Estado: en implementación. PUB1.1 y PUB1.2 preparados para revisión local; PUB1.3–PUB1.5 pendientes. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
+Estado: en implementación. PUB1.1 y PUB1.2 integrados mediante PR #14; PUB1.3 preparado para revisión local; PUB1.4–PUB1.5 pendientes. Actualización: 21 de noviembre de 2026, America/Bogota. Las capturas fechadas 22 de noviembre UTC conservan su zona original.
 
 Este documento concreta PUB1 del [plan](../implementation-plan.md), conforme al [ADR 0002](../adr/0002-public-institutional-site.md) y a las [50 capturas de referencia](../references/ascaniopub/README.md). El titular eligió reproducir las páginas de productos y conservar la compra actual. Este documento separa el paquete completo de su primera entrega de código; no autoriza publicación.
 
 ## Base y resultado esperado
 
-Base integrada comprobada: main f732ecb, después de PR #12 (G1, aca2ad7) y PR #13 (referencia/plan público, f732ecb). Se resolvió el conflicto documental conservando G1 y PUB0–PUB3; CI de la combinación aprobó auditorías y PHP 8.3/8.4 antes del merge. La primera implementación parte de esa base en feat/public-institutional-site.
+Base integrada comprobada: main f732ecb, después de PR #12 (G1, aca2ad7) y PR #13 (referencia/plan público, f732ecb). Se resolvió el conflicto documental conservando G1 y PUB0–PUB3; CI de la combinación aprobó auditorías y PHP 8.3/8.4 antes del merge. La primera implementación partió de esa base en feat/public-institutional-site y se integró mediante [PR #14](https://github.com/san7imo/ascanio-plataform/pull/14), merge 4439aef. PUB1.3 parte de ese main en feat/public-services-guide.
 
 El resultado local es una réplica navegable del sitio institucional en Laravel/Vue/Inertia: marca, composición, contenido y recursos de referencia en escritorio/móvil. La web pública presenta servicios; la aplicación privada sigue operando con Fortify, memberships y grants. No se cambia la estrategia de tenants, base de datos o storage para acomodar el sitio.
 
@@ -64,7 +64,7 @@ Carrito/pagos/pedidos nuevos, migración de clientes comerciales, SSO WordPress,
 
 ## Primera entrega: PUB1.1 y PUB1.2
 
-Preparada en rama para revisión, todavía sin integrar ni publicar. Reemplaza `/`
+Integrada mediante PR #14 en main 4439aef, con CI PHP 8.3/8.4 aprobado; sin publicar. Reemplaza `/`
 con la portada de referencia: logo, seis enlaces de navegación, banner musical,
 introducción, siete tarjetas enlazadas, tarjeta estática de merchandising y CTA
 fotográfico. El layout tiene menú móvil por botón, Enter/Tab/Escape, foco visible
@@ -91,16 +91,15 @@ Decisiones explícitas frente a la referencia:
   analítica, reCAPTCHA ni plugins de pago. El inventario/consentimiento final
   sigue pendiente en PUB2. Las cookies técnicas de Laravel siguen su configuración.
 
-Solo `/` tiene réplica local en esta entrega. Navegación, siete tarjetas, CTA,
+En esa primera entrega solo `/` tenía réplica local. Navegación, siete tarjetas, CTA,
 tienda y legales conservan enlaces fijos a las páginas actuales de ascaniopub.com.
 No se implementan redirecciones dinámicas ni se afirma continuidad después de
 un cambio de raíz del dominio. El mapa está en resources/js/lib/public-site.ts;
-PUB1.3 reemplazará destinos al entregar las seis páginas de servicios y la guía,
+PUB1.3 reemplaza esos siete destinos al entregar las seis páginas de servicios y la guía,
 y PUB1.4 hará lo mismo con contacto, productos y legales. No se envían formularios,
 se añade al carrito ni se inicia compra en las comprobaciones.
 
-La siguiente entrega es **PUB1.3: seis servicios y guía**, una vez revisada esta
-base. PUB1 completo, PUB2/PUB3, C1 y la publicación siguen pendientes. No hay
+La secuencia acordada continuó con **PUB1.3: seis servicios y guía**, descrita abajo. PUB1 completo, PUB2/PUB3, C1 y la publicación siguen pendientes. No hay
 migraciones ni cambios de Kroma/DNS/WordPress y las cargas reales siguen apagadas.
 
 Comprobaciones ejecutadas de esta entrega:
@@ -122,3 +121,79 @@ Comprobaciones ejecutadas de esta entrega:
 Estos resultados no sustituyen PUB1.5/PUB3 sobre las dieciséis páginas ni la
 revisión editorial y operativa antes de publicar. PHP 8.3 se comprueba en CI del
 PR; no se declara probado localmente en esta entrega.
+
+## Segunda entrega: PUB1.3 — servicios y guía
+
+Preparada y comprobada localmente en feat/public-services-guide, basada en main
+4439aef. Todavía no integrada ni publicada. Las seis páginas de servicios y la
+guía dejan de salir al sitio de origen: la navegación y las siete tarjetas de
+portada usan rutas locales generadas por Wayfinder. Contacto, tienda, fichas de
+productos, legales y los destinos de Kroma siguen en los servicios existentes.
+
+| Página local | Contenido entregado | Interacción / destino |
+|---|---|---|
+| /distribucion-digital | Banner, introducción, cuatro tarjetas y mosaico de plataformas | Tres fichas en la tienda actual; tarjeta de plataformas con consulta explícita |
+| /publishing | Banner e introducción publicados | Solo presentación editorial; no genera registros o derechos |
+| /identidad-visual | Banner, logos, diseño gráfico, paquetes y portadas | Galerías manuales con teclado/tacto y controles anterior/siguiente; sin autoplay |
+| /desarrollo-web | Banner, introducción, aliado y tres planes publicados | Dominio y planes conducen explícitamente a Kroma Hosting; no consulta disponibilidad ni contrata automáticamente |
+| /medios-de-comunicacion | Banner y párrafo publicados | Presentación editorial, sin una integración de prensa nueva |
+| /social-media | Banner, introducción, dos propuestas y bloque de estrategia | Contacto existente; no hay campañas o envíos nuevos |
+| /tus-primeros-pasos | Banner, introducción y 16 apartados íntegros | Acordeones nativos exclusivos con Enter/Espacio; listas informativas de géneros/idiomas |
+
+Los 30 recursos públicos añadidos pesan aproximadamente 1,73 MB y conservan sus
+bytes originales. El [manifiesto de recursos y contenido](../references/ascaniopub/pub13-assets.json)
+identifica cada URL, dimensiones y SHA-256, además de los hashes de las copias
+HTML de origen usadas para extraer contenido. Esas copias brutas permanecen
+fuera de Git: no se incorporan plugins, estilos ejecutables, tracking o claves.
+Los logos y ejemplos con marcas de terceros son portfolio ya publicado en la
+referencia, no tenants, fixtures de contrapartes ni código de Dilo reutilizado.
+
+La guía se conserva como JSON editorial versionado. Se retiraron atributos de
+WordPress, estilos inline y el enlace vacío «Aquí» sin destino, manteniendo su
+texto. Solo admite etiquetas de formato/lista/tabla y los dos selectores
+informativos con nombres accesibles; los únicos enlaces de su cuerpo apuntan a
+la política antifraude publicada. La prueba verifica la allowlist de etiquetas
+y atributos de todo el HTML entregado. No recibe HTML de solicitudes, cuentas
+o tenants, y no aporta reglas universales al catálogo.
+
+Diferencias deliberadas y pendientes:
+
+- Se reserva altura real en todos los banners para mostrar el contenido oculto
+  por superposición en la referencia. Se ajustan el recorte de imagen y ancho
+  del texto móvil, manteniendo cuerpo de 16 px y foco visible.
+- Las galerías empiezan en un orden estable, sin autoplay; respetan movimiento
+  reducido y permiten ver todas las muestras originales. La fase capturada de
+  un carrusel del sitio antiguo puede mostrar otra muestra inicial.
+- La tarjeta de plataformas de distribución conserva su imagen (que incluye
+  «Comprar»), pero el origen tiene href vacío. Se añade «Consultar este servicio»
+  con destino de contacto existente; no se inventa un checkout para ella. PUB2
+  debe definir ese recorrido antes de cualquier publicación.
+- La búsqueda de dominios usa un enlace explícito al proveedor en lugar de un
+  campo que devolvería disponibilidad simulada. Los planes conservan texto y
+  precios de referencia, con aviso de confirmar condiciones vigentes en Kroma;
+  no se probó ni ejecutó una compra.
+- Precios, promesas publicitarias, portfolio y contenido de guía siguen pendientes
+  de revisión editorial del titular antes de publicación. Replicarlos no prueba
+  la capacidad del SaaS, una relación comercial vigente o validez jurídica.
+
+Verificación ejecutada:
+
+- composer run ci:check con PHP 8.4, PostgreSQL/Redis: **192 pruebas / 2466
+  aserciones**, Pint, lint, formato, tipos, tooling y auditorías aprobados.
+- Después de los ajustes visuales finales: build, lint, formato y tipos repetidos
+  y aprobados. No hubo cambios de dependencias o migraciones.
+- Chrome: 28 combinaciones de siete páginas y anchos 1440/390/320/768; todas
+  responden 200, sin imágenes faltantes, recortes horizontales fuera de galerías
+  intencionalmente desplazables, errores de JS o peticiones externas al cargar.
+- Se probaron menú Enter/Tab/Escape, galería siguiente/anterior por teclado con
+  movimiento reducido y los 16 apartados de la guía, incluidos Enter/Espacio.
+  La portada conserva sus siete enlaces de servicios locales.
+- [Manifiesto de capturas](../references/ascaniopub/pub13-local/manifest.json),
+  [mediciones e interacciones](../references/ascaniopub/pub13-local/review.json),
+  [distribución móvil](../references/ascaniopub/pub13-local/distribution-mobile.jpg),
+  [identidad desktop](../references/ascaniopub/pub13-local/visual-identity-desktop.jpg)
+  y [guía cerrada](../references/ascaniopub/pub13-local/guide-mobile-collapsed.jpg).
+
+La siguiente entrega es **PUB1.4: contacto, listado comercial, tres productos y
+tres legales**. PUB1.5/PUB2/PUB3 y la publicación siguen pendientes. No se alteran
+Kroma, WordPress, DNS o compras existentes; DOCUMENT_UPLOADS_ENABLED sigue false.

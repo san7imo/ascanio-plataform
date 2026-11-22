@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import { Mail } from 'lucide-vue-next';
+import PublicHero from '@/components/PublicHero.vue';
 import PublicLayout from '@/layouts/PublicLayout.vue';
-import { currentSite, publicServices } from '@/lib/public-site';
+import { currentSite, publicHref, publicServices } from '@/lib/public-site';
 
 defineProps<{ canRegister: boolean }>();
 </script>
@@ -15,49 +16,15 @@ defineProps<{ canRegister: boolean }>();
         />
     </Head>
     <PublicLayout :can-register="canRegister">
-        <section class="public-hero" aria-labelledby="hero-title">
-            <img
-                class="public-hero-art"
-                src="/assets/ascanio/hero.jpg"
-                alt=""
-                width="1920"
-                height="767"
-                fetchpriority="high"
-            />
-            <div class="public-hero-content">
-                <h1 id="hero-title">Distribución Musical</h1>
-                <p>
-                    Nos especializamos en distribuir y viralizar tu música en
-                    cualquier parte del mundo
-                </p>
-                <ul class="public-platforms" aria-label="Plataformas musicales">
-                    <li>
-                        <img
-                            src="/assets/ascanio/spotify.png"
-                            alt="Spotify"
-                            width="120"
-                            height="36"
-                        />
-                    </li>
-                    <li>
-                        <img
-                            src="/assets/ascanio/apple-music.png"
-                            alt="Apple Music"
-                            width="120"
-                            height="30"
-                        />
-                    </li>
-                    <li>
-                        <img
-                            src="/assets/ascanio/youtube.png"
-                            alt="YouTube"
-                            width="126"
-                            height="29"
-                        />
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <PublicHero
+            title="Distribución Musical"
+            subtitle="Nos especializamos en distribuir y viralizar tu música en cualquier parte del mundo"
+            :image="{
+                src: '/assets/ascanio/hero.jpg',
+                width: 1920,
+                height: 767,
+            }"
+        />
         <section class="public-intro" aria-labelledby="intro-title">
             <h2 id="intro-title">
                 Tu música en las calles <span>del Mundo</span>
@@ -73,7 +40,7 @@ defineProps<{ canRegister: boolean }>();
             <a
                 v-for="service in publicServices"
                 :key="service.path"
-                :href="currentSite + service.path"
+                :href="publicHref(service.path)"
                 class="public-service"
             >
                 <img

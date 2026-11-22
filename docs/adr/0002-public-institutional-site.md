@@ -1,7 +1,7 @@
 # ADR 0002 — Sitio público institucional y portal de participantes
 
 Fecha: 22 de noviembre de 2026 UTC.
-Estado: adoptado por instrucción directa del titular; PUB1 en ejecución (layout/portada locales), réplica completa y publicación pendientes.
+Estado: adoptado por instrucción directa del titular; PUB1 en ejecución (layout/portada integrados y servicios/guía locales), réplica completa y publicación pendientes.
 
 ## Contexto
 

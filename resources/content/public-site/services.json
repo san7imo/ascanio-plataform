@@ -1,0 +1,319 @@
+{
+    "distribution": {
+        "key": "distribution",
+        "title": "Distribución Digital",
+        "subtitle": "Haz conocer tu música a todo el mundo en todas las plataformas musicales",
+        "hero": {
+            "src": "/assets/ascanio/services/distribution-hero.webp",
+            "width": 1920,
+            "height": 767
+        },
+        "paragraphs": [
+            "Nos especializamos en viralizar tu música en las mejores plataformas musicales, la interfaz es muy interactiva para distribuir y administrar tus canciones con lujo de detalles."
+        ],
+        "tiles": [
+            {
+                "src": "/assets/ascanio/services/distribution-1.webp",
+                "width": 1024,
+                "height": 1024,
+                "alt": "Plataformas digitales",
+                "path": null
+            },
+            {
+                "src": "/assets/ascanio/services/distribution-2.webp",
+                "width": 1024,
+                "height": 1024,
+                "alt": "Distribución VEVO",
+                "path": "/product/distribucion-vevo/"
+            },
+            {
+                "src": "/assets/ascanio/services/distribution-3.webp",
+                "width": 1024,
+                "height": 1024,
+                "alt": "Sincronización",
+                "path": "/product/sincronizacion/"
+            },
+            {
+                "src": "/assets/ascanio/services/distribution-4.webp",
+                "width": 1024,
+                "height": 1024,
+                "alt": "Smart URL",
+                "path": "/product/smart-url/"
+            }
+        ],
+        "platforms": {
+            "src": "/assets/ascanio/services/distribution-platforms.webp",
+            "width": 1024,
+            "height": 683,
+            "alt": "Plataformas musicales de la web de referencia"
+        }
+    },
+    "publishing": {
+        "key": "publishing",
+        "title": "Publishing",
+        "subtitle": "¡Qué esperas! Asegúrate de hacer música de forma segura",
+        "hero": {
+            "src": "/assets/ascanio/services/publishing-hero.webp",
+            "width": 1920,
+            "height": 767
+        },
+        "paragraphs": [
+            "Te brindamos servicios de Copyright, resguardando tus composiciones de ser reproducidas, distribuidas, desarrolladas en trabajos derivados o ejecutadas en público. Además, te asesoramos con el registro de tus canciones y en la defensa de tus derechos de autor."
+        ]
+    },
+    "visual-identity": {
+        "key": "visual-identity",
+        "title": "Identidad Visual",
+        "subtitle": "Desarrollar una identidad visual es un paso esencial para alcanzar el éxito como artista",
+        "hero": {
+            "src": "/assets/ascanio/services/visual-identity-hero.webp",
+            "width": 2560,
+            "height": 1023
+        },
+        "paragraphs": [
+            "¡Una buena imagen debe comunicar exactamente quien eres!, y en Ascanio Publishing lo sabemos, por esta razón contamos con profesionales en diseño gráfico, que desarrollan tu imagen artística para tus redes sociales, distribución musical, página web… etc acordes a tu personalidad como artista o sello independiente.",
+            "Un estilo gráfico suele estar asociado a una época y a menudo a una música. Por esta razón, contamos con especialistas en el diseño gráfico para artistas, que crean piezas gráficas siempre contemporáneas y acordes al estilo de tu música, como artista, sello o banda, ayudándote a conectar con tu público objetivo, a través de la creación de una imagen atractiva y eficaz en las redes sociales, tiendas y medios de comunicación. Nuestro servicio en Diseño Gráfico incluye crear excelentes piezas gráficas como portadas de canciones, videoliryc, flyrs para conciertos, festivales, etc.  Con nuestra ayuda, desarrollarás una imagen auténtica, conservando la identidad que tienes como artista, sello o proyecto musical."
+        ],
+        "galleries": [
+            {
+                "title": "Diseño de Logo",
+                "kind": "logos",
+                "images": [
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-1.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 1"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-2.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 2"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-3.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 3"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-4.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 4"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-5.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 5"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-1-6.webp",
+                        "width": 150,
+                        "height": 150,
+                        "alt": "Diseño de logo, muestra 6"
+                    }
+                ]
+            },
+            {
+                "title": "Diseño Gráfico",
+                "kind": "press",
+                "images": [
+                    {
+                        "src": "/assets/ascanio/services/portfolio-2-1.webp",
+                        "width": 1991,
+                        "height": 2560,
+                        "alt": "Diseño gráfico, muestra 1"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-2-2.webp",
+                        "width": 1991,
+                        "height": 2560,
+                        "alt": "Diseño gráfico, muestra 2"
+                    }
+                ]
+            },
+            {
+                "title": "Paquetes de Diseño",
+                "kind": "packages",
+                "images": [
+                    {
+                        "src": "/assets/ascanio/services/portfolio-3-1.webp",
+                        "width": 1854,
+                        "height": 1530,
+                        "alt": "Paquete de diseño, muestra 1"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-3-2.webp",
+                        "width": 1854,
+                        "height": 1530,
+                        "alt": "Paquete de diseño, muestra 2"
+                    }
+                ]
+            },
+            {
+                "title": "Portadas Cover",
+                "kind": "covers",
+                "images": [
+                    {
+                        "src": "/assets/ascanio/services/portfolio-4-1.webp",
+                        "width": 800,
+                        "height": 800,
+                        "alt": "Portada musical, muestra 1"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-4-2.webp",
+                        "width": 800,
+                        "height": 800,
+                        "alt": "Portada musical, muestra 2"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-4-3.webp",
+                        "width": 800,
+                        "height": 800,
+                        "alt": "Portada musical, muestra 3"
+                    },
+                    {
+                        "src": "/assets/ascanio/services/portfolio-4-4.webp",
+                        "width": 800,
+                        "height": 800,
+                        "alt": "Portada musical, muestra 4"
+                    }
+                ]
+            }
+        ]
+    },
+    "web": {
+        "key": "web",
+        "title": "Desarrollo Web",
+        "subtitle": "Tener una web de tu marca te representa en internet. Obtén una web alineada con los propósitos de tu marca y las necesidades de tu público objetivo.",
+        "hero": {
+            "src": "/assets/ascanio/services/web-hero.webp",
+            "width": 1920,
+            "height": 767
+        },
+        "paragraphs": [
+            "A través de tu sitio web, puedes exponer tu catálogo musical, estilo de vida y trabajo. En Ascanio Publishing te ofrecemos servicios para crear tu página web con una interfaz fácil y rápida, contando con un dominio personal, un hosting seguro, certificado SSL, un buen posicionamiento SEO y un diseño web personalizado de acuerdo a tu imagen artística. Conoce los planes de nuestro proveedor aliado"
+        ],
+        "partner": {
+            "src": "/assets/ascanio/services/kroma-logo.webp",
+            "width": 300,
+            "height": 109,
+            "alt": "Kroma Hosting"
+        },
+        "plans": [
+            {
+                "title": "Bronze",
+                "description": "La solución perfecta para novatos",
+                "price": "40",
+                "period": "Anual",
+                "features": [
+                    "10 GB Espacio en Disco",
+                    "100 GB Transferencia Mensual",
+                    "Ilimitado Correos Electrónicos",
+                    "Ilimitado Bases MYSQL",
+                    "Ilimitado Cuentas FTP",
+                    "Ilimitado Apuntar Dominios",
+                    "LiteSpeed Servidor Web",
+                    "Gratis Certificado SSL",
+                    "Gratis Dominio .com",
+                    "24/7 Soporte",
+                    "$40 USD /año cuando renuevas"
+                ],
+                "href": "https://kromahost.com/cart.php?a=add&pid=3",
+                "footer": "Migración incluida sin costo"
+            },
+            {
+                "title": "Silver",
+                "description": "El paquete ideal para sitios personales",
+                "price": "50",
+                "period": "Anual",
+                "features": [
+                    "30 GB Espacio en Disco",
+                    "300 GB Transferencia Mensual",
+                    "Ilimitado Correos Electrónicos",
+                    "Ilimitado Bases MYSQL",
+                    "Ilimitado Cuentas FTP",
+                    "Ilimitado Apuntar Dominios",
+                    "LiteSpeed Servidor Web",
+                    "Gratis Certificado SSL",
+                    "Gratis Dominio .com",
+                    "24/7 Soporte",
+                    "$50 USD /año cuando renuevas"
+                ],
+                "href": "https://kromahost.com/cart.php?a=add&pid=4",
+                "footer": "Migración incluida sin costo"
+            },
+            {
+                "title": "Gold",
+                "description": "Para negocios pequeños y medianos",
+                "price": "70",
+                "period": "Anual",
+                "features": [
+                    "50 GB Espacio en Disco",
+                    "500 GB Transferencia Mensual",
+                    "Ilimitado Correos Electrónicos",
+                    "Ilimitado Bases MYSQL",
+                    "Ilimitado Cuentas FTP",
+                    "Ilimitado Apuntar Dominios",
+                    "LiteSpeed Servidor Web",
+                    "Gratis Certificado SSL",
+                    "Gratis Dominio .com",
+                    "24/7 Soporte",
+                    "$70 USD /año cuando renuevas"
+                ],
+                "href": "https://kromahost.com/cart.php?a=add&pid=5",
+                "footer": "Migración incluida sin costo"
+            }
+        ]
+    },
+    "media": {
+        "key": "media",
+        "title": "Medios de Comunicación",
+        "subtitle": "Difusión en mas de 100 medios digitales",
+        "hero": {
+            "src": "/assets/ascanio/services/media-hero.webp",
+            "width": 1920,
+            "height": 767
+        },
+        "paragraphs": [
+            "¡Una carrera artística de éxito genera buenas relaciones públicas! Por esta razón, en Ascanio Publishing brindamos difusión en más de 100 medios digitales, entrevistas, plan de medios, etc., generando así la exposición que merece tu trabajo, en los principales portales de noticias para artistas."
+        ]
+    },
+    "social": {
+        "key": "social",
+        "title": "Social Media",
+        "subtitle": "La forma en cómo hacer llegar la música a tu público es lo que cuenta",
+        "hero": {
+            "src": "/assets/ascanio/services/social-hero.png",
+            "width": 1920,
+            "height": 767
+        },
+        "paragraphs": [
+            "La publicidad para un artista juega un papel importante, nosotros realizamos la segmentación de publicidad en diferentes parámetros, para así conseguir la forma de llegar a lugares donde se quiere tener mayor impacto. Obteniendo la visibilidad y reproducción de tus canciones, vas a lograr llegar a cualquier parte del mundo con tu música",
+            "Elaboramos tus estrategias para RRSS Creamos la estrategia clave para optimizar tus redes soacieles"
+        ],
+        "images": [
+            {
+                "src": "/assets/ascanio/services/social-1.webp",
+                "width": 1000,
+                "height": 1000,
+                "alt": "Gestión de redes sociales, propuesta publicada"
+            },
+            {
+                "src": "/assets/ascanio/services/social-2.webp",
+                "width": 1000,
+                "height": 1000,
+                "alt": "Promoción en redes sociales, propuesta publicada"
+            },
+            {
+                "src": "/assets/ascanio/services/social-3.webp",
+                "width": 1000,
+                "height": 1000,
+                "alt": "Viralízate, estrategias para redes sociales"
+            }
+        ]
+    }
+}

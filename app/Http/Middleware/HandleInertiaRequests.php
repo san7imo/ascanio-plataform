@@ -35,7 +35,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        if ($request->routeIs('home')) {
+        if ($request->routeIs('home', 'public.*')) {
             return parent::share($request);
         }
 

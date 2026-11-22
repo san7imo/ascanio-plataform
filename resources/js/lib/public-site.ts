@@ -1,7 +1,30 @@
-// Fixed editorial destinations from the approved reference. Local service pages
-// replace these links as PUB1.3–PUB1.4 are delivered. Never derive a redirect
-// target from request input. Domain cutover remains a PUB2 operational gate.
+import {
+    distribution,
+    guide,
+    media,
+    publishing,
+    social,
+    visualIdentity,
+    web,
+} from '@/routes/public';
+
+// Only delivered pages resolve locally. Products/contact/legal remain on the
+// current site until PUB1.4; production domain cutover is still a PUB2 gate.
 export const currentSite = 'https://ascaniopub.com';
+
+const localPages: Record<string, string> = {
+    '/distribucion-digital/': distribution().url,
+    '/publishing/': publishing().url,
+    '/identidad-visual/': visualIdentity().url,
+    '/desarrollo-web/': web().url,
+    '/medios-de-comunicacion/': media().url,
+    '/social-media/': social().url,
+    '/tus-primeros-pasos/': guide().url,
+};
+
+export function publicHref(path: string): string {
+    return localPages[path] ?? currentSite + path;
+}
 
 export const publicNavigation = [
     { label: 'Distribución musical', path: '/distribucion-digital/' },
