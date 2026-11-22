@@ -1,0 +1,104 @@
+{
+  "before": {
+    "height": 1398,
+    "chain": [
+      {
+        "tag": "RS-MODULE-WRAP",
+        "classes": "",
+        "rect": {
+          "top": 100,
+          "height": 800
+        },
+        "position": "absolute",
+        "style": "visibility: visible; background: rgb(0, 0, 0); padding: 0px; margin: 0px auto; height: 800px; display: block; width: 1425px; position: absolute; overflow: visible; left: 0px;"
+      },
+      {
+        "tag": "RS-FULLWIDTH-WRAP",
+        "classes": "",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "static",
+        "style": "margin-top:0px;margin-bottom:0px;"
+      },
+      {
+        "tag": "DIV",
+        "classes": "elementor-widget-container",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "static",
+        "style": null
+      },
+      {
+        "tag": "DIV",
+        "classes": "elementor-element elementor-element-847e01a elementor-widget elementor-widget-wp-widget-rev-slider-widget",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "relative",
+        "style": null
+      }
+    ]
+  },
+  "after": {
+    "height": 1398,
+    "chain": [
+      {
+        "tag": "RS-MODULE-WRAP",
+        "classes": "",
+        "rect": {
+          "top": 100,
+          "height": 800
+        },
+        "position": "absolute",
+        "style": "visibility: visible; background: rgb(0, 0, 0); padding: 0px; margin: 0px auto; height: 800px; display: block; width: 1425px; position: absolute; overflow: visible; left: 0px;"
+      },
+      {
+        "tag": "RS-FULLWIDTH-WRAP",
+        "classes": "",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "static",
+        "style": "margin-top:0px;margin-bottom:0px;"
+      },
+      {
+        "tag": "DIV",
+        "classes": "elementor-widget-container",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "static",
+        "style": null
+      },
+      {
+        "tag": "DIV",
+        "classes": "elementor-element elementor-element-847e01a elementor-widget elementor-widget-wp-widget-rev-slider-widget",
+        "rect": {
+          "top": 100,
+          "height": 0
+        },
+        "position": "relative",
+        "style": null
+      }
+    ]
+  },
+  "controls": [
+    {
+      "label": "Ajuste de cookies",
+      "id": "wt-cli-settings-btn",
+      "classes": "wt-cli-element medium cli-plugin-button cli-plugin-main-button cli_settings_button"
+    },
+    {
+      "label": "Aceptar todo",
+      "id": "wt-cli-accept-all-btn",
+      "classes": "wt-cli-element medium cli-plugin-button wt-cli-accept-all-btn cookie_action_close_header cli_action_button"
+    }
+  ]
+}

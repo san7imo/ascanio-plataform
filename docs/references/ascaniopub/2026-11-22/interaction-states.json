@@ -1,0 +1,106 @@
+{
+  "states": [
+    {
+      "name": "inicio-desktop-before-interaction.jpg",
+      "url": "https://ascaniopub.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capturedAt": "2026-11-22T02:01:58.814Z"
+    },
+    {
+      "name": "inicio-desktop-slider.jpg",
+      "url": "https://ascaniopub.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capturedAt": "2026-11-22T02:02:03.904Z"
+    },
+    {
+      "name": "cookies-preferences-desktop.jpg",
+      "url": "https://ascaniopub.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capturedAt": "2026-11-22T02:02:04.704Z"
+    },
+    {
+      "name": "navigation-desktop-hover.jpg",
+      "url": "https://ascaniopub.com/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capturedAt": "2026-11-22T02:02:06.201Z"
+    },
+    {
+      "name": "navigation-mobile-open.jpg",
+      "url": "https://ascaniopub.com/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAt": "2026-11-22T02:02:13.163Z"
+    },
+    {
+      "name": "primeros-pasos-mobile-accordion.jpg",
+      "url": "https://ascaniopub.com/tus-primeros-pasos/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAt": "2026-11-22T02:02:20.610Z"
+    }
+  ],
+  "cookies": [
+    {
+      "id": "wt-cli-checkbox-necessary",
+      "name": "",
+      "checked": true,
+      "disabled": false
+    },
+    {
+      "id": "wt-cli-checkbox-functional",
+      "name": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "id": "wt-cli-checkbox-performance",
+      "name": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "id": "wt-cli-checkbox-analytics",
+      "name": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "id": "wt-cli-checkbox-advertisement",
+      "name": "",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "id": "wt-cli-checkbox-others",
+      "name": "",
+      "checked": false,
+      "disabled": false
+    }
+  ],
+  "toggle": {
+    "x": 362.96875,
+    "y": 50,
+    "tag": "DIV",
+    "classes": "cl-mobile-menu-button"
+  },
+  "accordion": {
+    "id": "elementor-tab-title-6541",
+    "expanded": "true"
+  }
+}

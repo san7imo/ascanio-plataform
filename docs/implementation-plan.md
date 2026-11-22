@@ -14,9 +14,16 @@ Actualización D1: 21 de noviembre de 2026. Base de entrega: `1c4a088`, con P1 i
 | F3 | Integrado | [PR #8](https://github.com/san7imo/ascanio-plataform/pull/8); regresión incluida en F4 |
 | F4 | Integrado | [PR #9](https://github.com/san7imo/ascanio-plataform/pull/9); cierre técnico con operación pendiente O0 |
 | P1 | Integrado | [PR #10](https://github.com/san7imo/ascanio-plataform/pull/10); regresión incluida en D1 |
-| D1 | Núcleo técnico validado con fixtures | [Versiones privadas, cuarentena, descarga y límites](implementation/d1-private-documents.md); 165 pruebas / 1801 aserciones; cargas reales deshabilitadas y O1 pendiente |
-| O0 / O1 | Pendientes de evidencia técnica | Titular confirma almacenamiento/capacidad general; faltan cuota/inodos, ruta privada, escáner y operación medidos. [Preparación O1](operations/documents-readiness.md) |
-| Resto de hitos 2–6 | Diseño objetivo | Parties integrado y Documents técnico con fixtures; grants, catálogo y módulos musicales siguen pendientes |
+| D1 | Integrado mediante [PR #11](https://github.com/san7imo/ascanio-plataform/pull/11), merge 06f3c34 | [Versiones privadas, cuarentena, descarga y límites](implementation/d1-private-documents.md); 165 pruebas / 1801 aserciones; cargas reales deshabilitadas y O1 pendiente |
+| G1 | Integrado mediante PR #12, merge aca2ad7 | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; no repetidos por este cambio documental |
+| PUB0 | Completado: inspección de lectura, inventario y capturas | [Referencias fechadas](references/ascaniopub/README.md), rutas, capturas desktop/móvil y decisión de conservar compra actual |
+| PUB1–PUB3 | Planificados; implementación pendiente | Réplica pública, integración de recorridos y validación según §4.1; sin nuevo motor de comercio |
+| O0 / O1 | Pendientes de evidencia técnica | Titular aportó PHP CLI/extensiones por SSH; faltan cuota/inodos, endpoints de servicios, ruta privada, escáner y operación medidos. [Preparación O1](operations/documents-readiness.md) |
+| Resto de hitos 2–6 | Diseño objetivo | Parties/Documents/G1 integrados y fachada pública planificada; catálogo y módulos musicales posteriores siguen pendientes |
+
+Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. Esta actualización es documental; no implementa ni publica la réplica.
+
+Actualización del orden ejecutable: 21 de noviembre de 2026 (America/Bogota). El estado de integración se contrastó con los PRs abiertos; las fechas UTC de las referencias se conservan. El detalle inmediato de PUB1 está en su [paquete de implementación](implementation/pub1-public-site.md).
 
 ## 1. Fuentes, producto y estado comprobado
 
@@ -92,6 +99,27 @@ La matriz mínima de acceso que cada entrega debe preservar es:
 Para código, ejecutar los comandos reales de README: PostgreSQL/Redis locales dedicados, generación Wayfinder antes de tipos, artisan test, Pint --test, lint:check, format:check, typecheck, build, Composer validate/check-platform-reqs y diff --check. Las dependencias modificadas añaden auditoría y revisión de compatibilidad; las pruebas críticas incluyen concurrencia con conexiones/procesos independientes. No usar SQLite como única evidencia de aislamiento.
 
 Para documentos, revisar consistencia, enlaces locales, Markdown y diff --check. No afirmar nuevos resultados de aplicación sin ejecutarlos. Cada PR identifica qué se probó y qué sigue pendiente. Antes de fusionar, verificar head/base y checks de ese commit; no force-push, no reescritura de migraciones compartidas ni cambios de producción.
+
+## 4.1. Fachada pública institucional — PUB0 a PUB3
+
+La solicitud del titular modifica el aplazamiento de la web institucional, con sustitución explícita en [ADR 0002](adr/0002-public-institutional-site.md). Sitio público significa la web anónima de Ascanio. Portal de participantes significa el área autenticada de G1 y módulos posteriores. La marca pública no modifica la custodia, las policies ni las capacidades del core.
+
+| ID / dependencias | Entrega | Criterios de cierre |
+|---|---|---|
+| PUB0 / solicitud del titular | Inventario del sitio actual, rutas, recursos, estados y capturas; decisión comercial | Evidencia real fechada y galería desktop/móvil; distinguir páginas visibles, productos, legales, rutas heredadas y enlaces externos; no afirmar que una compra o formulario funciona por haberlo visto |
+| PUB1 / PUB0 y base integrada revisada | Réplica visual del sitio institucional: layout, marca, navegación, portada, páginas de servicios, guía, contacto, listado y fichas de productos, páginas legales vigentes | Conservar composición, tipografía, imágenes, banners, tarjetas, acordeones y responsive de referencia; recursos versionados, sin hotlinks como dependencia de entrega; rutas públicas anónimas y entrada a la aplicación identificada; sin consultas privadas |
+| PUB2 / PUB1, destinos y mecanismos comprobados | Conectar navegación, contacto, preferencias de cookies, enlaces comerciales existentes, buscador de dominios y acceso Fortify | Formularios con validación/CSRF/rate limits y errores reales; correo solo mediante transporte autorizado, sin éxito ficticio; mantener compra actual y enlaces externos, sin carrito/pagos nuevos; endpoints de búsqueda reales permitidos o acceso explícito al servicio existente; cookies/tracking según configuración revisada |
+| PUB3 / PUB1–PUB2; O0 aplicable antes de staging/publicación | Validación de paridad, accesibilidad, SEO y transición desde el sitio actual | Comparar a 1440 px y 390 px, incluyendo menú móvil, teclado/foco, acordeones, slider y consentimiento; comprobar rutas/estados/links/metadata/404 y mapa de redirecciones; probar que invitaciones/documentos siguen requiriendo autorización; preservar compra existente y planear cambio de dominio solo en una tarea de producción autorizada |
+
+Alcance editorial: la portada y las ocho páginas principales de la referencia, las tres fichas comerciales detectadas, el listado de productos y las páginas legales que se confirmen vigentes. El sitemap también enumera cuenta/carrito/checkout, presupuesto y contenido heredado. Las rutas de compra se preservan en su sistema actual; la ficha de cuenta comercial no se convierte en el portal de G1 ni se vinculan usuarios WordPress por email. El [inventario](references/ascaniopub/README.md) declara qué rutas se visitaron y cuáles solo se descubrieron. No se añade un blog/CMS, buscador global de tenants o motor de tiendas por la existencia de entradas en el sitemap.
+
+El sitio actual usa WordPress/Elementor y componentes de slider, cookies y comercio. La réplica se implementará en el stack Laravel/Vue existente, con contenido público separado de los módulos de negocio. La compra conserva su backend existente, fuera del core SaaS; antes del corte debe definirse la convivencia de rutas/hosts en Kroma y comprobar enlaces, recursos y callbacks. Conservar un href absoluto al dominio que se va a reemplazar no demuestra continuidad de la tienda. No mover el WordPress, cambiar DNS, vhosts o document roots en PUB0 ni contratar servicios.
+
+La referencia detectó carga diferida del JavaScript: antes y después de interacción aparecen estados distintos. El slider inicializado tiene un contenedor padre de altura cero y puede superponerse al contenido. Se conservan capturas/diagnóstico de ambos estados. La réplica debe mostrar las secciones en orden, reservar altura para imágenes/banners y funcionar con teclado/móvil; se registrará cualquier diferencia deliberada de accesibilidad o corrección de incidencias sin sustituir el diseño de marca.
+
+Las menciones comerciales de distribución, copyright, hosting o asesoría se reproducen como contenido institucional revisado. No habilitan DDEX, royalties, billing, firma ni facultades legales en el SaaS. Los datos comerciales, precios, enlaces y textos legales se revisan con el titular al preparar publicación; el snapshot no certifica disponibilidad ni validez jurídica. No copiar credenciales, IDs de analítica, tracking o servicios de plugins por defecto.
+
+PUB1 puede desarrollarse localmente con recursos públicos y fixtures. O0/O1 siguen bloqueando sus operaciones dependientes y los archivos reales. Un contacto pendiente de SMTP o una decisión de enrutamiento no paraliza el catálogo ni autoriza sustituir servicios por resultados simulados. La implementación posterior tendrá pruebas HTTP de páginas públicas y denegaciones sobre rutas privadas, checks reales de frontend/build y una comparación visual con esta referencia; esta entrega solo ejecuta comprobaciones documentales y de capturas.
 
 ## 5. Trabajo inmediato y Foundation
 
@@ -268,13 +296,58 @@ Los responsables son funciones, sin asumir nombres ni disponibilidad de equipo. 
 | Jurisdicciones, plantillas y proveedor/método de firma | Producto/titular con revisión jurídica y técnica | K1–K3 |
 | Receptor, versión CWR, remitente, capacidad y fixtures | Producto con receptor; desarrollo valida | T2; aceptación externa requiere T3 |
 | Retención, soporte, residencia, protección de datos y RPO/RTO | Titular/operación con asesoría aplicable | Piloto con datos reales |
+| Contenido público vigente, rutas de legado y datos comerciales/legales | Titular con desarrollo | PUB1; revisión antes de publicación |
+| Convivencia de la réplica y compra existente, destinos de contacto/búsqueda y tracking | Titular/operación con desarrollo y proveedor | PUB2/PUB3; conservar compra actual, sin pagos propios |
 | Tiempo disponible del equipo y tamaño de entregas | Titular/equipo | Compromisos de calendario; reestimar después de Foundation |
 
 Coedición/sincronización entre workspaces no es una decisión pendiente para poder comenzar: queda fuera del MVP. Incorporarla exigiría una decisión nueva sobre tenancy/visibilidad. No existen obligaciones de comprar otro servidor, S3 u otro servicio por la aprobación de este plan.
 
-## 12. Siguiente acción y mantenimiento del plan
+## 12. Orden de ejecución y siguiente entrega
 
-P1 está integrada mediante PR #10 y D1 mediante [PR #11](https://github.com/san7imo/ascanio-plataform/pull/11), merge 06f3c34. La entrega local actual es **G1: grants e invitaciones tipados a DocumentVersion**, acotada por §6 y su [registro](implementation/g1-document-collaboration.md): destinatario verificado, proyección exacta, expiración/revocación, autoridad de origen vigente y portal separado de memberships. Revisar e integrar G1 antes de abrir **C1: Work y créditos de composición**; una continuación no implementa todo el catálogo. O0/O1 siguen pendientes: la inspección SSH aportada por el titular confirma PHP CLI/extensiones, conexiones TCP locales rechazadas y UAPI no disponible en esa sesión, sin confirmar endpoints alternativos ni cuota. La [matriz Kroma](hosting/kroma-compatibility.md) y las [guías O0](operations/foundation-readiness.md)/[O1](operations/documents-readiness.md) registran las evidencias restantes. Los adaptadores reales de capacidad/escaneo y uploads permanecen cerrados; desarrollar con fixtures no cierra operación ni autoriza despliegue. Los avisos de deprecación de herramientas registrados en P0 requieren seguimiento separado. El rollback total histórico (users antes de sessions) no es un procedimiento de recuperación y no se corrige reescribiendo migraciones compartidas. No comenzar Contracts, royalties ni un catálogo sin contexto y policies.
+La próxima implementación es **PUB1**, acotada por su [paquete de trabajo](implementation/pub1-public-site.md). La actualización documental no significa que G1 o el nuevo sitio ya estén en main: G1 se integró mediante PR #12 en aca2ad7; PR #13 sigue en revisión para incorporar la referencia pública. PUB0 sí está completado como inspección de lectura y referencia, sin implementación del reemplazo.
+
+### 12.1. Secuencia de trabajo
+
+| Orden | Trabajo | Resultado que habilita el siguiente paso |
+|---|---|---|
+| 1 | Completar la integración del plan público [PR #13](https://github.com/san7imo/ascanio-plataform/pull/13), con G1 ya integrado | Main contiene el acceso privado y ADR 0002. G1 ya está integrado; reconciliar los cambios documentales del plan conservando PUB0–PUB3 y la compra existente; comprobar el resultado integrado antes de abrir código nuevo |
+| 2 | Implementar PUB1 desde ese main, en feat/public-institutional-site | Layout/marca, portada, seis servicios, guía, contacto, listado/tres productos y tres legales; revisión local de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
+| 3 | Implementar las partes definidas de PUB2 | Navegación, acceso, consentimiento y enlaces comprobados; conectar contacto/búsqueda solo con destino real autorizado. Conservar la compra existente; las dependencias no resueltas quedan registradas por recorrido |
+| 4 | Ejecutar la validación local de PUB3 | Comparación desktop/móvil, accesibilidad, SEO, rutas y privacidad aprobadas; lista explícita de pendientes operativos para publicar |
+| 5 | Retomar C1, sin esperar el despliegue | Work/composición y créditos locales, incluyendo obras sin recording; grants tipados y políticas ampliados sobre el recurso real |
+| 6 | Continuar C2 → C3 → P2 y después R1–R3 | Recording/vínculos, releases, representación/evidencia y finalmente derechos/splits según dependencias y decisiones de cada tarea |
+| 7 | Continuar K1–K3 y T1–T3 cuando existan sus decisiones | Contratos/firma con contenido/proveedor definidos y Registration/CWR con receptor/perfil oficial; no usar su planificación como autorización para implementar todo |
+
+O0/O1 avanzan en paralelo. Si alguna integración PUB2 o el cierre operativo PUB3 queda pendiente por soporte, correo o enrutamiento, se termina lo independiente, se conserva el estado pendiente y se avanza con C1. La prioridad de interfaz pública no convierte el despliegue en una dependencia del catálogo. Las puertas de hitos 4–6 siguen vigentes.
+
+### 12.2. Primer paquete: cómo ejecutar PUB1
+
+1. Inventariar y versionar recursos de marca; preparar layout, navegación y mapa de rutas.
+2. Construir la portada y compararla con las capturas antes de extender la plantilla.
+3. Completar servicios y guía con sus acordeones.
+4. Completar presentación de productos, contacto y legales, con destinos existentes o dependencias documentadas; no publicar acciones incompletas como funcionales.
+5. Verificar el conjunto con datos sintéticos, pruebas de aislamiento aplicables, checks reales de frontend/backend y revisión visual. Abrir un PR enfocado que muestre evidencia y límites; integrar antes de ampliar alcance.
+
+El [paquete PUB1](implementation/pub1-public-site.md) contiene las rutas, pasos PUB1.1–PUB1.5, criterios de aceptación y exclusiones. No hace falta decidir firma, CWR o compatibilidad completa de Kroma para trabajar este layout local. Los precios/textos legales y contenido heredado necesitan revisión del titular antes de publicación, sin atribuirles validez por estar en una captura.
+
+### 12.3. Pendientes operativos y su impacto
+
+| Pendiente | Quién aporta la evidencia | Qué bloquea | Qué puede continuar |
+|---|---|---|---|
+| PostgreSQL/Redis asignados, endpoints, límites y workers de Kroma | Titular/proveedor; desarrollo contrasta | Cierre O0 y despliegue de la aplicación | Desarrollo y pruebas locales con PostgreSQL/Redis |
+| Cuota/inodos, ruta privada, escáner, capacidad y retención | Titular/proveedor con desarrollo | Cierre O1, adaptadores reales y cargas de archivos reales | G1/catálogo con fixtures; réplica de recursos públicos |
+| Transporte/destino de contacto y búsqueda de dominios | Titular/proveedor con desarrollo | Habilitar esos recorridos PUB2 en operación | Navegación, páginas, endpoints sintéticos de prueba y otros recorridos reales ya definidos |
+| Convivencia de rutas y compra WordPress existente | Titular/operación con desarrollo | Reemplazar el sitio público o su raíz de dominio | Réplica local y enlaces de referencia; no mover ni modificar la tienda |
+| Contenido comercial/legal vigente y rutas heredadas | Titular con revisión de contenido aplicable | Publicar textos definitivos y ejecutar redirecciones/retiradas | Maquetación basada en la referencia y lista de diferencias pendientes |
+| Copias, claves y restauración comprobada | Titular/operación con desarrollo | Preparación operativa, piloto con datos reales y recuperación | Verificación técnica local con fixtures, sin afirmar recuperabilidad de Kroma |
+
+DOCUMENT_UPLOADS_ENABLED permanece false. No se adquieren servicios, cambian motores/hosting, usan datos privados reales ni despliega por seguir este orden. Conservar compra actual significa mantener su operación real y sus destinos verificados, no implementar cobros propios ni copiar identidades comerciales al SaaS.
+
+### 12.4. Regla de seguimiento
+
+Cada entrega identifica tres estados distintos: **validada localmente**, **integrada en main** y **habilitada en operación**. Las evidencias y pruebas pertenecen al commit ejecutado; una captura no cierra un formulario y una suite local no cierra Kroma. Al iniciar la siguiente entrega se actualiza esta tabla, sin porcentajes subjetivos ni fechas prometidas sin capacidad de equipo acordada.
+
+Los avisos de herramientas P0 y el rollback histórico users/sessions conservan su seguimiento; no se reescriben migraciones compartidas. Contracts, royalties, pagos propios y recursos sin contexto/policies continúan fuera del trabajo inmediato.
 
 Cada issue toma uno de los IDs anteriores y consigna objetivo, dependencias, campos/recursos visibles, estados, migraciones, pruebas de aceptación, decisiones requeridas y exclusiones. Dividirlo si no permite revisión enfocada; completar backend/UX/pruebas del mismo comportamiento antes de abrir otro frente. Este documento no crea automáticamente issues ni presupone que existan.
 
