@@ -1,0 +1,184 @@
+{
+  "captured_at": "2026-11-22T04:18:35.964842+00:00",
+  "base": "main cf8944e, PUB1.3 integrated through PR #15",
+  "scope": "PUB1.4 eight new editorial pages. Not production or the complete PUB1.5/PUB2/PUB3 validation.",
+  "browser": "Google Chrome headless, DPR 1, hidden scrollbars. Eight pages at widths 1440,390,320,768. Desktop 1440×1000 and mobile 390×844 screenshots; legal captures are viewport-only.",
+  "interactions": "Native menu and product-name sort with keyboard. All preview fields disabled and empty. No external purchases, contact submissions, accounts or provider calls.",
+  "files": [
+    {
+      "file": "contact-desktop.jpg",
+      "sha256": "c6b6d151ebd60428c001faefd17ca1041fce060b988d723eba27d90f65eb0315",
+      "bytes": 109922,
+      "dimensions": [
+        1440,
+        1656
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "contact-mobile.jpg",
+      "sha256": "d6d53d61c4ec999e11b26890727a3ef0b56661822fc9c96f39f07cad3d86d332",
+      "bytes": 64893,
+      "dimensions": [
+        390,
+        1883
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "cookies-desktop.jpg",
+      "sha256": "1c6cd0f6742c780e07ae5dfd0eddd0dbc0731740a3c338c9a9254783a3f93375",
+      "bytes": 136441,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "cookies-mobile.jpg",
+      "sha256": "e9b70b47603c0c7902c6ffe3d624ec704a130baa80af15293a0f2835f9026fd0",
+      "bytes": 50704,
+      "dimensions": [
+        390,
+        844
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "notice-desktop.jpg",
+      "sha256": "62ec4ee114045b601657825894a05483d8c90fbae36cc30f10342f7a84d80b73",
+      "bytes": 157803,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "notice-mobile.jpg",
+      "sha256": "ee09f7bf526c4489ce50abb78f55337b47eb558d601e09ed8cf5a8bd154530b3",
+      "bytes": 53527,
+      "dimensions": [
+        390,
+        844
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "privacy-desktop.jpg",
+      "sha256": "aed910a5edb2c34589e5ef0dbfdfc3eae7f6ec691f8dab9108c2315969dd0419",
+      "bytes": 166441,
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "privacy-mobile.jpg",
+      "sha256": "6dfde0e16f5b05390546e4d3ee6dd3e67e4604b5d285abe2d83a3ffba3b03fad",
+      "bytes": 54972,
+      "dimensions": [
+        390,
+        844
+      ],
+      "capture": "viewport"
+    },
+    {
+      "file": "review.json",
+      "sha256": "0541a82a4af04bb7d5a8300ee8bcf37423ccd25e27d2adfc2f302c2c15c510bb",
+      "bytes": 62843
+    },
+    {
+      "file": "shop-desktop.jpg",
+      "sha256": "03bccaeb24cf56d039c1ddbaf250463f01357e82c4e49a6faa7bc4f68aa6b58c",
+      "bytes": 123817,
+      "dimensions": [
+        1440,
+        1311
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "shop-mobile-name-desc.jpg",
+      "sha256": "d096d741ad46b0586d19bbeae1df83b1095c54fd487db745fb957feb1ece997f",
+      "bytes": 98694,
+      "dimensions": [
+        390,
+        2569
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "shop-mobile.jpg",
+      "sha256": "73883d02e2fbef9cb027e600615148f18c95db5447553d9aa2f8032641dca897",
+      "bytes": 99432,
+      "dimensions": [
+        390,
+        2569
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "smart-desktop.jpg",
+      "sha256": "b2a5261aa416e9ed4811b968980a93b95b9167fffb18d93c534ac9915c3c5302",
+      "bytes": 88244,
+      "dimensions": [
+        1440,
+        1212
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "smart-mobile.jpg",
+      "sha256": "1a1af5b97d4fd72acd12b8e71c60e6c1471e3f0c7ebca2e728cb8c9a21c80fe6",
+      "bytes": 58136,
+      "dimensions": [
+        390,
+        1167
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "sync-desktop.jpg",
+      "sha256": "2c3b53b7c5834241115cac8adf03dd366a0400d1b8d0042d9ebc35e2dee3c04c",
+      "bytes": 120506,
+      "dimensions": [
+        1440,
+        1955
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "sync-mobile.jpg",
+      "sha256": "ffd2bf268fe3de5440ec94b75ae6e32fdebaaa5991833c262526f70ee467bb8b",
+      "bytes": 86731,
+      "dimensions": [
+        390,
+        1926
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "vevo-desktop.jpg",
+      "sha256": "d8122e406e9075f448100d0a5f62ed3a4510701b599880025069379b0f0dea8f",
+      "bytes": 103896,
+      "dimensions": [
+        1440,
+        1397
+      ],
+      "capture": "full-page"
+    },
+    {
+      "file": "vevo-mobile.jpg",
+      "sha256": "4610c8c976ba09f4b13604dad5257b930ecb65985a488605576bf89d49c243bb",
+      "bytes": 68347,
+      "dimensions": [
+        390,
+        1343
+      ],
+      "capture": "full-page"
+    }
+  ]
+}

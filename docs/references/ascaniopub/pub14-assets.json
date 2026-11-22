@@ -1,0 +1,186 @@
+{
+  "retrieved_at": "2026-11-22T04:08:12.467296+00:00",
+  "purpose": "PUB1.4: public product/contact assets and editorial legal copies. Original image bytes; no orders, account data, form values or plugin runtime.",
+  "assets": [
+    {
+      "path": "public/assets/ascanio/commerce/product-vevo.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/vevoproducto-2.jpg.webp",
+      "sha256": "195c68c7d93302851b0ecb0b09eca7d86c2d331e78454dffbd94598ecc958054",
+      "bytes": 31076,
+      "dimensions": [
+        737,
+        772
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/commerce/product-sync.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/syncproduct.jpg.webp",
+      "sha256": "ea01d36db7bc2bdcecf98bc9311af09fcf83b4e8d0379a85fde861995a9f3d59",
+      "bytes": 12558,
+      "dimensions": [
+        737,
+        772
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/commerce/product-smart.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/Smarth-URL-e1629842386438.png.webp",
+      "sha256": "7169279559b98b7aa1ba45f8648aead24f05f2c619ccedde0c17b6e714f00ceb",
+      "bytes": 15502,
+      "dimensions": [
+        300,
+        300
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/commerce/contact-hero.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/contacto.png.webp",
+      "sha256": "dad4cb3b2da953ddf8f5a1f33c920144639a80658c27cde3e8293d53f3515231",
+      "bytes": 9032,
+      "dimensions": [
+        1920,
+        767
+      ]
+    }
+  ],
+  "source_snapshots": [
+    {
+      "url": "https://ascaniopub.com/product/distribucion-vevo/",
+      "sha256_of_saved_html": "a4e2be094500031050a180c8994dffb830b1d37b5f56751ad22e0cc0a4e37699"
+    },
+    {
+      "url": "https://ascaniopub.com/product/sincronizacion/",
+      "sha256_of_saved_html": "48366735218f4d8fe38859081a3f718e7bad4be742eb188e0de7c4bce8c27a07"
+    },
+    {
+      "url": "https://ascaniopub.com/product/smart-url/",
+      "sha256_of_saved_html": "0e85084d226f8e6a790bd1ec97dcd88b44f3b1f0a9d04d3980ef9e89f722ba3d"
+    },
+    {
+      "url": "https://ascaniopub.com/contacto/",
+      "sha256_of_saved_html": "9fc9386c6b1d3f7869f03f86f7c5041877413ea64ded3a5d589478032ed12514"
+    },
+    {
+      "url": "https://ascaniopub.com/privacy-policy/",
+      "sha256_of_saved_html": "c0c11e9513fc14d5c4ecb2cba14ca7933714b30934e9f2eabc915ad0a544e0bf"
+    },
+    {
+      "url": "https://ascaniopub.com/aviso-legal/",
+      "sha256_of_saved_html": "3160ae0c248000e482da4149a3ab899866f1a60953c8d83ce7a2cd1b87af4230"
+    },
+    {
+      "url": "https://ascaniopub.com/politica-de-cookies/",
+      "sha256_of_saved_html": "bb0306df463d8c18c379497cd257b6cd41792022ef722cab7b94d1299027ad83"
+    },
+    {
+      "url": "https://ascaniopub.com/shop/",
+      "sha256_of_saved_html": "3f12a625200354bae5090e784eba7eb369cd661d0214c213970cc8dda2037b54"
+    }
+  ],
+  "editorial_link_changes": [
+    {
+      "page": "privacy",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "notice",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "notice",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "notice",
+      "anchor": "IP",
+      "original_href": "https://ceporros.com/",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "notice",
+      "anchor": "Google",
+      "original_href": "https://presencialismo.com/",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "cookies",
+      "anchor": "http://windows.microsoft.com/es-es/windows-vista/Block-or-allow-cookies",
+      "original_href": "http://windows.microsoft.com/es-es/windows-vista/Block-or-allow-cookies",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "http://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia",
+      "original_href": "http://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "http://safari.helpmax.net/es/privacidad-y-seguridad/como-gestionar-las-cookies/",
+      "original_href": "http://safari.helpmax.net/es/privacidad-y-seguridad/como-gestionar-las-cookies/",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "http://help.opera.com/Linux/10.60/es-ES/cookies.html",
+      "original_href": "http://help.opera.com/Linux/10.60/es-ES/cookies.html",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.ghostery.com/",
+      "original_href": "http://www.ghostery.com/",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.youronlinechoices.com/es/",
+      "original_href": "http://www.youronlinechoices.com/es/",
+      "action": "Unwrapped link; text retained; destination unapproved for the replica."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    },
+    {
+      "page": "cookies",
+      "anchor": "www.ascaniopub.com",
+      "original_href": "http://www.ascaniopub.com",
+      "action": "Mapped original home link to local /."
+    }
+  ],
+  "content": [
+    {
+      "path": "resources/content/public-site/products.json",
+      "sha256": "1d462f82caa9a840e1e9650e45fd8bea262a4ee6d5326f9177eeaa138707a265"
+    },
+    {
+      "path": "resources/content/public-site/contact.json",
+      "sha256": "b2cbd8a1e8056ac827ed18995f59dce9e7b0af5d0d19012228f056a6ae17f5f4"
+    },
+    {
+      "path": "resources/content/public-site/legal.json",
+      "sha256": "8ecf9fde657127f4dd3d95ebc49e7f931b8c87eb67e2cb6883d09c7020e2a9b7"
+    }
+  ]
+}

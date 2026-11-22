@@ -28,6 +28,39 @@ class PublicSiteController extends Controller
         ]);
     }
 
+    public function contact(): Response
+    {
+        return $this->page('public/Contact', ['contact' => $this->content('contact')]);
+    }
+
+    public function shop(): Response
+    {
+        return $this->page('public/Shop', ['products' => array_values($this->content('products'))]);
+    }
+
+    public function product(string $product): Response
+    {
+        $products = $this->content('products');
+        abort_unless(array_key_exists($product, $products), 404);
+
+        return $this->page('public/Product', ['product' => $products[$product]]);
+    }
+
+    public function legal(string $legal): Response
+    {
+        $pages = $this->content('legal');
+        abort_unless(array_key_exists($legal, $pages), 404);
+
+        return $this->page('public/Legal', ['legal' => $pages[$legal]]);
+    }
+
+    /** @return array<string, mixed> */
+    private function content(string $file): array
+    {
+        // Callers supply literal filenames; route/query values only select keys.
+        return json_decode(file_get_contents(resource_path('content/public-site/'.$file.'.json')), true, flags: JSON_THROW_ON_ERROR);
+    }
+
     /** @param array<string, mixed> $props */
     private function page(string $component, array $props = []): Response
     {

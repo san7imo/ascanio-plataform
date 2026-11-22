@@ -40,3 +40,40 @@ export interface PublicGuideContent extends PublicHeroContent {
     paragraphs: string[];
     sections: { id: string; title: string; html: string }[];
 }
+
+export interface PublicPreviewField {
+    key: string;
+    label: string;
+    type: 'text' | 'email' | 'date' | 'textarea' | 'select';
+    placeholder: string;
+    options: string[];
+    description: string;
+}
+
+export interface PublicProductContent {
+    key: string;
+    title: string;
+    path: string;
+    purchaseUrl: string;
+    price: string | null;
+    category: string;
+    image: PublicImage;
+    fields: PublicPreviewField[];
+}
+
+export interface PublicContactContent extends PublicHeroContent {
+    heading: string;
+    email: string;
+    phone: string;
+    address: string;
+    formUrl: string;
+    fields: PublicPreviewField[];
+}
+
+export interface PublicLegalContent {
+    key: string;
+    title: string;
+    html: string;
+    sourceUrl: string;
+    reviewRequired: boolean;
+}

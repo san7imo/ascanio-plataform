@@ -3,7 +3,6 @@ import { Link } from '@inertiajs/vue3';
 import { Menu, X } from 'lucide-vue-next';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import {
-    currentSite,
     publicLegalNavigation,
     publicNavigation,
     publicHref,
@@ -94,10 +93,10 @@ onBeforeUnmount(() => {
                 <a
                     v-for="item in publicLegalNavigation"
                     :key="item.path"
-                    :href="currentSite + item.path"
+                    :href="publicHref(item.path)"
                     >{{ item.label }}</a
                 >
-                <a :href="currentSite + '/shop/'">Tienda actual</a>
+                <a :href="publicHref('/shop/')">Tienda</a>
             </nav>
             <nav aria-label="Plataforma de trabajo">
                 <a :href="login().url">Acceso a la plataforma</a>
