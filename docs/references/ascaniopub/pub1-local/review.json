@@ -1,0 +1,225 @@
+{
+  "desktop": {
+    "title": "Ascanio Publishing - Ascanio Publishing Platform",
+    "viewport": 1440,
+    "width": 1440,
+    "height": 2294,
+    "headings": [
+      "Distribución Musical",
+      " Tu música en las calles del Mundo",
+      " ¿Necesitas asesoramiento legal en el mundo de la música? "
+    ],
+    "missingImages": [],
+    "font": "AscanioPoppins, sans-serif",
+    "sections": [
+      {
+        "name": "public-header",
+        "top": 0,
+        "bottom": 100,
+        "width": 1440
+      },
+      {
+        "name": "public-hero",
+        "top": 100,
+        "bottom": 900,
+        "width": 1440
+      },
+      {
+        "name": "public-intro",
+        "top": 900,
+        "bottom": 1128.78125,
+        "width": 1410
+      },
+      {
+        "name": "public-services",
+        "top": 1156.78125,
+        "bottom": 1616.78125,
+        "width": 940
+      },
+      {
+        "name": "public-advice",
+        "top": 1644.78125,
+        "bottom": 2204.78125,
+        "width": 1410
+      },
+      {
+        "name": "public-footer",
+        "top": 2204.78125,
+        "bottom": 2293.96875,
+        "width": 1440
+      }
+    ],
+    "clipped": []
+  },
+  "mobile": {
+    "title": "Ascanio Publishing - Ascanio Publishing Platform",
+    "viewport": 390,
+    "width": 390,
+    "height": 2595,
+    "headings": [
+      "Distribución Musical",
+      " Tu música en las calles del Mundo",
+      " ¿Necesitas asesoramiento legal en el mundo de la música? "
+    ],
+    "missingImages": [],
+    "font": "AscanioPoppins, sans-serif",
+    "sections": [
+      {
+        "name": "public-header",
+        "top": 0,
+        "bottom": 76,
+        "width": 390
+      },
+      {
+        "name": "public-hero",
+        "top": 76,
+        "bottom": 676,
+        "width": 390
+      },
+      {
+        "name": "public-intro",
+        "top": 676,
+        "bottom": 1033.5625,
+        "width": 390
+      },
+      {
+        "name": "public-services",
+        "top": 1061.5625,
+        "bottom": 1801.5625,
+        "width": 360
+      },
+      {
+        "name": "public-advice",
+        "top": 1816.5625,
+        "bottom": 2376.5625,
+        "width": 390
+      },
+      {
+        "name": "public-footer",
+        "top": 2376.5625,
+        "bottom": 2595.3125,
+        "width": 390
+      }
+    ],
+    "clipped": []
+  },
+  "menuOpen": {
+    "expanded": "true",
+    "display": "flex",
+    "visibleLinks": 6
+  },
+  "menuTab": "Distribución musical",
+  "menuEscape": {
+    "expanded": "false",
+    "focus": "public-menu-toggle"
+  },
+  "narrow": {
+    "title": "Ascanio Publishing - Ascanio Publishing Platform",
+    "viewport": 320,
+    "width": 320,
+    "height": 2566,
+    "headings": [
+      "Distribución Musical",
+      " Tu música en las calles del Mundo",
+      " ¿Necesitas asesoramiento legal en el mundo de la música? "
+    ],
+    "missingImages": [],
+    "font": "AscanioPoppins, sans-serif",
+    "sections": [
+      {
+        "name": "public-header",
+        "top": 0,
+        "bottom": 76,
+        "width": 320
+      },
+      {
+        "name": "public-hero",
+        "top": 76,
+        "bottom": 676,
+        "width": 320
+      },
+      {
+        "name": "public-intro",
+        "top": 676,
+        "bottom": 1091.15625,
+        "width": 320
+      },
+      {
+        "name": "public-services",
+        "top": 1119.15625,
+        "bottom": 1719.15625,
+        "width": 290
+      },
+      {
+        "name": "public-advice",
+        "top": 1734.15625,
+        "bottom": 2308.125,
+        "width": 320
+      },
+      {
+        "name": "public-footer",
+        "top": 2308.125,
+        "bottom": 2566.0625,
+        "width": 320
+      }
+    ],
+    "clipped": []
+  },
+  "tablet": {
+    "title": "Ascanio Publishing - Ascanio Publishing Platform",
+    "viewport": 768,
+    "width": 768,
+    "height": 2282,
+    "headings": [
+      "Distribución Musical",
+      " Tu música en las calles del Mundo",
+      " ¿Necesitas asesoramiento legal en el mundo de la música? "
+    ],
+    "missingImages": [],
+    "font": "AscanioPoppins, sans-serif",
+    "sections": [
+      {
+        "name": "public-header",
+        "top": 0,
+        "bottom": 115.421875,
+        "width": 768
+      },
+      {
+        "name": "public-hero",
+        "top": 115.421875,
+        "bottom": 915.421875,
+        "width": 768
+      },
+      {
+        "name": "public-intro",
+        "top": 915.421875,
+        "bottom": 1173,
+        "width": 738
+      },
+      {
+        "name": "public-services",
+        "top": 1201,
+        "bottom": 1560,
+        "width": 738
+      },
+      {
+        "name": "public-advice",
+        "top": 1588,
+        "bottom": 2148,
+        "width": 738
+      },
+      {
+        "name": "public-footer",
+        "top": 2148,
+        "bottom": 2282.375,
+        "width": 768
+      }
+    ],
+    "clipped": []
+  },
+  "network": {
+    "external": [],
+    "failures": [],
+    "errors": []
+  }
+}

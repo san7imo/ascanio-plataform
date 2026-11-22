@@ -17,11 +17,12 @@ Actualización D1: 21 de noviembre de 2026. Base de entrega: `1c4a088`, con P1 i
 | D1 | Integrado mediante [PR #11](https://github.com/san7imo/ascanio-plataform/pull/11), merge 06f3c34 | [Versiones privadas, cuarentena, descarga y límites](implementation/d1-private-documents.md); 165 pruebas / 1801 aserciones; cargas reales deshabilitadas y O1 pendiente |
 | G1 | Integrado mediante PR #12, merge aca2ad7 | [PR #12](https://github.com/san7imo/ascanio-plataform/pull/12); 181 pruebas / 2126 aserciones y CI PHP 8.3/8.4 aprobados en su entrega; no repetidos por este cambio documental |
 | PUB0 | Completado: inspección de lectura, inventario y capturas | [Referencias fechadas](references/ascaniopub/README.md), rutas, capturas desktop/móvil y decisión de conservar compra actual |
-| PUB1–PUB3 | Planificados; implementación pendiente | Réplica pública, integración de recorridos y validación según §4.1; sin nuevo motor de comercio |
+| PUB1 | En ejecución: PUB1.1–PUB1.2 preparados en rama para revisión | Layout/marca y portada locales; [entrega parcial y siguiente paso](implementation/pub1-public-site.md#primera-entrega-pub11-y-pub12). PUB1.3–PUB1.5 pendientes |
+| PUB2–PUB3 | Pendientes | Integración de recorridos y validación completa según §4.1; sin nuevo motor de comercio |
 | O0 / O1 | Pendientes de evidencia técnica | Titular aportó PHP CLI/extensiones por SSH; faltan cuota/inodos, endpoints de servicios, ruta privada, escáner y operación medidos. [Preparación O1](operations/documents-readiness.md) |
-| Resto de hitos 2–6 | Diseño objetivo | Parties/Documents/G1 integrados y fachada pública planificada; catálogo y módulos musicales posteriores siguen pendientes |
+| Resto de hitos 2–6 | Diseño objetivo | Parties/Documents/G1 integrados y fachada pública en implementación; catálogo y módulos musicales posteriores siguen pendientes |
 
-Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. Esta actualización es documental; no implementa ni publica la réplica.
+Actualización de alcance público: 22 de noviembre de 2026 UTC. Por instrucción del titular se incorpora la réplica institucional de ascaniopub.com, conforme al [ADR 0002](adr/0002-public-institutional-site.md) y al [inventario con capturas](references/ascaniopub/README.md). La elección comercial es replicar páginas de productos y **conservar la compra actual**, sin carrito/pagos propios. La referencia y el plan se integraron mediante PR #13 en f732ecb. La implementación local posterior entrega primero PUB1.1–PUB1.2; no se publica la réplica.
 
 Actualización del orden ejecutable: 21 de noviembre de 2026 (America/Bogota). El estado de integración se contrastó con los PRs abiertos; las fechas UTC de las referencias se conservan. El detalle inmediato de PUB1 está en su [paquete de implementación](implementation/pub1-public-site.md).
 
@@ -119,7 +120,7 @@ La referencia detectó carga diferida del JavaScript: antes y después de intera
 
 Las menciones comerciales de distribución, copyright, hosting o asesoría se reproducen como contenido institucional revisado. No habilitan DDEX, royalties, billing, firma ni facultades legales en el SaaS. Los datos comerciales, precios, enlaces y textos legales se revisan con el titular al preparar publicación; el snapshot no certifica disponibilidad ni validez jurídica. No copiar credenciales, IDs de analítica, tracking o servicios de plugins por defecto.
 
-PUB1 puede desarrollarse localmente con recursos públicos y fixtures. O0/O1 siguen bloqueando sus operaciones dependientes y los archivos reales. Un contacto pendiente de SMTP o una decisión de enrutamiento no paraliza el catálogo ni autoriza sustituir servicios por resultados simulados. La implementación posterior tendrá pruebas HTTP de páginas públicas y denegaciones sobre rutas privadas, checks reales de frontend/build y una comparación visual con esta referencia; esta entrega solo ejecuta comprobaciones documentales y de capturas.
+PUB1 puede desarrollarse localmente con recursos públicos y fixtures. O0/O1 siguen bloqueando sus operaciones dependientes y los archivos reales. Un contacto pendiente de SMTP o una decisión de enrutamiento no paraliza el catálogo ni autoriza sustituir servicios por resultados simulados. La implementación posterior tendrá pruebas HTTP de páginas públicas y denegaciones sobre rutas privadas, checks reales de frontend/build y una comparación visual con esta referencia; la entrega PUB0 ejecutó solo comprobaciones documentales y de capturas. La primera implementación PUB1.1–PUB1.2 registra sus pruebas reales y límites en el [paquete PUB1](implementation/pub1-public-site.md).
 
 ## 5. Trabajo inmediato y Foundation
 
@@ -304,13 +305,13 @@ Coedición/sincronización entre workspaces no es una decisión pendiente para p
 
 ## 12. Orden de ejecución y siguiente entrega
 
-La próxima implementación es **PUB1**, acotada por su [paquete de trabajo](implementation/pub1-public-site.md). La actualización documental no significa que G1 o el nuevo sitio ya estén en main: G1 se integró mediante PR #12 en aca2ad7; PR #13 sigue en revisión para incorporar la referencia pública. PUB0 sí está completado como inspección de lectura y referencia, sin implementación del reemplazo.
+**PUB1 está en ejecución**, acotado por su [paquete de trabajo](implementation/pub1-public-site.md). Main f732ecb contiene G1 (PR #12, aca2ad7) y el plan/referencia públicos (PR #13, f732ecb), con CI aprobado de la combinación. PUB1.1–PUB1.2 están preparados para revisión en feat/public-institutional-site, sin integrar ni publicar; la próxima implementación es PUB1.3 (seis servicios y guía). PUB0 está completado como inspección y referencia.
 
 ### 12.1. Secuencia de trabajo
 
 | Orden | Trabajo | Resultado que habilita el siguiente paso |
 |---|---|---|
-| 1 | Completar la integración del plan público [PR #13](https://github.com/san7imo/ascanio-plataform/pull/13), con G1 ya integrado | Main contiene el acceso privado y ADR 0002. G1 ya está integrado; reconciliar los cambios documentales del plan conservando PUB0–PUB3 y la compra existente; comprobar el resultado integrado antes de abrir código nuevo |
+| 1 | Completado: integrar G1 y el plan público, PRs #12 y #13 | Main f732ecb conserva el acceso privado, ADR 0002, PUB0–PUB3 y la compra existente; conflicto documental resuelto y CI de la combinación aprobado |
 | 2 | Implementar PUB1 desde ese main, en feat/public-institutional-site | Layout/marca, portada, seis servicios, guía, contacto, listado/tres productos y tres legales; revisión local de dieciséis páginas, sin nueva tienda ni cambios del sitio actual |
 | 3 | Implementar las partes definidas de PUB2 | Navegación, acceso, consentimiento y enlaces comprobados; conectar contacto/búsqueda solo con destino real autorizado. Conservar la compra existente; las dependencias no resueltas quedan registradas por recorrido |
 | 4 | Ejecutar la validación local de PUB3 | Comparación desktop/móvil, accesibilidad, SEO, rutas y privacidad aprobadas; lista explícita de pendientes operativos para publicar |

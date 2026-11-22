@@ -26,3 +26,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## Public website assets
+
+The original logo, illustrations, platform marks, service tiles and photograph
+under `public/assets/ascanio/` were obtained from the public Ascanio website for
+the owner-requested replica. Their [source manifest](docs/references/ascaniopub/public-assets.json)
+records original URLs, byte sizes and SHA-256 checksums. No ownership transfer or
+license to third-party marks is asserted by their inclusion. Images are unchanged;
+WordPress plugins, scripts, tracking and payment integrations were not copied.
+
+The self-hosted Poppins and Rubik font files retain the SIL Open Font License 1.1.
+Copyright, reserved font names and terms are reproduced in
+[the Poppins license](public/assets/ascanio/fonts/poppins-OFL.txt) and
+[the Rubik license](public/assets/ascanio/fonts/rubik-OFL.txt). The CSS families
+AscanioPoppins/AscanioRubik are local aliases; the font binaries are unmodified.

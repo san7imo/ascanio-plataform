@@ -1,0 +1,196 @@
+{
+  "retrieved_at": "2026-11-22T03:11:59.202762+00:00",
+  "purpose": "PUB1.1–PUB1.2 public brand/layout and home. Original image/font bytes; license text whitespace normalized. No plugin runtime or tracking.",
+  "assets": [
+    {
+      "path": "public/assets/ascanio/logo.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/04/Horizontal-Color.png",
+      "sha256": "3b3368b25b8d8a936a20f986a5d283925206463731b0cb85573e20bf8e4a1de5",
+      "bytes": 4726,
+      "dimensions": [
+        486,
+        194
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/hero.jpg",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/concierto-2.jpg",
+      "sha256": "f87d9b068ec20494236bc0a319eb6191c95d5f8d0b62bb691e6f0d3adf787d64",
+      "bytes": 37401,
+      "dimensions": [
+        1920,
+        767
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/advice.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/04/bg-5.png",
+      "sha256": "2628ec38a8549f702d57f876f96a2423ac9afd575a107e9b2c0a02e58391d136",
+      "bytes": 381384,
+      "dimensions": [
+        1920,
+        563
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/spotify.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/Spotify_Logo_RGB_White.png",
+      "sha256": "8d48bc668830e382bd5f1c814d2e7090039d57c84b3a0b07cf5e9ef78577b733",
+      "bytes": 22682,
+      "dimensions": [
+        2362,
+        708
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/apple-music.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/2560px-Apple_Music_logo.svg.png",
+      "sha256": "40c736c76fbcd1c7bb3d8bbcffe7b301941ee7d1fc23ebf36a9a5b4768b4e55e",
+      "bytes": 31907,
+      "dimensions": [
+        2560,
+        606
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/youtube.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2021/11/youtube-logo-9.png",
+      "sha256": "110aba318575daeefbd3b93a190f6fd38034f075ba9278723230e0eea5b4c253",
+      "bytes": 57683,
+      "dimensions": [
+        2560,
+        570
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/guide.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/Pasos-1-1024x1024.png.webp",
+      "sha256": "3654a57967d45bde1f60b7066f74cc5e539aa42611311f2dcf2de13459298c93",
+      "bytes": 14522,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/distribution.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/DistDigital-1024x1024.png.webp",
+      "sha256": "c34840dfe2f865552aac758004867aacf0a62c0f117b15fc279beff8e32f1f6d",
+      "bytes": 14322,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/publishing.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/Publishing-1-1024x1024.webp",
+      "sha256": "7d1f45863843533d6bf842b87e4a7cf31980a3a755964d1210e4d22947e9426e",
+      "bytes": 23300,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/visual-identity.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/IdentidadVisual-1024x1024.png.webp",
+      "sha256": "80b919744647d57467a886e451ae74e295204f5ae31af3ea8431c03899973d61",
+      "bytes": 17622,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/web.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/DesarrolloWeb-1024x1024.png.webp",
+      "sha256": "f0e394974cd25652e4b31629aa06c1e7d504cb988049657c42bc3bfb8fcfb6cf",
+      "bytes": 16064,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/media.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/MediosCOmunicacion-1024x1024.png.webp",
+      "sha256": "de654ece17d27e407d3132f065a80088653fa4b8f513d8bdc29699ad77492d14",
+      "bytes": 21462,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/social.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/11/SocialMedia-1-1024x1024.png.webp",
+      "sha256": "1153579eee30afef83d3635d4adb610a3506d20f50467396f99615a3b60294d0",
+      "bytes": 12744,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/merchandising.webp",
+      "source": "https://ascaniopub.com/wp-content/uploads/2023/01/MerchandisingBoton-1024x1024.png.webp",
+      "sha256": "fa6513cc7619c157af5acd23163d8de2b8a9483ad53ab780fc0cd022c47015ce",
+      "bytes": 24038,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/favicon.png",
+      "source": "https://ascaniopub.com/wp-content/uploads/2022/08/Isotipo-favicon-2-100x100.png",
+      "sha256": "857de1d6af92fa3b1bdcccaa17588a4a14cee2a6edac0bacab04dd1d022ca712",
+      "bytes": 2004,
+      "dimensions": [
+        100,
+        100
+      ]
+    },
+    {
+      "path": "public/assets/ascanio/fonts/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2",
+      "source": "https://ascaniopub.com/wp-content/fonts/poppins/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2",
+      "sha256": "78bc3aa78faec288bbb3bf26c9a0fa4eb67b1e69da94a17233c5cab60525efdb",
+      "bytes": 7840
+    },
+    {
+      "path": "public/assets/ascanio/fonts/pxiEyp8kv8JHgFVrJJfecg.woff2",
+      "source": "https://ascaniopub.com/wp-content/fonts/poppins/pxiEyp8kv8JHgFVrJJfecg.woff2",
+      "sha256": "7d93459d86585bfcdbb7e0376056226adb25821ee54b96236fe2123e9560929f",
+      "bytes": 7884
+    },
+    {
+      "path": "public/assets/ascanio/fonts/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2",
+      "source": "https://ascaniopub.com/wp-content/fonts/poppins/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2",
+      "sha256": "cd36de204aca2d5fa263a731f7c20009b5e3d754ba1f1e03c33e93a48f3e7446",
+      "bytes": 7748
+    },
+    {
+      "path": "public/assets/ascanio/fonts/iJWKBXyIfDnIV7nBrXw.woff2",
+      "source": "https://ascaniopub.com/wp-content/fonts/rubik/iJWKBXyIfDnIV7nBrXw.woff2",
+      "sha256": "691cd1d9b4c0cdf31a1dcf04259c86f92c85e69f6622abab7964d81e36890691",
+      "bytes": 35348
+    },
+    {
+      "path": "public/assets/ascanio/fonts/poppins-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/OFL.txt",
+      "sha256": "8503c30a4d7e09c4c09015fee42f829f18acbe6330755e9930ba50ea44eaa157",
+      "bytes": 4384,
+      "source_sha256": "6be04893d770899a015649c7aa3b582f871b272f8747a92b78b17c3e5c8b2573",
+      "transformation": "Trailing whitespace removed from license text; copyright and license terms retained."
+    },
+    {
+      "path": "public/assets/ascanio/fonts/rubik-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubik/OFL.txt",
+      "sha256": "3cb6a6084f5d942a8f3b5fda0f6a90dde18d7f7f1798886f4043d18f8c1a811e",
+      "bytes": 4383,
+      "source_sha256": "472cbe7c25441df63e9c7864b43eb3c0f4b3df950c66a76224e6cfe1eae843fb",
+      "transformation": "Trailing whitespace removed from license text; copyright and license terms retained."
+    }
+  ]
+}
